@@ -57,8 +57,8 @@
                 .As<IIdentifierProvider>()
                 .InstancePerRequest();
 
-            builder.RegisterGeneric(typeof(DbRepository<>))
-                .As(typeof(IDbRepository<>))
+            builder.RegisterGeneric(typeof(DbRepository<,>))
+                .As(typeof(IDbRepository<,>))
                 .InstancePerRequest();
 
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())

@@ -7,8 +7,8 @@
     using EmployerEmployeeHuntSystem.Data.Common.Models;
 
     // TODO: Why BaseModel<int> instead BaseModel<TKey>?
-    public class DbRepository<T> : IDbRepository<T>
-        where T : BaseModel<int>
+    public class DbRepository<T, TKey> : IDbRepository<T, TKey>
+        where T : BaseModel<TKey>
     {
         public DbRepository(DbContext context)
         {
@@ -35,9 +35,9 @@
             return this.DbSet;
         }
 
-        public T GetById(int id)
+        public T GetById(TKey id)
         {
-            return this.All().FirstOrDefault(x => x.Id == id);
+            return this.All().FirstOrDefault(x => x.Id.Equals(id));
         }
 
         public void Add(T entity)
