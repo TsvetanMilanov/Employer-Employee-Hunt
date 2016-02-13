@@ -4,7 +4,7 @@
     using System.Data.Entity;
     using System.Linq;
 
-    using EmployerEmployeeHuntSystem.Data.Common.Models;
+    using Models;
 
     // TODO: Why BaseModel<int> instead BaseModel<TKey>?
     public class DbRepository<T, TKey> : IDbRepository<T, TKey>
@@ -21,9 +21,9 @@
             this.DbSet = this.Context.Set<T>();
         }
 
-        private IDbSet<T> DbSet { get; }
+        private IDbSet<T> DbSet { get; set; }
 
-        private DbContext Context { get; }
+        private DbContext Context { get; set; }
 
         public IQueryable<T> All()
         {
