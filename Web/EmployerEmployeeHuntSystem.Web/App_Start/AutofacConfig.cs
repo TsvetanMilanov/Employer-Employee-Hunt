@@ -3,14 +3,12 @@
     using System.Data.Entity;
     using System.Reflection;
     using System.Web.Mvc;
-
     using Autofac;
     using Autofac.Integration.Mvc;
-
     using Controllers;
-
     using Data;
     using Data.Common;
+    using Services.Data;
     using Services.Web;
 
     public static class AutofacConfig
@@ -60,6 +58,9 @@
             builder.RegisterGeneric(typeof(DbRepository<,>))
                 .As(typeof(IDbRepository<,>))
                 .InstancePerRequest();
+
+            var servicesAssembly = Assembly.GetAssembly(typeof(IStatisticsService));
+            builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
 
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .AssignableTo<BaseController>().PropertiesAutowired();

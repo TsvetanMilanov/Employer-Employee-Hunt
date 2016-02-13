@@ -216,6 +216,7 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\Home\IndexViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\FactorViewModel.cs" />
@@ -291,7 +292,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
-    <Folder Include="ViewModels\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -322,6 +322,10 @@
     <ProjectReference Include="..\..\Data\EmployerEmployeeHuntSystem.Data\EmployerEmployeeHuntSystem.Data.csproj">
       <Project>{7c950cdc-9587-4b65-a204-988efed17948}</Project>
       <Name>EmployerEmployeeHuntSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\EmployerEmployeeHuntSystem.Services.Data\EmployerEmployeeHuntSystem.Services.Data.csproj">
+      <Project>{90fe4c4d-122a-406d-8a40-79c561fb8184}</Project>
+      <Name>EmployerEmployeeHuntSystem.Services.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Services\EmployerEmployeeHuntSystem.Services.Web\EmployerEmployeeHuntSystem.Services.Web.csproj">
       <Project>{deab17a2-58c1-448c-8a66-d49c3af7fc6c}</Project>

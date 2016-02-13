@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public interface IStatisticsServices
+    public interface IStatisticsService
     {
         IDictionary<string, int> GetFullStatistics();
     }

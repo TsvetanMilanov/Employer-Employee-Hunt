@@ -5,14 +5,14 @@
     using EmployerEmployeeHuntSystem.Data.Common;
     using EmployerEmployeeHuntSystem.Data.Models;
 
-    public class StatisticsServices : IStatisticsServices
+    public class StatisticsService : IStatisticsService
     {
         private IDbRepository<HeadhunterProfile, string> headHunters;
         private IDbRepository<DeveloperProfile, string> developers;
         private IDbRepository<Organization, int> organizations;
         private IDbRepository<JobOffer, int> jobOffers;
 
-        public StatisticsServices(
+        public StatisticsService(
             IDbRepository<HeadhunterProfile, string> headHunters,
             IDbRepository<DeveloperProfile, string> developers,
             IDbRepository<Organization, int> organizations,
@@ -28,10 +28,10 @@
         {
             Dictionary<string, int> result = new Dictionary<string, int>();
 
+            result.Add("Organizations", this.organizations.All().Count());
+            result.Add("Job Offers", this.jobOffers.All().Count());
+            result.Add("Developers", this.developers.All().Count());
             result.Add("Headhunters", this.headHunters.All().Count());
-            result.Add("Developers", this.headHunters.All().Count());
-            result.Add("Organizations", this.headHunters.All().Count());
-            result.Add("Job Offers", this.headHunters.All().Count());
 
             return result;
         }
