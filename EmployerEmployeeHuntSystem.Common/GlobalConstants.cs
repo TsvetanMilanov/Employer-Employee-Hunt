@@ -7,7 +7,7 @@
 #if DEBUG
         public const string DbConnectionStringName = "DefaultConnection";
 #else
-        public const string DbConnectionStringName = "ProductionConnection";
+        public const string DbConnectionStringName = "ProductionConnectionString";
 #endif
     }
 }
