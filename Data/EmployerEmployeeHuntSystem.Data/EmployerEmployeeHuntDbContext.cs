@@ -4,13 +4,14 @@
     using System.Data.Entity;
     using System.Linq;
     using Common.Models;
+    using EmployerEmployeeHuntSystem.Common;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
 
     public class EmployerEmployeeHuntDbContext : IdentityDbContext<ApplicationUser>
     {
         public EmployerEmployeeHuntDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base(GlobalConstants.DbConnectionStringName, throwIfV1Schema: false)
         {
         }
 
