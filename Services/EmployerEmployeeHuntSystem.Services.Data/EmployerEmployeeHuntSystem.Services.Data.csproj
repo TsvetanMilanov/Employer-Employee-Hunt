@@ -57,20 +57,6 @@
       <Link>stylecop.json</Link>
     </AdditionalFiles>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Data\EmployerEmployeeHuntSystem.Data.Common\EmployerEmployeeHuntSystem.Data.Common.csproj">
-      <Project>{edfe3c57-ef5b-4636-9ecc-d0baca6b6379}</Project>
-      <Name>EmployerEmployeeHuntSystem.Data.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Data\EmployerEmployeeHuntSystem.Data.Models\EmployerEmployeeHuntSystem.Data.Models.csproj">
-      <Project>{048df115-fad9-4bd4-9ba0-d99dfd32a2b2}</Project>
-      <Name>EmployerEmployeeHuntSystem.Data.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EmployerEmployeeHuntSystem.Services.Web\EmployerEmployeeHuntSystem.Services.Web.csproj">
-      <Project>{deab17a2-58c1-448c-8a66-d49c3af7fc6c}</Project>
-      <Name>EmployerEmployeeHuntSystem.Services.Web</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

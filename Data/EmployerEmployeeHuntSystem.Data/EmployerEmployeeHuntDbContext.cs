@@ -4,16 +4,30 @@
     using System.Data.Entity;
     using System.Linq;
     using Common.Models;
-    using EmployerEmployeeHuntSystem.Common;
+    using Constants;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
 
-    public class EmployerEmployeeHuntDbContext : IdentityDbContext<ApplicationUser>
+    public class EmployerEmployeeHuntDbContext : IdentityDbContext<User>
     {
         public EmployerEmployeeHuntDbContext()
-            : base(GlobalConstants.DbConnectionStringName, throwIfV1Schema: false)
+            : base(DatabaseConstants.DbConnectionStringName, throwIfV1Schema: false)
         {
         }
+
+        public virtual IDbSet<DeveloperProfile> DeveloperProfiles { get; set; }
+
+        public virtual IDbSet<HeadhunterProfile> HeadhunterProfiles { get; set; }
+
+        public virtual IDbSet<Skill> Skills { get; set; }
+
+        public virtual IDbSet<Project> Projects { get; set; }
+
+        public virtual IDbSet<JobOffer> JobOffers { get; set; }
+
+        public virtual IDbSet<Organization> Organizations { get; set; }
+
+        public virtual IDbSet<Candidacy> Candidacies { get; set; }
 
         public static EmployerEmployeeHuntDbContext Create()
         {

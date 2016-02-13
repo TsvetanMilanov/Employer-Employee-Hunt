@@ -78,9 +78,9 @@
     </AdditionalFiles>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\EmployerEmployeeHuntSystem.Common\EmployerEmployeeHuntSystem.Common.csproj">
-      <Project>{701f322f-aa01-4ddc-90b6-6935981c1e73}</Project>
-      <Name>EmployerEmployeeHuntSystem.Common</Name>
+    <ProjectReference Include="..\..\Common\EmployerEmployeeHuntSystem.Constants\EmployerEmployeeHuntSystem.Constants.csproj">
+      <Project>{d674009c-2fb1-4d0a-a9fd-d98999886465}</Project>
+      <Name>EmployerEmployeeHuntSystem.Constants</Name>
     </ProjectReference>
     <ProjectReference Include="..\EmployerEmployeeHuntSystem.Data.Common\EmployerEmployeeHuntSystem.Data.Common.csproj">
       <Project>{edfe3c57-ef5b-4636-9ecc-d0baca6b6379}</Project>
