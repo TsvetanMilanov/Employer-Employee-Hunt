@@ -202,6 +202,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobOffersController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
     <Compile Include="Controllers\OrganizationsController.cs" />
@@ -302,6 +303,11 @@
     <Content Include="Views\Organizations\Create.cshtml" />
     <Content Include="Views\Organizations\Details.cshtml" />
     <Content Include="Views\Organizations\Edit.cshtml" />
+    <Content Include="Views\JobOffers\Create.cshtml" />
+    <Content Include="Views\JobOffers\Delete.cshtml" />
+    <Content Include="Views\JobOffers\Details.cshtml" />
+    <Content Include="Views\JobOffers\Edit.cshtml" />
+    <Content Include="Views\JobOffers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

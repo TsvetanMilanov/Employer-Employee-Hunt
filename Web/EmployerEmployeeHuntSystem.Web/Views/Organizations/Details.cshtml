@@ -61,6 +61,7 @@
                         <div class="col-lg-10 col-lg-offset-2">
                             @Html.ActionLink("Delete", "Delete", "Organizations", new { id = Model.Id }, new { @class = "btn btn-danger" })
                             @Html.ActionLink("Edit", "Edit", "Organizations", new { id = Model.Id }, new { @class = "btn btn-success" })
+                            @Html.ActionLink("Add Job Offer", "Add", "JobOffers", new { area = string.Empty, organizationId = Model.Id }, new { @class = "btn btn-primary" })
                         </div>
                     </div>
                 }

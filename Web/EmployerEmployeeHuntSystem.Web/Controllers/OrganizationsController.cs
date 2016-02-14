@@ -3,12 +3,12 @@
     using System;
     using System.Linq;
     using System.Web.Mvc;
-    using Data.Common.Models;
     using Data.Models;
     using Infrastructure.Mapping;
     using Services.Data;
-    using ViewModels.Organizations;
     using ViewModels;
+    using ViewModels.Organizations;
+
     public class OrganizationsController : BaseController
     {
         private IOrganizationsService organizations;
