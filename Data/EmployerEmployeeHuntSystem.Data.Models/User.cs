@@ -15,7 +15,7 @@
         }
 
         public virtual DeveloperProfile DeveloperProfile { get; set; }
-        
+
         public virtual HeadhunterProfile HeadhunterProfile { get; set; }
 
         public virtual ICollection<Organization> Organizations { get; set; }

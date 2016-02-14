@@ -1,0 +1,31 @@
+﻿@model EmployerEmployeeHuntSystem.Web.ViewModels.Organizations.OrganizationsIndexViewModel
+
+<h3 class="text-center">Organizations offering jobs</h3>
+
+@if (Model.Organizations.Count != 0)
+{
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Founder</th>
+                <th>Founded On</th>
+                <th>Job Offers</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var organization in Model.Organizations)
+            {
+                <tr>
+                    <td>@organization.Name</td>
+                    <td>@organization.Founder.UserName</td>
+                    <td>@organization.FoundedOn.ToShortDateString()</td>
+                    <td>@organization.JobOffersCount</td>
+                </tr>
+            }
+    </table>
+}
+else
+{
+    <h5 class="text-center">Currently there are no organizations. You can create new Organization from @Html.ActionLink("here", "Create", "Organizations", null, null)</h5>
+}

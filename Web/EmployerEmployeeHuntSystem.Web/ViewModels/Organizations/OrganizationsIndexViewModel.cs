@@ -4,6 +4,6 @@
 
     public class OrganizationsIndexViewModel : BaseViewModel
     {
-        public IEnumerable<OrganizationViewModel> Organizations { get; set; }
+        public ICollection<OrganizationViewModel> Organizations { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class LoginViewModel
+    public class LoginViewModel : BaseViewModel
     {
         [Required]
         [Display(Name = "Email")]

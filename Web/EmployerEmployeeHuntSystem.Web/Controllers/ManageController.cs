@@ -7,8 +7,9 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
-    using ViewModels.Manage;
     using ViewModels;
+    using ViewModels.Manage;
+
     [Authorize]
     public class ManageController : BaseController
     {
@@ -100,8 +101,7 @@
                 Logins = await this.UserManager.GetLoginsAsync(userId),
                 BrowserRemembered =
                                     await
-                                    this.AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
-                CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId())
+                                    this.AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
             return this.View(model);
         }
@@ -206,7 +206,7 @@
             // Send an SMS through the SMS provider to verify the phone number
             return phoneNumber == null
                        ? this.View("Error")
-                       : this.View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber, CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId()) });
+                       : this.View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
         }
 
         // POST: /Manage/VerifyPhoneNumber
@@ -216,8 +216,6 @@
         {
             if (!this.ModelState.IsValid)
             {
-                model.CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId());
-
                 return this.View(model);
             }
 
@@ -237,7 +235,6 @@
 
             // If we got this far, something failed, redisplay form
             this.ModelState.AddModelError(string.Empty, "Failed to verify phone");
-            model.CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId());
             return this.View(model);
         }
 
@@ -265,7 +262,6 @@
         public ActionResult ChangePassword()
         {
             ChangePasswordViewModel model = new ChangePasswordViewModel();
-            model.CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId());
 
             return this.View(model);
         }
@@ -277,7 +273,6 @@
         {
             if (!this.ModelState.IsValid)
             {
-                model.CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId());
                 return this.View(model);
             }
 
@@ -299,7 +294,6 @@
             }
 
             this.AddErrors(result);
-            model.CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId());
             return this.View(model);
         }
 
@@ -307,7 +301,6 @@
         public ActionResult SetPassword()
         {
             BaseViewModel model = new BaseViewModel();
-            model.CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId());
 
             return this.View(model);
         }
@@ -335,7 +328,6 @@
             }
 
             // If we got this far, something failed, redisplay form
-            model.CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId());
             return this.View(model);
         }
 
@@ -359,7 +351,7 @@
                     .Where(auth => userLogins.All(ul => auth.AuthenticationType != ul.LoginProvider))
                     .ToList();
             this.ViewBag.ShowRemoveButton = user.PasswordHash != null || userLogins.Count > 1;
-            return this.View(new ManageLoginsViewModel { CurrentLogins = userLogins, OtherLogins = otherLogins, CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId()) });
+            return this.View(new ManageLoginsViewModel { CurrentLogins = userLogins, OtherLogins = otherLogins });
         }
 
         // POST: /Manage/LinkLogin

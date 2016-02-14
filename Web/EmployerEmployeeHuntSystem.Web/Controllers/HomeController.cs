@@ -21,7 +21,6 @@
             var indexViewModel = new IndexViewModel();
 
             indexViewModel.Statistics = this.Cache.Get(StatisticsCacheKey, () => this.statistics.GetFullStatistics(), 15 * 60);
-            indexViewModel.CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId());
 
             return this.View(indexViewModel);
         }
