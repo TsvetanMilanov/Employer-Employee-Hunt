@@ -24,7 +24,9 @@
 
             var allOrganizations = this.organizations.GetAll();
 
-            model.Organizations = allOrganizations.To<OrganizationViewModel>().ToList();
+            model.Organizations = allOrganizations.To<OrganizationViewModel>()
+                .OrderByDescending(o => o.JobOffersCount)
+                .ToList();
 
             return this.View(model);
         }
