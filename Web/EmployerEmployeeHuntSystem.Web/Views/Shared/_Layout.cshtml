@@ -22,24 +22,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Organizations", "All", "Organizations", new { area = string.Empty }, null)</li>
+                    <li>@Html.ActionLink("Developers", "All", "Developers", new { area = string.Empty }, null)</li>
                     @if (this.User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Create Organization", "Create", "Organizations", new { area = string.Empty }, null)</li>
-
-                        if (Model != null &&
-                            Model.CurrentUser != null &&
-                            Model.CurrentUser.DeveloperProfile == null)
-                        {
-                            <li>@Html.ActionLink("Developer Profile", "Index", "Developers", new { area = string.Empty }, null)</li>
-                        }
-
-                        if (this.User.IsInRole(GlobalConstants.HeadhunterRoleName) &&
-                            Model != null &&
-                            Model.CurrentUser != null &&
-                            Model.CurrentUser.HeadhunterProfile == null)
-                        {
-                            <li>@Html.ActionLink("Headhunter Profile", "Index", "Headhunters", new { area = string.Empty }, null)</li>
-                        }
 
                         if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
                         {
@@ -47,7 +34,7 @@
                         }
                     }
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @Html.Partial("_LoginPartial", Model)
             </div>
         </div>
     </div>

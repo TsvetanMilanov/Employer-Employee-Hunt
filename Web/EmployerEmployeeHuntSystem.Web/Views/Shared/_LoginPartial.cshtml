@@ -1,22 +1,41 @@
-﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
-{
-    using (Html.BeginForm("LogOff", "Account", new { area = string.Empty }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+﻿@model EmployerEmployeeHuntSystem.Web.ViewModels.BaseViewModel
+    @using EmployerEmployeeHuntSystem.Constants;
+    @using Microsoft.AspNet.Identity
+    @if (Request.IsAuthenticated)
     {
-    @Html.AntiForgeryToken()
+        using (Html.BeginForm("LogOff", "Account", new { area = string.Empty }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: new { area = string.Empty }, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@User.Identity.GetUserName() <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>@Html.ActionLink("Manage", "Index", "Manage", routeValues: new { area = string.Empty }, htmlAttributes: new { title = "Manage" })</li>
+                        @if (Model != null &&
+                    Model.CurrentUser != null &&
+                    Model.CurrentUser.DeveloperProfile == null)
+                        {
+                            <li>@Html.ActionLink("Developer Profile", "Index", "Developers", new { area = string.Empty }, null)</li>
+                        }
+
+                        @if (this.User.IsInRole(GlobalConstants.HeadhunterRoleName) &&
+                    Model != null &&
+                    Model.CurrentUser != null &&
+                    Model.CurrentUser.HeadhunterProfile == null)
+                        {
+                            <li>@Html.ActionLink("Headhunter Profile", "Index", "Headhunters", new { area = string.Empty }, null)</li>
+                        }
+                    </ul>
+                </li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            </ul>
+        }
     }
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-}
+    else
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Register", "Register", "Account", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>
+    }
