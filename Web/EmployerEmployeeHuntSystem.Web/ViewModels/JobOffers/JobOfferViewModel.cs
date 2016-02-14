@@ -1,5 +1,6 @@
 ﻿namespace EmployerEmployeeHuntSystem.Web.ViewModels.JobOffers
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using AutoMapper;
@@ -21,7 +22,9 @@
 
         public bool IsActive { get; set; }
 
-        public IEnumerable<SkillViewModel> RequiredSkills { get; set; }
+        public DateTime RegistrationDate { get; set; }
+
+        public ICollection<SkillViewModel> RequiredSkills { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
