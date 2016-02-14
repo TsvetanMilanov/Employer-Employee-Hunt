@@ -231,6 +231,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\Organizations\CreateOrganizationViewModel.cs" />
     <Compile Include="ViewModels\Organizations\OrganizationsIndexViewModel.cs" />
     <Compile Include="ViewModels\Organizations\OrganizationViewModel.cs" />
     <Compile Include="ViewModels\Skills\SkillViewModel.cs" />
@@ -296,6 +297,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
     <Content Include="Views\Organizations\Index.cshtml" />
+    <Content Include="Views\Organizations\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -14,6 +14,20 @@
             this.organizations = organizations;
         }
 
+        public Organization Create(string name, string userId, DateTime foundedOn)
+        {
+            Organization organization = new Organization();
+
+            organization.Name = name;
+            organization.FoundedOn = foundedOn;
+            organization.UserId = userId;
+
+            this.organizations.Add(organization);
+            this.organizations.Save();
+
+            return organization;
+        }
+
         public IQueryable<Organization> GetAll()
         {
             return this.organizations.All();
