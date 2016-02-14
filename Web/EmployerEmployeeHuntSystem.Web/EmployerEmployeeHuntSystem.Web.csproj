@@ -201,6 +201,7 @@
     <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DevelopersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobOffersController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -220,6 +221,8 @@
     <Compile Include="ViewModels\Account\UserViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\DeveloperProfiles\DeveloperProfileCreateViewModel.cs" />
+    <Compile Include="ViewModels\DeveloperProfiles\DeveloperProfileViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
     <Compile Include="ViewModels\JobOffers\JobOfferAddViewModel.cs" />
     <Compile Include="ViewModels\JobOffers\JobOfferEditViewModel.cs" />
@@ -309,6 +312,7 @@
     <Content Include="Views\JobOffers\Add.cshtml" />
     <Content Include="Views\JobOffers\Details.cshtml" />
     <Content Include="Views\JobOffers\Index.cshtml" />
+    <Content Include="Views\Developers\CreateProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

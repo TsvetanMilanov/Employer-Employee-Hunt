@@ -10,6 +10,7 @@
     using Data.Common;
     using Services.Data;
     using Services.Web;
+    using Services.Web.Github;
 
     public static class AutofacConfig
     {
@@ -49,6 +50,10 @@
 
             builder.Register(x => new HttpCacheService())
                 .As<ICacheService>()
+                .InstancePerRequest();
+
+            builder.Register(x => new GithubService())
+                .As<IGithubService>()
                 .InstancePerRequest();
 
             builder.Register(x => new IdentifierProvider())

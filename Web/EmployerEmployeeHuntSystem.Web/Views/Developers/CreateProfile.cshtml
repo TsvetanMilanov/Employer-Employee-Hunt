@@ -1,0 +1,35 @@
+﻿@model EmployerEmployeeHuntSystem.Web.ViewModels.DeveloperProfiles.DeveloperProfileCreateViewModel
+@{
+    ViewBag.Title = "Create Developer Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("CreateProfile", "Developers", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <fieldset>
+        <legend>Developer Profile</legend>
+
+        <div class="form-group">
+            <div class="form-group">
+                @Html.LabelFor(x => x.GithubProfile, new { @class = "col-lg-2 control-label" })
+                <div class="col-lg-10">
+                    @Html.ValidationMessageFor(x => x.GithubProfile)
+                    @Html.TextBoxFor(x => x.GithubProfile, new { @class = "form-control", placeholder = "Link to your Github profile" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.TopProjectsLinks, new { @class = "col-lg-2 control-label" })
+                <div class="col-lg-10">
+                    @Html.ValidationMessageFor(x => x.TopProjectsLinks)
+                    @Html.TextBoxFor(x => x.TopProjectsLinks, new { @class = "form-control", placeholder = "Link to your project" })
+                    @Html.TextBoxFor(x => x.TopProjectsLinks, new { @class = "form-control", placeholder = "Link to your project" })
+                    @Html.TextBoxFor(x => x.TopProjectsLinks, new { @class = "form-control", placeholder = "Link to your project" })
+                </div>
+            </div>
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </div>
+    </fieldset>
+}
+

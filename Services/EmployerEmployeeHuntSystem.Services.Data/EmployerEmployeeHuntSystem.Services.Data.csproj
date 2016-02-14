@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeveloperProfilesService.cs" />
+    <Compile Include="IDeveloperProfilesService.cs" />
     <Compile Include="IJobOffersService.cs" />
     <Compile Include="IOrganizationsService.cs" />
     <Compile Include="ISkillsService.cs" />
@@ -73,6 +75,10 @@
     <ProjectReference Include="..\..\Data\EmployerEmployeeHuntSystem.Data.Models\EmployerEmployeeHuntSystem.Data.Models.csproj">
       <Project>{048df115-fad9-4bd4-9ba0-d99dfd32a2b2}</Project>
       <Name>EmployerEmployeeHuntSystem.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EmployerEmployeeHuntSystem.Services.Web\EmployerEmployeeHuntSystem.Services.Web.csproj">
+      <Project>{deab17a2-58c1-448c-8a66-d49c3af7fc6c}</Project>
+      <Name>EmployerEmployeeHuntSystem.Services.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

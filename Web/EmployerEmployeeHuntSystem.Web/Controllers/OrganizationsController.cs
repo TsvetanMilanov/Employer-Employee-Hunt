@@ -9,6 +9,7 @@
     using ViewModels;
     using ViewModels.Organizations;
 
+    [Authorize]
     public class OrganizationsController : BaseController
     {
         private IOrganizationsService organizations;
@@ -18,6 +19,7 @@
             this.organizations = organizations;
         }
 
+        [AllowAnonymous]
         public ActionResult Index()
         {
             OrganizationsIndexViewModel model = new OrganizationsIndexViewModel();

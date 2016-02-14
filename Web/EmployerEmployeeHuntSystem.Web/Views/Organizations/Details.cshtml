@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="" class="col-lg-2 control-label">Job Offers</label>
+                    <label for="" class="col-lg-2 control-label">@Html.ActionLink("Job Offers", "Index", "JobOffers", new { organizationId = Model.Id }, null)</label>
                     <br />
                     <div class="col-lg-10">
                         @if (Model.JobOffers.Count > 0)

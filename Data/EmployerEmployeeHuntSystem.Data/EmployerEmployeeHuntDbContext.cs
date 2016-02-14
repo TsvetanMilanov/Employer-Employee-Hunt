@@ -2,6 +2,7 @@
 {
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.Validation;
     using System.Linq;
     using Common.Models;
     using Constants;
@@ -37,7 +38,19 @@
         public override int SaveChanges()
         {
             this.ApplyAuditInfoRules();
-            return base.SaveChanges();
+            int result = 0;
+
+            try
+            {
+                result = base.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var error = ex.EntityValidationErrors.ToList()[0].ValidationErrors.ToList()[0];
+                throw new InvalidOperationException(string.Format("{0} - {1}", error.PropertyName, error.ErrorMessage), ex);
+            }
+
+            return result;
         }
 
         private void ApplyAuditInfoRules()
