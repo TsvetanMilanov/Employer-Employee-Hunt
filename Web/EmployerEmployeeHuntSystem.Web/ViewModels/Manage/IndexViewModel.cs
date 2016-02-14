@@ -4,7 +4,7 @@
 
     using Microsoft.AspNet.Identity;
 
-    public class IndexViewModel
+    public class IndexViewModel : BaseViewModel
     {
         public bool HasPassword { get; set; }
 

@@ -1,11 +1,14 @@
 ﻿namespace EmployerEmployeeHuntSystem.Web.Controllers
 {
     using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
     using Services.Data;
     using ViewModels.Home;
 
     public class HomeController : BaseController
     {
+        private const string StatisticsCacheKey = "statistics";
+
         private IStatisticsService statistics;
 
         public HomeController(IStatisticsService statistics)
@@ -17,7 +20,8 @@
         {
             var indexViewModel = new IndexViewModel();
 
-            indexViewModel.Statistics = this.Cache.Get("statistics", () => this.statistics.GetFullStatistics(), 15 * 60);
+            indexViewModel.Statistics = this.Cache.Get(StatisticsCacheKey, () => this.statistics.GetFullStatistics(), 15 * 60);
+            indexViewModel.CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId());
 
             return this.View(indexViewModel);
         }

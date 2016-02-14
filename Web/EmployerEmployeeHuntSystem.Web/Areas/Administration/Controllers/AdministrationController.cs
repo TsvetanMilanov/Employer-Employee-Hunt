@@ -7,5 +7,9 @@
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class AdministrationController : BaseController
     {
+        public ActionResult Index()
+        {
+            return this.View();
+        }
     }
 }

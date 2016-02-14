@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class ChangePasswordViewModel
+    public class ChangePasswordViewModel : BaseViewModel
     {
         [Required]
         [DataType(DataType.Password)]

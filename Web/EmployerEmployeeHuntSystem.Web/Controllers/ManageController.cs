@@ -8,7 +8,7 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using ViewModels.Manage;
-
+    using ViewModels;
     [Authorize]
     public class ManageController : BaseController
     {
@@ -93,15 +93,16 @@
 
             var userId = this.User.Identity.GetUserId();
             var model = new IndexViewModel
-                            {
-                                HasPassword = this.HasPassword(),
-                                PhoneNumber = await this.UserManager.GetPhoneNumberAsync(userId),
-                                TwoFactor = await this.UserManager.GetTwoFactorEnabledAsync(userId),
-                                Logins = await this.UserManager.GetLoginsAsync(userId),
-                                BrowserRemembered =
+            {
+                HasPassword = this.HasPassword(),
+                PhoneNumber = await this.UserManager.GetPhoneNumberAsync(userId),
+                TwoFactor = await this.UserManager.GetTwoFactorEnabledAsync(userId),
+                Logins = await this.UserManager.GetLoginsAsync(userId),
+                BrowserRemembered =
                                     await
-                                    this.AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
-                            };
+                                    this.AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId())
+            };
             return this.View(model);
         }
 
@@ -156,10 +157,10 @@
             if (this.UserManager.SmsService != null)
             {
                 var message = new IdentityMessage
-                                  {
-                                      Destination = model.Number,
-                                      Body = "Your security code is: " + code
-                                  };
+                {
+                    Destination = model.Number,
+                    Body = "Your security code is: " + code
+                };
                 await this.UserManager.SmsService.SendAsync(message);
             }
 
@@ -205,7 +206,7 @@
             // Send an SMS through the SMS provider to verify the phone number
             return phoneNumber == null
                        ? this.View("Error")
-                       : this.View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
+                       : this.View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber, CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId()) });
         }
 
         // POST: /Manage/VerifyPhoneNumber
@@ -215,6 +216,8 @@
         {
             if (!this.ModelState.IsValid)
             {
+                model.CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId());
+
                 return this.View(model);
             }
 
@@ -234,6 +237,7 @@
 
             // If we got this far, something failed, redisplay form
             this.ModelState.AddModelError(string.Empty, "Failed to verify phone");
+            model.CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId());
             return this.View(model);
         }
 
@@ -260,7 +264,10 @@
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
-            return this.View();
+            ChangePasswordViewModel model = new ChangePasswordViewModel();
+            model.CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId());
+
+            return this.View(model);
         }
 
         // POST: /Manage/ChangePassword
@@ -270,6 +277,7 @@
         {
             if (!this.ModelState.IsValid)
             {
+                model.CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId());
                 return this.View(model);
             }
 
@@ -291,13 +299,17 @@
             }
 
             this.AddErrors(result);
+            model.CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId());
             return this.View(model);
         }
 
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
         {
-            return this.View();
+            BaseViewModel model = new BaseViewModel();
+            model.CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId());
+
+            return this.View(model);
         }
 
         // POST: /Manage/SetPassword
@@ -323,6 +335,7 @@
             }
 
             // If we got this far, something failed, redisplay form
+            model.CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId());
             return this.View(model);
         }
 
@@ -346,7 +359,7 @@
                     .Where(auth => userLogins.All(ul => auth.AuthenticationType != ul.LoginProvider))
                     .ToList();
             this.ViewBag.ShowRemoveButton = user.PasswordHash != null || userLogins.Count > 1;
-            return this.View(new ManageLoginsViewModel { CurrentLogins = userLogins, OtherLogins = otherLogins });
+            return this.View(new ManageLoginsViewModel { CurrentLogins = userLogins, OtherLogins = otherLogins, CurrentUser = this.GetCurrentUser(this.User.Identity.GetUserId()) });
         }
 
         // POST: /Manage/LinkLogin

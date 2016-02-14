@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model EmployerEmployeeHuntSystem.Web.ViewModels.BaseViewModel
+@using EmployerEmployeeHuntSystem.Constants
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -16,11 +18,34 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Employer-Employee Hunt", "Index", "Home", new { area = string.Empty }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Home", "Index", "Home", new { area = string.Empty }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = string.Empty }, null)</li>
+                    @if (this.User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Create Organization", "Create", "Organizations", new { area = string.Empty }, null)</li>
+
+                        if (Model != null &&
+                            Model.CurrentUser != null &&
+                            Model.CurrentUser.DeveloperProfile == null)
+                        {
+                            <li>@Html.ActionLink("Developer Profile", "Index", "Developers", new { area = string.Empty }, null)</li>
+                        }
+
+                        if (this.User.IsInRole(GlobalConstants.HeadhunterRoleName) &&
+                            Model != null &&
+                            Model.CurrentUser != null &&
+                            Model.CurrentUser.HeadhunterProfile == null)
+                        {
+                            <li>@Html.ActionLink("Headhunter Profile", "Index", "Headhunters", new { area = string.Empty }, null)</li>
+                        }
+
+                        if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                        {
+                            <li>@Html.ActionLink("Administration", "Index", "Administration", new { area = "Administration" }, null)</li>
+                        }
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -33,7 +58,6 @@
             <p class="text-center">&copy; @DateTime.Now.Year - Employer Employee Hunt</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
