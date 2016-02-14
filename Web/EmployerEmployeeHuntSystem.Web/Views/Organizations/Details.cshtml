@@ -1,6 +1,9 @@
 ﻿@model EmployerEmployeeHuntSystem.Web.ViewModels.Organizations.OrganizationDetailsViewModel
 @using Microsoft.AspNet.Identity
-<br />
+@{ 
+    ViewBag.Title = Model.Name;
+}
+
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <form class="form-horizontal">
@@ -26,26 +29,33 @@
                 </div>
                 <div class="form-group">
                     <label for="" class="col-lg-2 control-label">Job Offers</label>
+                    <br />
                     <div class="col-lg-10">
                         @if (Model.JobOffers.Count > 0)
                         {
                             foreach (var jobOffer in Model.JobOffers)
                             {
-                                <div>
-                                    <span>Minimum candidates count: </span>
-                                    <span>@jobOffer.MinimumCandidatesCount</span>
-                                </div>
-                                <div>
-                                    <span>Is active: </span>
-                                    <span>@jobOffer.IsActive.ToString()</span>
-                                </div>
-                                <div>
-                                    <span>Registered on: </span>
-                                    <span>@jobOffer.RegistrationDate.ToShortDateString()</span>
-                                </div>
-                                <div>
-                                    <span>Required skills: </span>
-                                    <span>@string.Join(", ", jobOffer.RequiredSkills.Select(s => s.Name).ToList())</span>
+                                <div class="col-md-6">
+                                    <div>
+                                        <strong>Minimum candidates count: </strong>
+                                        <span>@jobOffer.MinimumCandidatesCount</span>
+                                    </div>
+                                    <div>
+                                        <strong>Is active: </strong>
+                                        <span>@jobOffer.IsActive.ToString()</span>
+                                    </div>
+                                    <div>
+                                        <strong>Registered on: </strong>
+                                        <span>@jobOffer.RegistrationDate.ToShortDateString()</span>
+                                    </div>
+                                    <div>
+                                        <strong>Required skills: </strong>
+                                        <span>@string.Join(", ", jobOffer.RequiredSkills.Select(s => s.Name).ToList())</span>
+                                    </div>
+                                    <div>
+                                        @Html.ActionLink("Details", "Details", "JobOffers", new { id = jobOffer.Id }, new { @class = "btn btn-sm" })
+                                    </div>
+                                    <hr />
                                 </div>
                             }
                         }
