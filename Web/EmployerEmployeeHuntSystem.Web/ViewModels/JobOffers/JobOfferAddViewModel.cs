@@ -9,12 +9,14 @@
     {
         public int OrganizationId { get; set; }
 
+        [Display(Name = "Required Skills")]
+        [Required]
         public ICollection<string> RequiredSkills { get; set; }
 
+        [Display(Name = "Minimum Candidates Count")]
         [Range(DatabaseConstants.MinCanditatesForJobOffer, int.MaxValue)]
         public int MinimumCandidatesCount { get; set; }
 
-        [Required]
         public IEnumerable<SelectListItem> Skills { get; set; }
     }
 }

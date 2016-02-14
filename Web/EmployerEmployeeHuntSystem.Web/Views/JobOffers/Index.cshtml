@@ -1,9 +1,7 @@
 ﻿@model EmployerEmployeeHuntSystem.Web.ViewModels.JobOffers.JobOfferIndexViewModel
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
+<h3>Job offers for @Model.Organization.Name @Html.ActionLink("Add New", "Add", new { organizationId = Model.Organization.Id }, new { @class = "btn btn-primary" })</h3>
+<br />
 <table class="table table-striped table-hover">
     <tr>
         <th>Registration Date</th>
@@ -15,15 +13,15 @@
 
     @foreach (var item in Model.JobOffers)
     {
-        <tr @if (item.IsActive) { @Html.Raw("class=\"success\"")   } else { @Html.Raw("class=\"warning\"")  }>
+        <tr @if (item.IsActive) { @Html.Raw("class=\"success\"")       } else { @Html.Raw("class=\"warning\"")      }>
             <td>
-                @Html.DisplayFor(modelItem => item.RegistrationDate.ToShortDateString())
+                <span>@item.RegistrationDate.ToShortDateString()</span>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MinimumCandidatesCount)
+                <span>@item.MinimumCandidatesCount</span>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
+                <span>@item.IsActive.ToString()</span>
             </td>
             <td>
                 <span>@string.Join(", ", item.RequiredSkills.Select(s => s.Name))</span>

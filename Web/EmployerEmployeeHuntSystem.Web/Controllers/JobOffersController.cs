@@ -58,10 +58,7 @@
 
         public ActionResult Add(int organizationId)
         {
-            JobOfferAddViewModel model = new JobOfferAddViewModel();
-
-            model.OrganizationId = organizationId;
-            model.Skills = this.skills.GetAll().Select(s => new SelectListItem { Value = s.Id.ToString(), Text = s.Name });
+            JobOfferAddViewModel model = this.CreateJobOfferAddViewModel(organizationId);
 
             return this.View(model);
         }
@@ -74,8 +71,13 @@
             {
                 this.jobOffers.AddJobOffer(model.OrganizationId, model.RequiredSkills.Select(int.Parse).ToList(), model.MinimumCandidatesCount, DateTime.Now);
 
+                this.SetTempDataSuccessMessage("The job offer is added successfully!");
+
                 return this.RedirectToAction("Index", new { organizationId = model.OrganizationId });
             }
+
+            JobOfferAddViewModel blankModel = this.CreateJobOfferAddViewModel(model.OrganizationId);
+            model.Skills = blankModel.Skills;
 
             return this.View(model);
         }
@@ -106,6 +108,16 @@
             }
 
             return this.View(model);
+        }
+
+        private JobOfferAddViewModel CreateJobOfferAddViewModel(int organizationId)
+        {
+            JobOfferAddViewModel model = new JobOfferAddViewModel();
+
+            model.OrganizationId = organizationId;
+            model.Skills = this.skills.GetAll().Select(s => new SelectListItem { Value = s.Id.ToString(), Text = s.Name });
+
+            return model;
         }
     }
 }
