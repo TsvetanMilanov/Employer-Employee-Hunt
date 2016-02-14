@@ -16,7 +16,7 @@
 
         public DateTime FoundedOn { get; set; }
 
-        public ICollection<JobOffer> JobOffers { get; set; }
+        public virtual ICollection<JobOffer> JobOffers { get; set; }
 
         [MinLength(DatabaseConstants.MinOrganizationNameLength)]
         [MaxLength(DatabaseConstants.MaxOrganizationNameLength)]

@@ -10,6 +10,7 @@
         public Skill()
         {
             this.Developers = new HashSet<DeveloperProfile>();
+            this.JobOffers = new HashSet<JobOffer>();
         }
 
         [MinLength(DatabaseConstants.MinSkillNameLength)]
@@ -18,5 +19,7 @@
         public string Name { get; set; }
 
         public virtual ICollection<DeveloperProfile> Developers { get; set; }
+
+        public virtual ICollection<JobOffer> JobOffers { get; set; }
     }
 }
