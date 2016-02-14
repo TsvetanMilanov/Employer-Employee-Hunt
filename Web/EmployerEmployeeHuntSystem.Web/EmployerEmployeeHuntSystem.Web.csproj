@@ -232,6 +232,7 @@
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Organizations\CreateOrganizationViewModel.cs" />
+    <Compile Include="ViewModels\Organizations\EditOrganizationViewModel.cs" />
     <Compile Include="ViewModels\Organizations\OrganizationDetailsViewModel.cs" />
     <Compile Include="ViewModels\Organizations\OrganizationsIndexViewModel.cs" />
     <Compile Include="ViewModels\Organizations\OrganizationViewModel.cs" />
@@ -300,10 +301,11 @@
     <Content Include="Views\Organizations\Index.cshtml" />
     <Content Include="Views\Organizations\Create.cshtml" />
     <Content Include="Views\Organizations\Details.cshtml" />
+    <Content Include="Views\Organizations\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Areas\Administration\ViewModels\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

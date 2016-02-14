@@ -1,14 +1,10 @@
 ﻿namespace EmployerEmployeeHuntSystem.Web.Controllers
 {
-    using System.Web;
     using System.Web.Mvc;
     using AutoMapper;
-    using Data.Models;
+    using Constants;
     using Infrastructure.Mapping;
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.Owin;
     using Services.Web;
-    using ViewModels.Account;
 
     public abstract class BaseController : Controller
     {
@@ -20,6 +16,16 @@
             {
                 return AutoMapperConfig.Configuration.CreateMapper();
             }
+        }
+
+        protected void SetTempDataSuccessMessage(string message)
+        {
+            this.TempData[GlobalConstants.SuccessMessageTempDataKey] = message;
+        }
+
+        protected void SetTempDataErrorMessage(string message)
+        {
+            this.TempData[GlobalConstants.ErrorMessageTempDataKey] = message;
         }
     }
 }

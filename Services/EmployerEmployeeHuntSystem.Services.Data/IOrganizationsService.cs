@@ -11,5 +11,9 @@
         Organization GetById(int id);
 
         Organization Create(string name, string userId, DateTime foundedOn);
+
+        Organization Edit(int id, string name);
+
+        void Delete(int id);
     }
 }

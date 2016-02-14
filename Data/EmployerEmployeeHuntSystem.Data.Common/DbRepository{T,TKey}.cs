@@ -6,7 +6,6 @@
 
     using Models;
 
-    // TODO: Why BaseModel<int> instead BaseModel<TKey>?
     public class DbRepository<T, TKey> : IDbRepository<T, TKey>
         where T : BaseModel<TKey>
         where TKey : IComparable<TKey>
@@ -60,6 +59,17 @@
         public void Save()
         {
             this.Context.SaveChanges();
+        }
+
+        public void Update(T entity)
+        {
+            var entry = this.Context.Entry(entity);
+            if (entry.State == EntityState.Detached)
+            {
+                this.DbSet.Attach(entity);
+            }
+
+            entry.State = EntityState.Modified;
         }
     }
 }

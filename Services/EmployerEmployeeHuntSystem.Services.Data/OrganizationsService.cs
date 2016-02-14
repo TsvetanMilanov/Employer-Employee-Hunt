@@ -28,6 +28,27 @@
             return organization;
         }
 
+        public void Delete(int id)
+        {
+            Organization organization = this.organizations.GetById(id);
+
+            this.organizations.Delete(organization);
+            this.organizations.Save();
+        }
+
+        public Organization Edit(int id, string name)
+        {
+            Organization organization = this.organizations.GetById(id);
+
+            organization.Name = name;
+
+            this.organizations.Update(organization);
+
+            this.organizations.Save();
+
+            return organization;
+        }
+
         public IQueryable<Organization> GetAll()
         {
             return this.organizations.All();

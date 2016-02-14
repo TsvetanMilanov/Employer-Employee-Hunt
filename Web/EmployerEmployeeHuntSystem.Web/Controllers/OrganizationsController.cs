@@ -3,12 +3,12 @@
     using System;
     using System.Linq;
     using System.Web.Mvc;
-    using Constants;
+    using Data.Common.Models;
     using Data.Models;
     using Infrastructure.Mapping;
     using Services.Data;
     using ViewModels.Organizations;
-
+    using ViewModels;
     public class OrganizationsController : BaseController
     {
         private IOrganizationsService organizations;
@@ -54,9 +54,44 @@
 
             Organization organization = this.organizations.Create(model.Name, model.CurrentUser.Id, DateTime.Now);
 
-            this.TempData[GlobalConstants.SuccessMessageTempDataKey] = string.Format("Organization {0} successfully created!", organization.Name);
+            this.SetTempDataSuccessMessage(string.Format("Organization {0} successfully created!", organization.Name));
 
             return this.RedirectToAction("Details", new { id = organization.Id });
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            EditOrganizationViewModel model = this.Mapper.Map<EditOrganizationViewModel>(this.organizations.GetById(id));
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(EditOrganizationViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            Organization organization = this.organizations.Edit(model.Id, model.Name);
+
+            this.SetTempDataSuccessMessage("Organization edited successfully.");
+
+            return this.RedirectToAction("Details", new { id = model.Id });
+        }
+
+        public ActionResult Delete(int id)
+        {
+            this.organizations.Delete(id);
+
+            this.SetTempDataSuccessMessage("Organization deleted successfully.");
+
+            BaseViewModel model = new BaseViewModel();
+
+            return this.RedirectToAction("Index", model);
         }
     }
 }
