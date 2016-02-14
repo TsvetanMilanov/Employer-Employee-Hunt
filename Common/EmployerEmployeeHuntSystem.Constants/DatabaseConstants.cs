@@ -18,6 +18,9 @@
         public const int MinProjectLinkLength = 1;
         public const int MaxProjectLinkLength = 200;
 
+        public const int MinOrganizationNameLength = 1;
+        public const int MaxOrganizationNameLength = 100;
+
 #if DEBUG
         public const string DbConnectionStringName = "DefaultConnection";
 #else

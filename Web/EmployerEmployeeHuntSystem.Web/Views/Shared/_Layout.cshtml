@@ -22,7 +22,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Organizations", "All", "Organizations", new { area = string.Empty }, null)</li>
+                    <li>@Html.ActionLink("Organizations", "Index", "Organizations", new { area = string.Empty }, null)</li>
                     <li>@Html.ActionLink("Developers", "All", "Developers", new { area = string.Empty }, null)</li>
                     @if (this.User.Identity.IsAuthenticated)
                     {
