@@ -1,5 +1,6 @@
 ﻿namespace EmployerEmployeeHuntSystem.Web.Controllers
 {
+    using System;
     using System.Data.Entity;
     using System.Linq;
     using System.Net;
@@ -14,11 +15,16 @@
     {
         private IJobOffersService jobOffers;
         private IOrganizationsService organizations;
+        private ISkillsService skills;
 
-        public JobOffersController(IJobOffersService jobOffers, IOrganizationsService organizations)
+        public JobOffersController(
+            IJobOffersService jobOffers,
+            IOrganizationsService organizations,
+            ISkillsService skills)
         {
             this.jobOffers = jobOffers;
             this.organizations = organizations;
+            this.skills = skills;
         }
 
         public ActionResult Index(int organizationId)
@@ -34,116 +40,72 @@
             return this.View(model);
         }
 
-        // GET: JobOffers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            JobOffer jobOffer = db.JobOffers.Find(id);
+
+            JobOfferViewModel jobOffer = this.Mapper.Map<JobOfferViewModel>(this.jobOffers.GetById(id.Value));
             if (jobOffer == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
-            return View(jobOffer);
+
+            return this.View(jobOffer);
         }
 
-        // GET: JobOffers/Create
-        public ActionResult Create()
+        public ActionResult Add(int organizationId)
         {
-            ViewBag.HeadhunterProfileId = new SelectList(db.HeadhunterProfiles, "Id", "UserId");
-            ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "UserId");
-            return View();
+            JobOfferAddViewModel model = new JobOfferAddViewModel();
+
+            model.OrganizationId = organizationId;
+            model.Skills = this.skills.GetAll().Select(s => new SelectListItem { Value = s.Id.ToString(), Text = s.Name });
+
+            return this.View(model);
         }
 
-        // POST: JobOffers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,OrganizationId,HeadhunterProfileId,IsActive,RegistrationDate,MinimumCandidatesCount,CreatedOn,ModifiedOn,IsDeleted,DeletedOn")] JobOffer jobOffer)
+        public ActionResult Add(JobOfferAddViewModel model)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-                db.JobOffers.Add(jobOffer);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                this.jobOffers.AddJobOffer(model.OrganizationId, model.RequiredSkills.Select(int.Parse).ToList(), model.MinimumCandidatesCount, DateTime.Now);
+
+                return this.RedirectToAction("Index", new { organizationId = model.OrganizationId });
             }
 
-            ViewBag.HeadhunterProfileId = new SelectList(db.HeadhunterProfiles, "Id", "UserId", jobOffer.HeadhunterProfileId);
-            ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "UserId", jobOffer.OrganizationId);
-            return View(jobOffer);
+            return this.View(model);
         }
 
-        // GET: JobOffers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            JobOffer jobOffer = db.JobOffers.Find(id);
+
+            JobOfferEditViewModel jobOffer = this.Mapper.Map<JobOfferEditViewModel>(this.jobOffers.GetById(id.Value));
             if (jobOffer == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
-            ViewBag.HeadhunterProfileId = new SelectList(db.HeadhunterProfiles, "Id", "UserId", jobOffer.HeadhunterProfileId);
-            ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "UserId", jobOffer.OrganizationId);
-            return View(jobOffer);
+
+            return this.View(jobOffer);
         }
 
-        // POST: JobOffers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,OrganizationId,HeadhunterProfileId,IsActive,RegistrationDate,MinimumCandidatesCount,CreatedOn,ModifiedOn,IsDeleted,DeletedOn")] JobOffer jobOffer)
+        public ActionResult Edit(JobOfferEditViewModel model)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-                db.Entry(jobOffer).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index");
             }
-            ViewBag.HeadhunterProfileId = new SelectList(db.HeadhunterProfiles, "Id", "UserId", jobOffer.HeadhunterProfileId);
-            ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "UserId", jobOffer.OrganizationId);
-            return View(jobOffer);
-        }
 
-        // GET: JobOffers/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            JobOffer jobOffer = db.JobOffers.Find(id);
-            if (jobOffer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(jobOffer);
-        }
-
-        // POST: JobOffers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            JobOffer jobOffer = db.JobOffers.Find(id);
-            db.JobOffers.Remove(jobOffer);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            return this.View(model);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace EmployerEmployeeHuntSystem.Data.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
     using System.Linq;
     using Constants;
@@ -19,6 +20,8 @@
         {
             this.SeedRoles(context);
             this.SeedUsers(context);
+            this.SeedSkills(context);
+            this.SeedOrganizations(context);
         }
 
         private void SeedRoles(EmployerEmployeeHuntDbContext context)
@@ -89,6 +92,47 @@
                 userManager.AddToRole(headhunterUser.Id, GlobalConstants.HeadhunterRoleName);
                 userManager.AddToRole(developerUser.Id, GlobalConstants.UserRoleName);
                 userManager.AddToRole(employerUser.Id, GlobalConstants.UserRoleName);
+            }
+        }
+
+        private void SeedSkills(EmployerEmployeeHuntDbContext context)
+        {
+            if (!context.Skills.Any())
+            {
+                context.Skills.Add(new Skill { Name = "C#" });
+                context.Skills.Add(new Skill { Name = "JavaScript" });
+                context.Skills.Add(new Skill { Name = "Java" });
+                context.Skills.Add(new Skill { Name = "HTML" });
+                context.Skills.Add(new Skill { Name = "CSS" });
+                context.Skills.Add(new Skill { Name = "Objective-C" });
+                context.Skills.Add(new Skill { Name = "Swift" });
+                context.Skills.Add(new Skill { Name = "XAML" });
+                context.Skills.Add(new Skill { Name = "C" });
+                context.Skills.Add(new Skill { Name = "C++" });
+
+                context.SaveChanges();
+            }
+        }
+
+        private void SeedOrganizations(EmployerEmployeeHuntDbContext context)
+        {
+            if (!context.Organizations.Any())
+            {
+                var allUsers = context.Users.ToList();
+
+                foreach (var user in allUsers)
+                {
+                    var organization = new Organization
+                    {
+                        Name = string.Format("Organization of {0}", user.UserName),
+                        FoundedOn = DateTime.Now,
+                        Founder = user
+                    };
+
+                    context.Organizations.Add(organization);
+                }
+
+                context.SaveChanges();
             }
         }
     }

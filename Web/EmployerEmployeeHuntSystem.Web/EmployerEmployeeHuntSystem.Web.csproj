@@ -221,6 +221,9 @@
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
+    <Compile Include="ViewModels\JobOffers\JobOfferAddViewModel.cs" />
+    <Compile Include="ViewModels\JobOffers\JobOfferEditViewModel.cs" />
+    <Compile Include="ViewModels\JobOffers\JobOfferIndexViewModel.cs" />
     <Compile Include="ViewModels\JobOffers\JobOfferViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
@@ -303,7 +306,7 @@
     <Content Include="Views\Organizations\Create.cshtml" />
     <Content Include="Views\Organizations\Details.cshtml" />
     <Content Include="Views\Organizations\Edit.cshtml" />
-    <Content Include="Views\JobOffers\Create.cshtml" />
+    <Content Include="Views\JobOffers\Add.cshtml" />
     <Content Include="Views\JobOffers\Delete.cshtml" />
     <Content Include="Views\JobOffers\Details.cshtml" />
     <Content Include="Views\JobOffers\Edit.cshtml" />

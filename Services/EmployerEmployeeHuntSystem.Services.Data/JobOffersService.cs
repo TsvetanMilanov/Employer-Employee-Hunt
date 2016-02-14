@@ -10,16 +10,21 @@
     {
         private IDbRepository<JobOffer, int> jobOffers;
         private IDbRepository<Organization, int> organizations;
+        private IDbRepository<Skill, int> skills;
 
-        public JobOffersService(IDbRepository<JobOffer, int> jobOffers, IDbRepository<Organization, int> organizations)
+        public JobOffersService(
+            IDbRepository<JobOffer, int> jobOffers,
+            IDbRepository<Organization, int> organizations,
+            IDbRepository<Skill, int> skills)
         {
             this.jobOffers = jobOffers;
             this.organizations = organizations;
+            this.skills = skills;
         }
 
         public JobOffer AddJobOffer(
             int organizationId,
-            ICollection<string> requiredSkillsNames,
+            ICollection<int> requiredSkillsIds,
             int minimumCandidatesCount,
             DateTime registrationDate)
         {
@@ -29,7 +34,7 @@
             jobOffer.MinimumCandidatesCount = minimumCandidatesCount;
             jobOffer.OrganizationId = organizationId;
             jobOffer.RegistrationDate = registrationDate;
-            jobOffer.RequiredSkills = requiredSkillsNames.Select(s => new Skill { Name = s }).ToList();
+            jobOffer.RequiredSkills = this.skills.All().Where(s => requiredSkillsIds.Contains(s.Id)).ToList();
 
             this.jobOffers.Add(jobOffer);
             this.jobOffers.Save();

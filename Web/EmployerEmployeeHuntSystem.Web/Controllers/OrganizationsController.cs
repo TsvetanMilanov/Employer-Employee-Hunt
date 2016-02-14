@@ -56,7 +56,7 @@
 
             this.SetTempDataSuccessMessage(string.Format("Organization {0} successfully created!", organization.Name));
 
-            return this.RedirectToAction("Details", new { id = organization.Id });
+            return this.RedirectToAction("Details", new { organizationId = organization.Id });
         }
 
         [HttpGet]
@@ -80,7 +80,7 @@
 
             this.SetTempDataSuccessMessage("Organization edited successfully.");
 
-            return this.RedirectToAction("Details", new { id = model.Id });
+            return this.RedirectToAction("Details", new { organizationId = model.Id });
         }
 
         public ActionResult Delete(int id)

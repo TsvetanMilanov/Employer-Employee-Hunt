@@ -15,7 +15,7 @@
 
         JobOffer AddJobOffer(
             int organizationId,
-            ICollection<string> requiredSkillsNames,
+            ICollection<int> requiredSkillsIds,
             int minimumCandidatesCount,
             DateTime registrationDate);
     }
