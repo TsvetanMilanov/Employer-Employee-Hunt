@@ -307,9 +307,7 @@
     <Content Include="Views\Organizations\Details.cshtml" />
     <Content Include="Views\Organizations\Edit.cshtml" />
     <Content Include="Views\JobOffers\Add.cshtml" />
-    <Content Include="Views\JobOffers\Delete.cshtml" />
     <Content Include="Views\JobOffers\Details.cshtml" />
-    <Content Include="Views\JobOffers\Edit.cshtml" />
     <Content Include="Views\JobOffers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

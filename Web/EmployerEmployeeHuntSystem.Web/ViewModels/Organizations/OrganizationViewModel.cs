@@ -1,6 +1,7 @@
 ﻿namespace EmployerEmployeeHuntSystem.Web.ViewModels.Organizations
 {
     using System;
+    using System.Linq;
     using Account;
     using AutoMapper;
     using Data.Models;
@@ -21,7 +22,7 @@
         public virtual void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Organization, OrganizationViewModel>()
-                .ForMember(m => m.JobOffersCount, opts => opts.MapFrom(o => o.JobOffers.Count));
+                .ForMember(m => m.JobOffersCount, opts => opts.MapFrom(o => o.JobOffers.Where(j => j.IsDeleted == false && j.IsActive == true).ToList().Count));
         }
     }
 }

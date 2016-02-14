@@ -11,6 +11,7 @@
     using ViewModels.JobOffers;
     using ViewModels.Organizations;
 
+    [Authorize]
     public class JobOffersController : BaseController
     {
         private IJobOffersService jobOffers;
@@ -82,32 +83,15 @@
             return this.View(model);
         }
 
-        public ActionResult Edit(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            int organizationId = this.jobOffers.GetById(id).OrganizationId;
 
-            JobOfferEditViewModel jobOffer = this.Mapper.Map<JobOfferEditViewModel>(this.jobOffers.GetById(id.Value));
-            if (jobOffer == null)
-            {
-                return this.HttpNotFound();
-            }
+            this.jobOffers.Delete(id);
 
-            return this.View(jobOffer);
-        }
+            this.SetTempDataSuccessMessage("Job Offer deleted successfully!");
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(JobOfferEditViewModel model)
-        {
-            if (this.ModelState.IsValid)
-            {
-                return this.RedirectToAction("Index");
-            }
-
-            return this.View(model);
+            return this.RedirectToAction("Index", new { organizationId = organizationId });
         }
 
         private JobOfferAddViewModel CreateJobOfferAddViewModel(int organizationId)

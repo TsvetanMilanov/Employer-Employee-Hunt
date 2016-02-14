@@ -42,6 +42,14 @@
             return jobOffer;
         }
 
+        public void Delete(int id)
+        {
+            JobOffer jobOffer = this.jobOffers.GetById(id);
+
+            this.jobOffers.Delete(jobOffer);
+            this.jobOffers.Save();
+        }
+
         public IQueryable<JobOffer> GetAll()
         {
             return this.jobOffers.All();

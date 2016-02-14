@@ -18,5 +18,7 @@
             ICollection<int> requiredSkillsIds,
             int minimumCandidatesCount,
             DateTime registrationDate);
+
+        void Delete(int id);
     }
 }

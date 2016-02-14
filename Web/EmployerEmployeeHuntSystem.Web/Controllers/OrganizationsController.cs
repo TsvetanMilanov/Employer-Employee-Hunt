@@ -33,7 +33,12 @@
 
         public ActionResult Details(int id)
         {
-            OrganizationDetailsViewModel model = this.Mapper.Map<OrganizationDetailsViewModel>(this.organizations.GetById(id));
+            Organization organization = this.organizations.GetById(id);
+
+            organization.JobOffers = organization.JobOffers.Where(j => j.IsActive == true && j.IsDeleted == false).ToList();
+
+            OrganizationDetailsViewModel model = this.Mapper.Map<OrganizationDetailsViewModel>(organization);
+
             return this.View(model);
         }
 

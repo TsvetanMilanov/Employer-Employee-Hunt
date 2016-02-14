@@ -1,6 +1,6 @@
 ﻿@model EmployerEmployeeHuntSystem.Web.ViewModels.Organizations.OrganizationDetailsViewModel
 @using Microsoft.AspNet.Identity
-@{ 
+@{
     ViewBag.Title = Model.Name;
 }
 
@@ -54,6 +54,11 @@
                                     </div>
                                     <div>
                                         @Html.ActionLink("Details", "Details", "JobOffers", new { id = jobOffer.Id }, new { @class = "btn btn-sm" })
+
+                                        @if (Model.Founder.Id == User.Identity.GetUserId())
+                                        {
+                                            @Html.ActionLink("Delete", "Delete", "JobOffers", new { id = jobOffer.Id }, new { @class = "btn btn-sm btn-danger" })
+                                        }
                                     </div>
                                     <hr />
                                 </div>
