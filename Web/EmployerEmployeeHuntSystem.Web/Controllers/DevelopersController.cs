@@ -25,7 +25,7 @@
                 return this.RedirectToAction("CreateProfile");
             }
 
-            DeveloperProfileViewModel model = new DeveloperProfileViewModel();
+            DeveloperProfileViewModel model = this.Mapper.Map<DeveloperProfileViewModel>(currentUser.DeveloperProfile);
 
             return this.View(model);
         }

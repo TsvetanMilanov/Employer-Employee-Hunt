@@ -243,6 +243,7 @@
     <Compile Include="ViewModels\Organizations\OrganizationDetailsViewModel.cs" />
     <Compile Include="ViewModels\Organizations\OrganizationsIndexViewModel.cs" />
     <Compile Include="ViewModels\Organizations\OrganizationViewModel.cs" />
+    <Compile Include="ViewModels\Projects\ProjectViewModel.cs" />
     <Compile Include="ViewModels\Skills\SkillViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -313,6 +314,7 @@
     <Content Include="Views\JobOffers\Details.cshtml" />
     <Content Include="Views\JobOffers\Index.cshtml" />
     <Content Include="Views\Developers\CreateProfile.cshtml" />
+    <Content Include="Views\Developers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
