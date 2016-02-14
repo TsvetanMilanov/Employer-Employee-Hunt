@@ -3,11 +3,12 @@
     using System;
     using System.Linq;
     using System.Web.Mvc;
+    using Constants;
     using Data.Models;
     using Infrastructure.Mapping;
     using Services.Data;
     using ViewModels.Organizations;
-    using Constants;
+
     public class OrganizationsController : BaseController
     {
         private IOrganizationsService organizations;
@@ -30,7 +31,8 @@
 
         public ActionResult Details(int id)
         {
-            return this.View();
+            OrganizationDetailsViewModel model = this.Mapper.Map<OrganizationDetailsViewModel>(this.organizations.GetById(id));
+            return this.View(model);
         }
 
         [HttpGet]

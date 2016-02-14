@@ -18,7 +18,7 @@
 
         public int JobOffersCount { get; set; }
 
-        public void CreateMappings(IMapperConfiguration configuration)
+        public virtual void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Organization, OrganizationViewModel>()
                 .ForMember(m => m.JobOffersCount, opts => opts.MapFrom(o => o.JobOffers.Count));

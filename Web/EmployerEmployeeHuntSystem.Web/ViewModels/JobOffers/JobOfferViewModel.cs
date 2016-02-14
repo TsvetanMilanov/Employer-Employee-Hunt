@@ -21,7 +21,7 @@
 
         public bool IsActive { get; set; }
 
-        public IEnumerable<SkillViewModel> MyProperty { get; set; }
+        public IEnumerable<SkillViewModel> RequiredSkills { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {

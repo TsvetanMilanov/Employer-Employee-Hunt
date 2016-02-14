@@ -9,6 +9,7 @@
     // TODO: Why BaseModel<int> instead BaseModel<TKey>?
     public class DbRepository<T, TKey> : IDbRepository<T, TKey>
         where T : BaseModel<TKey>
+        where TKey : IComparable<TKey>
     {
         public DbRepository(DbContext context)
         {
@@ -37,7 +38,7 @@
 
         public T GetById(TKey id)
         {
-            return this.All().FirstOrDefault(x => x.Id.Equals(id));
+            return this.All().FirstOrDefault(x => x.Id.CompareTo(id) == 0);
         }
 
         public void Add(T entity)

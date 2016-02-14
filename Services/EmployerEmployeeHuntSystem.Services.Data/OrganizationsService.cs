@@ -32,5 +32,10 @@
         {
             return this.organizations.All();
         }
+
+        public Organization GetById(int id)
+        {
+            return this.organizations.GetById(id);
+        }
     }
 }

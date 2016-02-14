@@ -17,7 +17,7 @@
             @foreach (var organization in Model.Organizations)
             {
                 <tr>
-                    <td>@organization.Name</td>
+                    <td>@Html.ActionLink(organization.Name, "Details", "Organizations", new { id = organization.Id }, null)</td>
                     <td>@organization.Founder.UserName</td>
                     <td>@organization.FoundedOn.ToShortDateString()</td>
                     <td>@organization.JobOffersCount</td>

@@ -8,6 +8,8 @@
     {
         IQueryable<Organization> GetAll();
 
+        Organization GetById(int id);
+
         Organization Create(string name, string userId, DateTime foundedOn);
     }
 }
