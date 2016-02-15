@@ -205,6 +205,7 @@
     <Compile Include="Areas\Administration\ViewModels\Roles\AddRoleToUserViewModel.cs" />
     <Compile Include="Areas\Headhunter\Controllers\HeadhuntersBaseController.cs" />
     <Compile Include="Areas\Headhunter\Controllers\HeadhuntersController.cs" />
+    <Compile Include="Areas\Headhunter\Controllers\JobOffersController.cs" />
     <Compile Include="Areas\Headhunter\HeadhunterAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
