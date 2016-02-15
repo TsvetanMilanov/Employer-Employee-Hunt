@@ -1,4 +1,4 @@
-﻿namespace EmployerEmployeeHuntSystem.Services.Data
+﻿namespace EmployerEmployeeHuntSystem.Services.Data.Contracts
 {
     using System;
     using System.Linq;

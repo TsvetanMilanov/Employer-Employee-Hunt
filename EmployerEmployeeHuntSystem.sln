@@ -11,8 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{8103CD5B-2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{A5398FDD-2BE7-452F-9808-E5D3C5B58CC3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{33E0499A-81F4-4CE7-A1BF-6E7103399834}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployerEmployeeHuntSystem.Data", "Data\EmployerEmployeeHuntSystem.Data\EmployerEmployeeHuntSystem.Data.csproj", "{7C950CDC-9587-4B65-A204-988EFED17948}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployerEmployeeHuntSystem.Data.Common", "Data\EmployerEmployeeHuntSystem.Data.Common\EmployerEmployeeHuntSystem.Data.Common.csproj", "{EDFE3C57-EF5B-4636-9ECC-D0BACA6B6379}"

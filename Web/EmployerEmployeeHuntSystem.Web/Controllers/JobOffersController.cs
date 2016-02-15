@@ -1,13 +1,11 @@
 ﻿namespace EmployerEmployeeHuntSystem.Web.Controllers
 {
     using System;
-    using System.Data.Entity;
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
-    using Data.Models;
     using Infrastructure.Mapping;
-    using Services.Data;
+    using Services.Data.Contracts;
     using ViewModels.JobOffers;
     using ViewModels.Organizations;
 

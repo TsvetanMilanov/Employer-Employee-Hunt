@@ -1,8 +1,7 @@
 ﻿namespace EmployerEmployeeHuntSystem.Web.Controllers
 {
     using System.Web.Mvc;
-    using Microsoft.AspNet.Identity;
-    using Services.Data;
+    using Services.Data.Contracts;
     using ViewModels.Home;
 
     public class HomeController : BaseController

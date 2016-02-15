@@ -8,7 +8,7 @@
     using Controllers;
     using Data;
     using Data.Common;
-    using Services.Data;
+    using Services.Data.Contracts;
     using Services.Web;
     using Services.Web.Github;
 
@@ -62,6 +62,10 @@
 
             builder.RegisterGeneric(typeof(DbRepository<,>))
                 .As(typeof(IDbRepository<,>))
+                .InstancePerRequest();
+
+            builder.RegisterGeneric(typeof(GenericRepository<>))
+                .As(typeof(IGenericRepository<>))
                 .InstancePerRequest();
 
             var servicesAssembly = Assembly.GetAssembly(typeof(IStatisticsService));

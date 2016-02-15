@@ -1,15 +1,13 @@
 ﻿namespace EmployerEmployeeHuntSystem.Web.Areas.Administration.Controllers
 {
     using System.Web.Mvc;
-    using Constants;
-    using Web.Controllers;
+    using Web.ViewModels;
 
-    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
-    public class AdministrationController : BaseController
+    public class AdministrationController : AdministrationBaseController
     {
         public ActionResult Index()
         {
-            return this.View();
+            return this.View(new BaseViewModel());
         }
     }
 }

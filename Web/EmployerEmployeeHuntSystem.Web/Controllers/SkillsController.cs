@@ -2,7 +2,7 @@
 {
     using System.Linq;
     using System.Web.Mvc;
-    using Services.Data;
+    using Services.Data.Contracts;
 
     public class SkillsController : BaseController
     {

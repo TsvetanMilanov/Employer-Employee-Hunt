@@ -1,6 +1,7 @@
 ﻿namespace EmployerEmployeeHuntSystem.Services.Data
 {
     using System.Linq;
+    using Contracts;
     using EmployerEmployeeHuntSystem.Data.Common;
     using EmployerEmployeeHuntSystem.Data.Models;
 

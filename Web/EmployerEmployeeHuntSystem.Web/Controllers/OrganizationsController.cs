@@ -5,7 +5,7 @@
     using System.Web.Mvc;
     using Data.Models;
     using Infrastructure.Mapping;
-    using Services.Data;
+    using Services.Data.Contracts;
     using ViewModels;
     using ViewModels.Organizations;
 
