@@ -26,3 +26,7 @@ textarea {
 .big-text-size {
     font-size: 1.2em;
 }
+
+ .wide-input {
+     width: 800px;
+ }

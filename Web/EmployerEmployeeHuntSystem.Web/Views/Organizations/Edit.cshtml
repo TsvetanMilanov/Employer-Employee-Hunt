@@ -11,7 +11,7 @@
             @Html.AntiForgeryToken();
 
             <fieldset>
-                <legend>Create new organization</legend>
+                <legend>Edit organization</legend>
                 <div class="form-group">
                     @Html.HiddenFor(x => x.Id, new { @class = "form-control", value = Model.Id })
                     <label for="inputName" class="col-lg-2 control-label">Name</label>

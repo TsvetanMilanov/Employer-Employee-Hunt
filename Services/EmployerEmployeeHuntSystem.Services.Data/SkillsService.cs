@@ -17,5 +17,17 @@
         {
             return this.skills.All();
         }
+
+        public IQueryable<string> GetAllSkillsNames(string filter)
+        {
+            return this.skills.All()
+                .Where(s => s.Name.ToLower().Contains(filter.ToLower()))
+                .Select(s => s.Name);
+        }
+
+        public Skill GetByName(string name)
+        {
+            return this.skills.All().Where(s => s.Name == name).FirstOrDefault();
+        }
     }
 }

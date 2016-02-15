@@ -1,0 +1,43 @@
+﻿@model EmployerEmployeeHuntSystem.Web.ViewModels.Skills.SkillViewModel
+@using EmployerEmployeeHuntSystem.Constants
+
+@{
+    ViewBag.Title = "AddSkill";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AddSkill", "Developers", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <fieldset>
+        <legend>Add Skill To Profile</legend>
+
+        <div class="form-group">
+            <div class="form-group">
+                @Html.LabelFor(x => x.Name, new { @class = "col-lg-2 control-label" })
+                <div class="col-lg-10">
+                    @Html.ValidationMessageFor(x => x.Name)
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control wide-input", id = "skill-input" })
+                </div>
+            </div>
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </fieldset>
+}
+
+@section scripts {
+    <script>
+        $("#skill-input").autocomplete({
+            source: function (req, res) {
+                var filter = req.term;
+
+                $.getJSON('@GlobalConstants.SkillsApiEndpoint' + '?filter=' + filter)
+                .then(function (data) {
+                    res(data);
+                });
+            }
+        });
+    </script>
+}
+

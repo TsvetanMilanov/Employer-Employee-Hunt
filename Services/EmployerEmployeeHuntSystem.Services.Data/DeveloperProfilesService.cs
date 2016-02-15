@@ -100,6 +100,55 @@
             return this.developerProfiles.GetById(id);
         }
 
+        public DeveloperProfile Edit(string userId, string githubProfile, ICollection<string> topProjects)
+        {
+            DeveloperProfile developerProfile = this.developerProfiles.GetById(userId);
+
+            developerProfile.GithubProfile = githubProfile;
+
+            var developersCurrentTopProjects = developerProfile.TopProjects.ToList();
+
+            foreach (var projectLink in topProjects)
+            {
+                if (!string.IsNullOrWhiteSpace(projectLink) && !developersCurrentTopProjects.Any(p => p.Link == projectLink))
+                {
+                    // TODO: Add functionality for custom project name.
+                    developerProfile.TopProjects.Add(new Project
+                    {
+                        Link = projectLink,
+                        Name = projectLink
+                    });
+                }
+            }
+
+            this.developerProfiles.Update(developerProfile);
+
+            this.developerProfiles.Save();
+
+            return developerProfile;
+        }
+
+        public void AddSkill(string userId, string name)
+        {
+            Skill skill = this.skills.GetByName(name);
+
+            if (skill == null)
+            {
+                skill = new Skill
+                {
+                    Name = name
+                };
+            }
+
+            DeveloperProfile developerProfile = this.developerProfiles.GetById(userId);
+
+            developerProfile.Skills.Add(skill);
+
+            this.developerProfiles.Update(developerProfile);
+
+            this.developerProfiles.Save();
+        }
+
         private string GetUserNameFromGithubProfileLink(string githubProfile)
         {
             string userName = githubProfile.Split(new string[] { "github.com/" }, StringSplitOptions.RemoveEmptyEntries)[1];

@@ -13,12 +13,10 @@
 
         [MinLength(DatabaseConstants.MinProjectNameLength)]
         [MaxLength(DatabaseConstants.MaxProjectNameLength)]
-        [Required]
         public string Name { get; set; }
 
         [MinLength(DatabaseConstants.MinProjectDescriptionLength)]
         [MaxLength(DatabaseConstants.MaxProjectDescriptionLength)]
-        [Required]
         public string Description { get; set; }
     }
 }

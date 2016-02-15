@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - EmployerEmployeeHuntSystem</title>
+    @Styles.Render("~/jqueryui/css")
     @Styles.Render("~/Content/css")
     <meta name="description" content="The description of my page" />
 </head>
@@ -69,6 +70,7 @@
         </footer>
     </div>
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

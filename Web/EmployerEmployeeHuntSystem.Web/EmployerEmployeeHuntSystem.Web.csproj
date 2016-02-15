@@ -207,6 +207,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
     <Compile Include="Controllers\OrganizationsController.cs" />
+    <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -222,6 +223,7 @@
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\DeveloperProfiles\DeveloperProfileCreateViewModel.cs" />
+    <Compile Include="ViewModels\DeveloperProfiles\DeveloperProfileEditViewModel.cs" />
     <Compile Include="ViewModels\DeveloperProfiles\DeveloperProfileViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
     <Compile Include="ViewModels\JobOffers\JobOfferAddViewModel.cs" />
@@ -268,6 +270,21 @@
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui\external\jquery\jquery.js" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_444444_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_555555_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_777620_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_777777_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.css" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.min.css" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.structure.css" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.structure.min.css" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.theme.css" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.theme.min.css" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -315,6 +332,8 @@
     <Content Include="Views\JobOffers\Index.cshtml" />
     <Content Include="Views\Developers\CreateProfile.cshtml" />
     <Content Include="Views\Developers\Index.cshtml" />
+    <Content Include="Views\Developers\Edit.cshtml" />
+    <Content Include="Views\Developers\AddSkill.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

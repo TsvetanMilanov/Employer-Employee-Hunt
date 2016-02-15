@@ -6,5 +6,9 @@
     public interface ISkillsService
     {
         IQueryable<Skill> GetAll();
+
+        IQueryable<string> GetAllSkillsNames(string filter);
+
+        Skill GetByName(string name);
     }
 }
