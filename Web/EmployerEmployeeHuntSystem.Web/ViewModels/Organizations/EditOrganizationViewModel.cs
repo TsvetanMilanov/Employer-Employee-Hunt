@@ -5,7 +5,7 @@
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class EditOrganizationViewModel : BaseViewModel, IMapFrom<Organization>
+    public class EditOrganizationViewModel : IMapFrom<Organization>
     {
         public int Id { get; set; }
 

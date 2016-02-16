@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public class OrganizationsIndexViewModel : BaseViewModel
+    public class OrganizationsIndexViewModel
     {
         public ICollection<OrganizationViewModel> Organizations { get; set; }
     }

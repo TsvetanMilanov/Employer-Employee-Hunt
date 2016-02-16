@@ -3,7 +3,7 @@
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class ProjectViewModel : BaseViewModel, IMapFrom<Project>
+    public class ProjectViewModel : IMapFrom<Project>
     {
         public string Link { get; set; }
 

@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class VerifyPhoneNumberViewModel : BaseViewModel
+    public class VerifyPhoneNumberViewModel
     {
         [Required]
         [Display(Name = "Code")]

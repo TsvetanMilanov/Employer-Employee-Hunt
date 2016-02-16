@@ -5,8 +5,8 @@
     using System.Web.Mvc;
     using Data.Models;
     using Infrastructure.Mapping;
+    using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
-    using ViewModels;
     using ViewModels.Organizations;
 
     [Authorize]
@@ -61,7 +61,7 @@
                 return this.View(model);
             }
 
-            Organization organization = this.organizations.Create(model.Name, model.CurrentUser.Id, DateTime.Now);
+            Organization organization = this.organizations.Create(model.Name, this.User.Identity.GetUserId(), DateTime.Now);
 
             this.SetTempDataSuccessMessage(string.Format("Organization {0} successfully created!", organization.Name));
 
@@ -98,9 +98,7 @@
 
             this.SetTempDataSuccessMessage("Organization deleted successfully.");
 
-            BaseViewModel model = new BaseViewModel();
-
-            return this.RedirectToAction("Index", model);
+            return this.RedirectToAction("Index");
         }
     }
 }

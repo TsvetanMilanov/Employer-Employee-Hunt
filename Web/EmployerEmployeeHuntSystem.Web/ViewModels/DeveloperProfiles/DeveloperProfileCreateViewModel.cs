@@ -4,7 +4,7 @@
     using System.ComponentModel.DataAnnotations;
     using Constants;
 
-    public class DeveloperProfileCreateViewModel : BaseViewModel
+    public class DeveloperProfileCreateViewModel
     {
         [Display(Name = "Github Profile")]
         [RegularExpression(DatabaseConstants.GithubLinkRegex, ErrorMessage = "The Github Profile field must be valid link to Github profile.")]

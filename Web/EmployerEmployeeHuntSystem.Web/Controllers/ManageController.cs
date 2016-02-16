@@ -300,9 +300,7 @@
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
         {
-            BaseViewModel model = new BaseViewModel();
-
-            return this.View(model);
+            return this.View();
         }
 
         // POST: /Manage/SetPassword

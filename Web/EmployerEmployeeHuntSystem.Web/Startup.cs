@@ -11,6 +11,7 @@ namespace EmployerEmployeeHuntSystem.Web
         public void Configuration(IAppBuilder app)
         {
             this.ConfigureAuth(app);
+            AutofacConfig.RegisterAutofac();
         }
     }
 }

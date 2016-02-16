@@ -4,7 +4,7 @@
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class JobOfferEditViewModel : BaseViewModel, IMapFrom<JobOffer>
+    public class JobOfferEditViewModel : IMapFrom<JobOffer>
     {
         public bool IsActive { get; set; }
 

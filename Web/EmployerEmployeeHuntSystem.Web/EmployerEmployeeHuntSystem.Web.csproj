@@ -206,7 +206,9 @@
     <Compile Include="Areas\Headhunters\Controllers\HeadhuntersBaseController.cs" />
     <Compile Include="Areas\Headhunters\Controllers\HeadhuntersController.cs" />
     <Compile Include="Areas\Headhunters\Controllers\JobOffersController.cs" />
-    <Compile Include="Areas\Headhunters\HeadhunterAreaRegistration.cs" />
+    <Compile Include="Areas\Headhunters\HeadhuntersAreaRegistration.cs" />
+    <Compile Include="Areas\Headhunters\ViewModels\JobOffers\JobOfferHeadhunterListItemViewModel.cs" />
+    <Compile Include="Areas\Headhunters\ViewModels\JobOffers\JobOffersListAllViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DevelopersController.cs" />
@@ -219,6 +221,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ViewsHelpers.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
@@ -229,7 +232,6 @@
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\UserViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
-    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\DeveloperProfiles\DeveloperProfileCreateViewModel.cs" />
     <Compile Include="ViewModels\DeveloperProfiles\DeveloperProfileEditViewModel.cs" />
     <Compile Include="ViewModels\DeveloperProfiles\DeveloperProfileViewModel.cs" />
@@ -278,6 +280,7 @@
     <Content Include="Areas\Headhunters\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Headhunters\Views\Headhunters\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Roles\AddRoleToUser.cshtml" />
+    <Content Include="Areas\Headhunters\Views\JobOffers\ListAll.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -350,7 +353,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
-    <Folder Include="Areas\Headhunters\ViewModels\" />
     <Folder Include="Areas\Headhunters\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

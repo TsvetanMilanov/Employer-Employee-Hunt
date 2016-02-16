@@ -6,7 +6,7 @@
     using Projects;
     using Skills;
 
-    public class DeveloperProfileViewModel : BaseViewModel, IMapFrom<DeveloperProfile>
+    public class DeveloperProfileViewModel : IMapFrom<DeveloperProfile>
     {
         public string GithubProfile { get; set; }
 

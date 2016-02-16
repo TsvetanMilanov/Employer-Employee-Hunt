@@ -5,7 +5,7 @@
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class SkillViewModel : BaseViewModel, IMapFrom<Skill>
+    public class SkillViewModel : IMapFrom<Skill>
     {
         public int Id { get; set; }
 

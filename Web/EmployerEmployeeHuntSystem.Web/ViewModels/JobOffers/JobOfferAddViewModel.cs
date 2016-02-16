@@ -5,7 +5,7 @@
     using System.Web.Mvc;
     using Constants;
 
-    public class JobOfferAddViewModel : BaseViewModel
+    public class JobOfferAddViewModel
     {
         public int OrganizationId { get; set; }
 

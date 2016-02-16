@@ -7,7 +7,7 @@
     using Infrastructure.Mapping;
     using JobOffers;
 
-    public class OrganizationDetailsViewModel : BaseViewModel, IMapFrom<Organization>
+    public class OrganizationDetailsViewModel : IMapFrom<Organization>
     {
         public int Id { get; set; }
 

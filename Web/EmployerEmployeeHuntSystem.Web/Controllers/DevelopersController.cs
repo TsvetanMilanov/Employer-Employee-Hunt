@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Web.Mvc;
     using Data.Models;
+    using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
     using ViewModels.DeveloperProfiles;
     using ViewModels.Skills;
@@ -47,7 +48,7 @@
                 return this.View(model);
             }
 
-            this.developerProfiles.Create(model.CurrentUser.Id, model.GithubProfile, model.TopProjectsLinks);
+            this.developerProfiles.Create(this.User.Identity.GetUserId(), model.GithubProfile, model.TopProjectsLinks);
 
             this.SetTempDataSuccessMessage("Developer profile created successfully!");
 

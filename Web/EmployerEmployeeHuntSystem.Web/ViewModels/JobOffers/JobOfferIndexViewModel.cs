@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using Organizations;
 
-    public class JobOfferIndexViewModel : BaseViewModel
+    public class JobOfferIndexViewModel
     {
         public OrganizationViewModel Organization { get; set; }
 

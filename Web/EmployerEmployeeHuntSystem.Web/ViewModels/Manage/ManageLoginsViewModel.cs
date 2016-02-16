@@ -5,7 +5,7 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.Owin.Security;
 
-    public class ManageLoginsViewModel : BaseViewModel
+    public class ManageLoginsViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }
 

@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public class IndexViewModel : BaseViewModel
+    public class IndexViewModel
     {
         public IDictionary<string, int> Statistics { get; set; }
     }

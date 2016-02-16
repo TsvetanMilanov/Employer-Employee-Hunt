@@ -7,7 +7,7 @@
     {
         public ActionResult Index()
         {
-            return this.View(new BaseViewModel());
+            return this.View();
         }
     }
 }

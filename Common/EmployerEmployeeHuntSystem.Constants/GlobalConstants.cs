@@ -9,6 +9,8 @@
         public const string SuccessMessageTempDataKey = "SuccessMessageTempData";
         public const string ErrorMessageTempDataKey = "ErrorMessageTempData";
 
+        public const int DefaultPageSize = 10;
+
 #if DEBUG
         public const string SkillsApiEndpoint = "http://localhost:2509/Skills/Names";
         public const string RolesApiEndpoint = "http://localhost:2509/Administration/Roles/Names";
