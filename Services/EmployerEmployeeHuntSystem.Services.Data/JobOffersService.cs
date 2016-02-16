@@ -12,15 +12,49 @@
         private IDbRepository<JobOffer, int> jobOffers;
         private IDbRepository<Organization, int> organizations;
         private IDbRepository<Skill, int> skills;
+        private IDbRepository<Candidacy, int> candidacies;
+        private IGenericRepository<User> users;
 
         public JobOffersService(
             IDbRepository<JobOffer, int> jobOffers,
             IDbRepository<Organization, int> organizations,
-            IDbRepository<Skill, int> skills)
+            IDbRepository<Skill, int> skills,
+            IDbRepository<Candidacy, int> candidacies,
+            IGenericRepository<User> users)
         {
             this.jobOffers = jobOffers;
             this.organizations = organizations;
             this.skills = skills;
+            this.candidacies = candidacies;
+            this.users = users;
+        }
+
+        public void AddCandidate(string userId, int jobOfferId, string headhunterId)
+        {
+            var user = this.users.GetById(userId);
+
+            if (user.HeadhunterProfile == null)
+            {
+                user.HeadhunterProfile = new HeadhunterProfile
+                {
+                    UserId = user.Id
+                };
+
+                this.users.Update(user);
+                this.users.SaveChanges();
+            }
+
+
+            var candidacy = new Candidacy
+            {
+                DeveloperProfileId = userId,
+                HeadhunterProfileId = headhunterId,
+                JobOfferId = jobOfferId,
+                IsApproved = false
+            };
+
+            this.candidacies.Add(candidacy);
+            this.candidacies.Save();
         }
 
         public JobOffer AddJobOffer(

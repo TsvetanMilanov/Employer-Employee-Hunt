@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Web.Mvc;
     using Infrastructure.Mapping;
+    using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
     using ViewModels.JobOffers;
 
@@ -49,6 +50,15 @@
             this.SetTempDataSuccessMessage("The job offer was set as inactive!");
 
             return this.RedirectToAction("ListAll");
+        }
+
+        public ActionResult AddCandidate(string userId, int jobOfferId)
+        {
+            this.jobOffers.AddCandidate(userId, jobOfferId, this.User.Identity.GetUserId());
+
+            this.SetTempDataSuccessMessage("Candidate added to job offer.");
+
+            return this.RedirectToAction("CandidatesForJobOffer", "Developers", new { id = jobOfferId });
         }
     }
 }

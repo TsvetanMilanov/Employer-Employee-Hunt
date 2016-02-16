@@ -161,7 +161,10 @@
         {
             var result = new List<DeveloperProfile>();
 
-            var jobOfferRequirements = new HashSet<string>(this.jobOffers.GetById(jobOfferId).RequiredSkills.Select(s => s.Name).ToList());
+            var jobOffer = this.jobOffers.GetById(jobOfferId);
+            var candidacies = jobOffer.Candidacies;
+
+            var jobOfferRequirements = new HashSet<string>(jobOffer.RequiredSkills.Select(s => s.Name).ToList());
 
             foreach (var developer in this.developerProfiles.All().Where(d => d.IsAvailableForHire == true))
             {
@@ -173,6 +176,11 @@
 
                 if ((skillsMatchCount / jobOfferRequirements.Count) * 100 >= AcceptableSkillsMatchPercentage)
                 {
+                    if (candidacies.Any(c => c.DeveloperProfileId == developer.Id))
+                    {
+                        continue;
+                    }
+
                     result.Add(developer);
                 }
             }

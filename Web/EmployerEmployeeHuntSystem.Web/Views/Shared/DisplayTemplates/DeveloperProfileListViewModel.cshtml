@@ -23,7 +23,14 @@
                 <td><a href="@developer.GithubProfile">Go To Github Profile</a></td>
                 @if (ViewBag.IsHeadHunter == true)
                 {
-                    <td>@Html.ActionLink("Add To Job Offer", "AddCandidate", "JobOffers", new { id = developer.User.Id, area = ViewBag.Area }, new { @class = "btn btn-success" })</td>
+                    <td>
+                        @Html.ActionLink("Add To Job Offer", "AddCandidate", "JobOffers", new
+                   {
+                       userId = developer.User.Id,
+                       jobOfferId = ViewBag.JobOfferId,
+                       area = ViewBag.Area
+                   }, new { @class = "btn btn-success" })
+                    </td>
                 }
             </tr>
         }

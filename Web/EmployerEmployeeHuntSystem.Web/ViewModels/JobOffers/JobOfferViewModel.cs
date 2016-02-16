@@ -26,10 +26,13 @@
 
         public ICollection<SkillViewModel> RequiredSkills { get; set; }
 
+        public int CandidatesCount { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<JobOffer, JobOfferViewModel>()
                 .ForMember(m => m.Organization, opts => opts.MapFrom(j => j.Organization.Name))
+                .ForMember(m => m.CandidatesCount, opts => opts.MapFrom(j => j.Candidacies.Count))
                 .ForMember(m => m.OrganizationId, opts => opts.MapFrom(j => j.Organization.Id));
         }
     }

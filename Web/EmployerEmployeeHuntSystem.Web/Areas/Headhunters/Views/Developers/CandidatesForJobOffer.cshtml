@@ -9,5 +9,5 @@
     @Html.DisplayFor(x => Model.JobOffer)
 </div>
 <hr />
-@Html.DisplayFor(x => Model.ListOfDeveloperProfiles, new { Area = "Headhunters", IsHeadhunter = true })
+@Html.DisplayFor(x => Model.ListOfDeveloperProfiles, new { Area = "Headhunters", IsHeadhunter = true, JobOfferId = Model.JobOffer.Id })
 

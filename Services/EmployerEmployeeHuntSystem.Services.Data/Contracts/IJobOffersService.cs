@@ -24,5 +24,7 @@
         void SetActive(int id);
 
         void SetInActive(int id);
+
+        void AddCandidate(string userId, int jobOfferId, string headhunterId);
     }
 }
