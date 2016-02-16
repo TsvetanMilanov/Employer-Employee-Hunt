@@ -1,4 +1,4 @@
-﻿namespace EmployerEmployeeHuntSystem.Web.Areas.Headhunter
+﻿namespace EmployerEmployeeHuntSystem.Web.Areas.Headhunters
 {
     using System.Web.Mvc;
 

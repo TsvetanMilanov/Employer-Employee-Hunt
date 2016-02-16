@@ -9,11 +9,6 @@
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "Administration_api",
-                "api/Administration/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional });
-
-            context.MapRoute(
                 "Administration_default",
                 "Administration/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional });

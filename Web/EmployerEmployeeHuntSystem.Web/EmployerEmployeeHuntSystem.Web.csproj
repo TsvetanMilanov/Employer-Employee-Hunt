@@ -203,10 +203,10 @@
     <Compile Include="Areas\Administration\Controllers\RolesController.cs" />
     <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
     <Compile Include="Areas\Administration\ViewModels\Roles\AddRoleToUserViewModel.cs" />
-    <Compile Include="Areas\Headhunter\Controllers\HeadhuntersBaseController.cs" />
-    <Compile Include="Areas\Headhunter\Controllers\HeadhuntersController.cs" />
-    <Compile Include="Areas\Headhunter\Controllers\JobOffersController.cs" />
-    <Compile Include="Areas\Headhunter\HeadhunterAreaRegistration.cs" />
+    <Compile Include="Areas\Headhunters\Controllers\HeadhuntersBaseController.cs" />
+    <Compile Include="Areas\Headhunters\Controllers\HeadhuntersController.cs" />
+    <Compile Include="Areas\Headhunters\Controllers\JobOffersController.cs" />
+    <Compile Include="Areas\Headhunters\HeadhunterAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DevelopersController.cs" />
@@ -274,9 +274,9 @@
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\Administration\Index.cshtml" />
-    <Content Include="Areas\Headhunter\Views\web.config" />
-    <Content Include="Areas\Headhunter\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Headhunter\Views\Headhunters\Index.cshtml" />
+    <Content Include="Areas\Headhunters\Views\web.config" />
+    <Content Include="Areas\Headhunters\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Headhunters\Views\Headhunters\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Roles\AddRoleToUser.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
@@ -350,8 +350,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
-    <Folder Include="Areas\Headhunter\ViewModels\" />
-    <Folder Include="Areas\Headhunter\Views\Shared\" />
+    <Folder Include="Areas\Headhunters\ViewModels\" />
+    <Folder Include="Areas\Headhunters\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

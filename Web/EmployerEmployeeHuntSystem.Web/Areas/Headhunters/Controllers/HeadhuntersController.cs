@@ -1,4 +1,4 @@
-﻿namespace EmployerEmployeeHuntSystem.Web.Areas.Headhunter.Controllers
+﻿namespace EmployerEmployeeHuntSystem.Web.Areas.Headhunters.Controllers
 {
     using System.Web.Mvc;
 
