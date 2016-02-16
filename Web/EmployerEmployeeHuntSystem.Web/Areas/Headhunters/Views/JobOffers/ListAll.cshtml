@@ -17,7 +17,7 @@
 
     @foreach (var item in Model.JobOffers)
     {
-        <tr @if (item.IsActive) { @Html.Raw("class=\"success\"") } else { @Html.Raw("class=\"warning\"") }>
+        <tr @if (item.IsActive) { @Html.Raw("class=\"success\"")         } else { @Html.Raw("class=\"warning\"")         }>
             <td>
                 <span>@item.RegistrationDate.ToShortDateString()</span>
             </td>
@@ -31,7 +31,25 @@
                 <span>@string.Join(", ", item.RequiredSkills.Select(s => s.Name))</span>
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                <button data-id="@item.Id" data-action="expand" class="btn btn-primary">Actions</button>
+            </td>
+        </tr>
+        <tr class="hidden" data-id="@item.Id">
+            <td colspan="5" class="text-center">
+                @if (item.IsActive)
+                {
+                    @Html.ActionLink("Set As Inactive", "SetInactive", new { id = item.Id }) @:|
+
+                    if (string.IsNullOrWhiteSpace(item.HeadhunterId))
+                    {
+                        @Html.ActionLink("Search For Candidates", "CandidatesForJobOffer", "Developers", new { id = item.Id }, null) @:|
+                    }
+                }
+                else
+                {
+                    @Html.ActionLink("Set As Active", "SetActive", new { id = item.Id }) @:|
+                }
+
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>
@@ -39,3 +57,8 @@
 
 </table>
 
+@section scripts {
+    <script>
+        jqueryElementManipulation.toggleClassOfTableRow('expand', 'hidden');
+    </script>
+}

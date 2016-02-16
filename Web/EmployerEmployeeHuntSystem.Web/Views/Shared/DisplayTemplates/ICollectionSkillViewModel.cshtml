@@ -1,0 +1,7 @@
+﻿@model ICollection<EmployerEmployeeHuntSystem.Web.ViewModels.Skills.SkillViewModel>
+<div>
+    @foreach (var skill in Model)
+    {
+        <span class="label label-primary big-text-size span-top-bottom-margin">@skill.Name</span>
+    }
+</div>

@@ -66,5 +66,27 @@
             return this.jobOffers.All()
                 .Where(j => j.OrganizationId == organizationId);
         }
+
+        public void SetActive(int id)
+        {
+            var jobOffer = this.jobOffers.GetById(id);
+
+            jobOffer.IsActive = true;
+
+            this.jobOffers.Update(jobOffer);
+
+            this.jobOffers.Save();
+        }
+
+        public void SetInActive(int id)
+        {
+            var jobOffer = this.jobOffers.GetById(id);
+
+            jobOffer.IsActive = false;
+
+            this.jobOffers.Update(jobOffer);
+
+            this.jobOffers.Save();
+        }
     }
 }

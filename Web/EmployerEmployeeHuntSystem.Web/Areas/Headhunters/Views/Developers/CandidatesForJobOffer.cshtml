@@ -1,0 +1,10 @@
+﻿@model EmployerEmployeeHuntSystem.Web.ViewModels.DeveloperProfiles.DeveloperProfileListViewModel
+@{
+    ViewBag.Title = "Candidates For Job Offer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Candidates For JobOffer</h2>
+
+@Html.DisplayFor(x => Model, new { Area = "Headhunters" })
+

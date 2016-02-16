@@ -32,5 +32,23 @@
         {
             return this.View();
         }
+
+        public ActionResult SetActive(int id)
+        {
+            this.jobOffers.SetActive(id);
+
+            this.SetTempDataSuccessMessage("The job offer was set as active!");
+
+            return this.RedirectToAction("ListAll");
+        }
+
+        public ActionResult SetInActive(int id)
+        {
+            this.jobOffers.SetInActive(id);
+
+            this.SetTempDataSuccessMessage("The job offer was set as inactive!");
+
+            return this.RedirectToAction("ListAll");
+        }
     }
 }

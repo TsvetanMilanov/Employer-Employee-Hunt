@@ -203,6 +203,7 @@
     <Compile Include="Areas\Administration\Controllers\RolesController.cs" />
     <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
     <Compile Include="Areas\Administration\ViewModels\Roles\AddRoleToUserViewModel.cs" />
+    <Compile Include="Areas\Headhunters\Controllers\DevelopersController.cs" />
     <Compile Include="Areas\Headhunters\Controllers\HeadhuntersBaseController.cs" />
     <Compile Include="Areas\Headhunters\Controllers\HeadhuntersController.cs" />
     <Compile Include="Areas\Headhunters\Controllers\JobOffersController.cs" />
@@ -234,6 +235,7 @@
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\DeveloperProfiles\DeveloperProfileCreateViewModel.cs" />
     <Compile Include="ViewModels\DeveloperProfiles\DeveloperProfileEditViewModel.cs" />
+    <Compile Include="ViewModels\DeveloperProfiles\DeveloperProfileListViewModel.cs" />
     <Compile Include="ViewModels\DeveloperProfiles\DeveloperProfileViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
     <Compile Include="ViewModels\JobOffers\JobOfferAddViewModel.cs" />
@@ -281,6 +283,7 @@
     <Content Include="Areas\Headhunters\Views\Headhunters\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Roles\AddRoleToUser.cshtml" />
     <Content Include="Areas\Headhunters\Views\JobOffers\ListAll.cshtml" />
+    <Content Include="Areas\Headhunters\Views\Developers\CandidatesForJobOffer.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -304,6 +307,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\ui-helpers\jquery-element-manipulation.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -349,6 +353,9 @@
     <Content Include="Views\Developers\Index.cshtml" />
     <Content Include="Views\Developers\Edit.cshtml" />
     <Content Include="Views\Developers\AddSkill.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DeveloperProfileListViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ICollectionSkillViewModel.cshtml" />
+    <Content Include="Views\Developers\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

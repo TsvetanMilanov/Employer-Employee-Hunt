@@ -1,0 +1,22 @@
+﻿@model EmployerEmployeeHuntSystem.Web.ViewModels.DeveloperProfiles.DeveloperProfileListViewModel
+
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Is Available For Hire</th>
+            <th>Skills</th>
+            <th>Github Profile</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var developer in Model.DevelopersProfiles)
+            {
+            <tr>
+                <td>@Html.ActionLink(developer.User.UserName, "Details", "Developers", new { id = developer.User.Id, area = ViewBag.Area }, null)</td>
+                <td>@developer.IsAvailableForHire</td>
+                <td>@Html.DisplayFor(x => developer.Skills)</td>
+                <td><a href="@developer.GithubProfile">Go To Github Profile</a></td>
+            </tr>
+        }
+</table>

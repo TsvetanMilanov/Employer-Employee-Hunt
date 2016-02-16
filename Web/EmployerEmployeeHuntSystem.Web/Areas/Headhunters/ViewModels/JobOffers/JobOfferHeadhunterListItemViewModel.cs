@@ -26,10 +26,13 @@
 
         public ICollection<SkillViewModel> RequiredSkills { get; set; }
 
+        public string HeadhunterId { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<JobOffer, JobOfferHeadhunterListItemViewModel>()
                    .ForMember(m => m.Organization, opts => opts.MapFrom(j => j.Organization.Name))
+                   .ForMember(m => m.HeadhunterId, opts => opts.MapFrom(j => j.HeadhunterProfileId))
                    .ForMember(m => m.OrganizationId, opts => opts.MapFrom(j => j.Organization.Id));
         }
     }

@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Web.Mvc;
     using Data.Models;
+    using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
     using ViewModels.DeveloperProfiles;
@@ -11,11 +12,11 @@
     [Authorize]
     public class DevelopersController : BaseController
     {
-        private IDeveloperProfilesService developerProfiles;
+        private IDeveloperProfilesService developers;
 
         public DevelopersController(IDeveloperProfilesService developerProfiles)
         {
-            this.developerProfiles = developerProfiles;
+            this.developers = developerProfiles;
         }
 
         public ActionResult Index()
@@ -28,6 +29,17 @@
             }
 
             DeveloperProfileViewModel model = this.Mapper.Map<DeveloperProfileViewModel>(currentUser.DeveloperProfile);
+
+            return this.View(model);
+        }
+
+        public ActionResult All()
+        {
+            DeveloperProfileListViewModel model = new DeveloperProfileListViewModel();
+
+            model.DevelopersProfiles = this.developers.GetAll()
+                .To<DeveloperProfileViewModel>()
+                .ToList();
 
             return this.View(model);
         }
@@ -48,7 +60,7 @@
                 return this.View(model);
             }
 
-            this.developerProfiles.Create(this.User.Identity.GetUserId(), model.GithubProfile, model.TopProjectsLinks);
+            this.developers.Create(this.User.Identity.GetUserId(), model.GithubProfile, model.TopProjectsLinks);
 
             this.SetTempDataSuccessMessage("Developer profile created successfully!");
 
@@ -78,7 +90,7 @@
 
             var currentUser = this.GetCurrentUser();
 
-            this.developerProfiles.Edit(currentUser.Id, model.GithubProfile, model.TopProjectsLinks);
+            this.developers.Edit(currentUser.Id, model.GithubProfile, model.TopProjectsLinks);
 
             this.SetTempDataSuccessMessage("Your developer profile was edited successfully!");
 
@@ -99,7 +111,7 @@
                 return this.View(model);
             }
 
-            this.developerProfiles.AddSkill(this.GetCurrentUser().Id, model.Name);
+            this.developers.AddSkill(this.GetCurrentUser().Id, model.Name);
 
             this.SetTempDataSuccessMessage("The skill is added to your developer profile!");
 

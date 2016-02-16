@@ -20,5 +20,9 @@
             DateTime registrationDate);
 
         void Delete(int id);
+
+        void SetActive(int id);
+
+        void SetInActive(int id);
     }
 }
