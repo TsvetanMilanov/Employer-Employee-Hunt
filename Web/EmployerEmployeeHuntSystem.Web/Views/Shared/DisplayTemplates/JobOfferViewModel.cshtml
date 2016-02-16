@@ -1,0 +1,20 @@
+﻿@model EmployerEmployeeHuntSystem.Web.ViewModels.JobOffers.JobOfferViewModel
+
+<div>
+    <div>
+        <strong>Minimum candidates count: </strong>
+        <span>@Model.MinimumCandidatesCount</span>
+    </div>
+    <div>
+        <strong>Is active: </strong>
+        <span>@Model.IsActive.ToString()</span>
+    </div>
+    <div>
+        <strong>Registered on: </strong>
+        <span>@Model.RegistrationDate.ToShortDateString()</span>
+    </div>
+    <div>
+        <strong>Required skills: </strong>
+        <span>@string.Join(", ", Model.RequiredSkills.Select(s => s.Name).ToList())</span>
+    </div>
+</div>

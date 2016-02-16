@@ -45,22 +45,7 @@
                             foreach (var jobOffer in Model.JobOffers)
                             {
                                 <div class="col-md-6">
-                                    <div>
-                                        <strong>Minimum candidates count: </strong>
-                                        <span>@jobOffer.MinimumCandidatesCount</span>
-                                    </div>
-                                    <div>
-                                        <strong>Is active: </strong>
-                                        <span>@jobOffer.IsActive.ToString()</span>
-                                    </div>
-                                    <div>
-                                        <strong>Registered on: </strong>
-                                        <span>@jobOffer.RegistrationDate.ToShortDateString()</span>
-                                    </div>
-                                    <div>
-                                        <strong>Required skills: </strong>
-                                        <span>@string.Join(", ", jobOffer.RequiredSkills.Select(s => s.Name).ToList())</span>
-                                    </div>
+                                    @Html.DisplayFor(x => jobOffer)
                                     <div>
                                         @Html.ActionLink("Details", "Details", "JobOffers", new { id = jobOffer.Id }, new { @class = "btn btn-sm" })
 

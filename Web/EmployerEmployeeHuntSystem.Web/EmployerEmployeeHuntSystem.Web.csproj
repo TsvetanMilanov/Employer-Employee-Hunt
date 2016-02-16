@@ -208,6 +208,7 @@
     <Compile Include="Areas\Headhunters\Controllers\HeadhuntersController.cs" />
     <Compile Include="Areas\Headhunters\Controllers\JobOffersController.cs" />
     <Compile Include="Areas\Headhunters\HeadhuntersAreaRegistration.cs" />
+    <Compile Include="Areas\Headhunters\ViewModels\Developers\CandidatesForJobOfferViewModel.cs" />
     <Compile Include="Areas\Headhunters\ViewModels\JobOffers\JobOfferHeadhunterListItemViewModel.cs" />
     <Compile Include="Areas\Headhunters\ViewModels\JobOffers\JobOffersListAllViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -356,6 +357,7 @@
     <Content Include="Views\Shared\DisplayTemplates\DeveloperProfileListViewModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ICollectionSkillViewModel.cshtml" />
     <Content Include="Views\Developers\All.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\JobOfferViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -7,16 +7,24 @@
             <th>Is Available For Hire</th>
             <th>Skills</th>
             <th>Github Profile</th>
+            @if (ViewBag.IsHeadHunter == true)
+            {
+                <th>Actions</th>
+            }
         </tr>
     </thead>
     <tbody>
         @foreach (var developer in Model.DevelopersProfiles)
-            {
+        {
             <tr>
                 <td>@Html.ActionLink(developer.User.UserName, "Details", "Developers", new { id = developer.User.Id, area = ViewBag.Area }, null)</td>
                 <td>@developer.IsAvailableForHire</td>
                 <td>@Html.DisplayFor(x => developer.Skills)</td>
                 <td><a href="@developer.GithubProfile">Go To Github Profile</a></td>
+                @if (ViewBag.IsHeadHunter == true)
+                {
+                    <td>@Html.ActionLink("Add To Job Offer", "AddCandidate", "JobOffers", new { id = developer.User.Id, area = ViewBag.Area }, new { @class = "btn btn-success" })</td>
+                }
             </tr>
         }
 </table>

@@ -1,10 +1,13 @@
-﻿@model EmployerEmployeeHuntSystem.Web.ViewModels.DeveloperProfiles.DeveloperProfileListViewModel
+﻿@model EmployerEmployeeHuntSystem.Web.Areas.Headhunters.ViewModels.Developers.CandidatesForJobOfferViewModel
 @{
     ViewBag.Title = "Candidates For Job Offer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Candidates For JobOffer</h2>
-
-@Html.DisplayFor(x => Model, new { Area = "Headhunters" })
+<h3 class="text-center">Candidates For Job Offer</h3>
+<div class="text-center">
+    @Html.DisplayFor(x => Model.JobOffer)
+</div>
+<hr />
+@Html.DisplayFor(x => Model.ListOfDeveloperProfiles, new { Area = "Headhunters", IsHeadhunter = true })
 
