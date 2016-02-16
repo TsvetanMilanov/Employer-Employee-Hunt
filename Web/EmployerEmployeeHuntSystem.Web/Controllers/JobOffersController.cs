@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
+    using Infrastructure.ActionAttributes;
     using Infrastructure.Mapping;
     using Services.Data.Contracts;
     using ViewModels.JobOffers;
@@ -12,6 +13,9 @@
     [Authorize]
     public class JobOffersController : BaseController
     {
+        // Key to pass to the OrganizationFounder attribute to check if the current user is the founder of the organization.
+        private const string OrganizationIdRequestKey = "organizationId";
+
         private IJobOffersService jobOffers;
         private IOrganizationsService organizations;
         private ISkillsService skills;
@@ -26,6 +30,7 @@
             this.skills = skills;
         }
 
+        [OrganizationFounder(OrganizationIdKey = OrganizationIdRequestKey)]
         public ActionResult Index(int organizationId)
         {
             var jobOffersForOrganization = this.jobOffers.GetByOrganizationId(organizationId)
