@@ -1,6 +1,7 @@
 ﻿namespace EmployerEmployeeHuntSystem.Services.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using Contracts;
     using EmployerEmployeeHuntSystem.Data.Common;
@@ -13,6 +14,11 @@
         public UsersService(IGenericRepository<User> users)
         {
             this.users = users;
+        }
+
+        public IEnumerable<User> GetAll()
+        {
+            return this.users.All();
         }
 
         public User GetById(string id)

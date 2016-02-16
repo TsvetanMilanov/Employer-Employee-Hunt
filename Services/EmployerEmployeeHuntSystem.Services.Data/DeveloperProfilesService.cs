@@ -11,19 +11,26 @@
     public class DeveloperProfilesService : IDeveloperProfilesService
     {
         private const int MinLinesOfCodeForSkill = 7000;
+        private const double AcceptableSkillsMatchPercentage = 80.0;
 
         private IDbRepository<DeveloperProfile, string> developerProfiles;
         private ISkillsService skills;
         private IGithubService githubSerice;
+        private IJobOffersService jobOffers;
+        private IUsersService users;
 
         public DeveloperProfilesService(
             IDbRepository<DeveloperProfile, string> developerProfiles,
             IGithubService githubSerice,
-            ISkillsService skills)
+            ISkillsService skills,
+            IJobOffersService jobOffers,
+            IUsersService users)
         {
             this.developerProfiles = developerProfiles;
             this.githubSerice = githubSerice;
             this.skills = skills;
+            this.jobOffers = jobOffers;
+            this.users = users;
         }
 
         public DeveloperProfile Create(string userId, string githubProfile, ICollection<string> topProjects)
@@ -148,6 +155,29 @@
             this.developerProfiles.Update(developerProfile);
 
             this.developerProfiles.Save();
+        }
+
+        public IQueryable<DeveloperProfile> GetCandidatesForJobOffer(int jobOfferId)
+        {
+            var result = new List<DeveloperProfile>();
+
+            var jobOfferRequirements = new HashSet<string>(this.jobOffers.GetById(jobOfferId).RequiredSkills.Select(s => s.Name).ToList());
+
+            foreach (var developer in this.developerProfiles.All().Where(d => d.IsAvailableForHire == true))
+            {
+                var developersSkillsNamesList = developer.Skills.Select(s => s.Name).ToList();
+
+                var developersSkills = new HashSet<string>(developersSkillsNamesList);
+
+                double skillsMatchCount = jobOfferRequirements.Intersect(developersSkills).Count();
+
+                if ((skillsMatchCount / jobOfferRequirements.Count) * 100 >= AcceptableSkillsMatchPercentage)
+                {
+                    result.Add(developer);
+                }
+            }
+
+            return result.AsQueryable();
         }
 
         private string GetUserNameFromGithubProfileLink(string githubProfile)

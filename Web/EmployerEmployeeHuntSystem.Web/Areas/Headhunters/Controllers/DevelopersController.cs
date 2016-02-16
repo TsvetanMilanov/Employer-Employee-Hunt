@@ -7,6 +7,7 @@
     using ViewModels.Developers;
     using Web.ViewModels.DeveloperProfiles;
     using Web.ViewModels.JobOffers;
+
     public class DevelopersController : HeadhuntersBaseController
     {
         private IDeveloperProfilesService developers;
@@ -22,7 +23,7 @@
         {
             DeveloperProfileListViewModel innerModel = new DeveloperProfileListViewModel();
 
-            innerModel.DevelopersProfiles = this.developers.GetAll()
+            innerModel.DevelopersProfiles = this.developers.GetCandidatesForJobOffer(id)
                 .To<DeveloperProfileViewModel>()
                 .ToList();
 

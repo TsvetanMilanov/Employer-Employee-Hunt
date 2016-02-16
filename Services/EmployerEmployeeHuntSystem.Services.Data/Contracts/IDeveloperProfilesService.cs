@@ -8,6 +8,8 @@
     {
         IQueryable<DeveloperProfile> GetAll();
 
+        IQueryable<DeveloperProfile> GetCandidatesForJobOffer(int jobOfferId);
+
         DeveloperProfile GetById(string id);
 
         DeveloperProfile Create(string userId, string githubProfile, ICollection<string> topProjects);
