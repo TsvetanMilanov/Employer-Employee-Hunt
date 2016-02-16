@@ -32,7 +32,7 @@
                 @foreach (var project in Model.TopProjects)
                 {
                     <div class="form-control">
-                        @project.Link
+                        <a href="@project.Link" target="_blank">@project.Name</a>
                     </div>
                 }
             </div>

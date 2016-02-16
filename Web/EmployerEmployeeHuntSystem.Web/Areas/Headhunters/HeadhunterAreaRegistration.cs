@@ -8,15 +8,15 @@
         {
             get
             {
-                return "Headhunter";
+                return "Headhunters";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "Headhunter_default",
-                "Headhunter/{controller}/{action}/{id}",
+                "Headhunters_default",
+                "Headhunters/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional });
         }
     }
