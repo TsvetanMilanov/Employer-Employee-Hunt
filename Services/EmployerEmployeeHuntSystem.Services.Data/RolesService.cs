@@ -1,5 +1,6 @@
 ﻿namespace EmployerEmployeeHuntSystem.Services.Data
 {
+    using System;
     using System.Linq;
     using Contracts;
     using EmployerEmployeeHuntSystem.Data.Common;
@@ -59,9 +60,20 @@
 
         public IQueryable<string> GetRolesNamesByFilter(string filter)
         {
+            if (string.IsNullOrEmpty(filter))
+            {
+                return this.roles.All()
+                    .Select(r => r.Name);
+            }
+
             return this.roles.All()
                 .Where(r => r.Name.ToLower().Contains(filter.ToLower()))
                 .Select(r => r.Name);
+        }
+
+        public IQueryable<IdentityRole> GetAll()
+        {
+            return this.roles.All();
         }
 
         public void RemoveRoleFromUser(string userName, string roleName)
@@ -81,6 +93,25 @@
 
             this.userRoles.Delete(userRole);
             this.userRoles.SaveChanges();
+        }
+
+        public void Add(string name)
+        {
+            this.roles.Add(new IdentityRole
+            {
+                Name = name
+            });
+
+            this.roles.SaveChanges();
+        }
+
+        public void Remove(string name)
+        {
+            string id = this.roles.All().FirstOrDefault(r => r.Name == name).Id;
+
+            this.roles.Delete(id);
+
+            this.roles.SaveChanges();
         }
     }
 }

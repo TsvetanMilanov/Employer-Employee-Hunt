@@ -1,0 +1,21 @@
+﻿@model IEnumerable<EmployerEmployeeHuntSystem.Web.Areas.Administration.ViewModels.Roles.RoleViewModel>
+@using EmployerEmployeeHuntSystem.Constants
+@using GridMvc.Html
+@using GridMvc.Sorting
+
+@{
+    ViewBag.Title = "All Roles";
+}
+
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(x => x.Name)
+        .Titled("Name");
+
+    columns.Add()
+        .Titled("Actions")
+        .Encoded(false)
+        .Sanitized(false)
+        .RenderValueAs(x => Html.ActionLink("Delete", "Remove", new { name = x.Name }, new { @class = "btn btn-danger" }));
+}).WithPaging(GlobalConstants.DefaultPageSize).Sortable().Filterable().WithMultipleFilters()
+

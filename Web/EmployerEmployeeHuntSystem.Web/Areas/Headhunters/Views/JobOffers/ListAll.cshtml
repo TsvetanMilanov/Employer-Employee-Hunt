@@ -24,8 +24,7 @@
     columns.Add(o => o.Id)
            .Titled("Id");
 
-    columns.Add(o => o.RegistrationDate, "asdf")
-        .Titled("Founded On")
+    columns.Add(o => o.RegistrationDate)
         .SortInitialDirection(GridSortDirection.Descending)
         .Format("{0:dd/MM/yyyy}");
 
@@ -43,7 +42,9 @@
         .RenderValueAs(d =>
         @<span>
             @string.Join(", ", d.RequiredSkills.Select(s => s.Name))
-        </span>);
+        </span>)
+        .Sortable(false)
+        .Filterable(false);
 
 columns.Add()
     .Titled("Actions")

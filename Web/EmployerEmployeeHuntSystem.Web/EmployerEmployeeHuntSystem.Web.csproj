@@ -210,6 +210,7 @@
     <Compile Include="Areas\Administration\ViewModels\Organizations\OrganizationAdministrationEditViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Organizations\OrganizationAdministrationViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Roles\RoleManagementViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Roles\RoleViewModel.cs" />
     <Compile Include="Areas\Headhunters\Controllers\DevelopersController.cs" />
     <Compile Include="Areas\Headhunters\Controllers\HeadhuntersBaseController.cs" />
     <Compile Include="Areas\Headhunters\Controllers\HeadhuntersController.cs" />
@@ -300,6 +301,8 @@
     <Content Include="Areas\Administration\Views\Organizations\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Organizations\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Roles\RemoveRoleFromUser.cshtml" />
+    <Content Include="Areas\Administration\Views\Roles\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Roles\Add.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
