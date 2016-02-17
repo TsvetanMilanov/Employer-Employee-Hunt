@@ -209,7 +209,6 @@
     <Compile Include="Areas\Headhunters\Controllers\JobOffersController.cs" />
     <Compile Include="Areas\Headhunters\HeadhuntersAreaRegistration.cs" />
     <Compile Include="Areas\Headhunters\ViewModels\Developers\CandidatesForJobOfferViewModel.cs" />
-    <Compile Include="Areas\Headhunters\ViewModels\JobOffers\JobOfferHeadhunterListItemViewModel.cs" />
     <Compile Include="Areas\Headhunters\ViewModels\JobOffers\JobOffersListAllViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -360,6 +359,7 @@
     <Content Include="Views\Developers\All.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\JobOfferViewModel.cshtml" />
     <Content Include="Views\Developers\Details.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\IEnumerableJobOffer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

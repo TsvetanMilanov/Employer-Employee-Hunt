@@ -6,6 +6,7 @@
     using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
     using ViewModels.JobOffers;
+    using Web.ViewModels.JobOffers;
 
     public class JobOffersController : HeadhuntersBaseController
     {
@@ -20,7 +21,7 @@
         public ActionResult ListAll()
         {
             var allJobOffers = this.jobOffers.GetAll()
-                .To<JobOfferHeadhunterListItemViewModel>()
+                .To<JobOfferViewModel>()
                 .ToList();
 
             var model = new JobOffersListAllViewModel();
@@ -33,7 +34,7 @@
         public ActionResult Current()
         {
             var result = this.jobOffers.GetActiveJoboffersForHeadhunter(this.User.Identity.GetUserId())
-                .To<JobOfferHeadhunterListItemViewModel>()
+                .To<JobOfferViewModel>()
                 .ToList();
 
             var model = new JobOffersListAllViewModel();

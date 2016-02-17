@@ -22,9 +22,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="" class="col-lg-2 control-label">Founder</label>
+                    <label for="" class="col-lg-2 control-label">Email</label>
                     <div class="col-lg-10">
-                        <span class="form-control">@Model.Founder.UserName</span>
+                        <span class="form-control">@Model.Founder.Email</span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -47,11 +47,10 @@
                                 <div class="col-md-6">
                                     @Html.DisplayFor(x => jobOffer)
                                     <div>
-                                        @Html.ActionLink("Details", "Details", "JobOffers", new { id = jobOffer.Id }, new { @class = "btn btn-sm" })
-
                                         @if (Model.Founder.Id == User.Identity.GetUserId())
                                         {
-                                            @Html.ActionLink("Delete", "Delete", "JobOffers", new { id = jobOffer.Id }, new { @class = "btn btn-sm btn-danger" })
+                                            @Html.ActionLink("Details", "Details", "JobOffers", new { id = jobOffer.Id }, new { @class = "btn btn-sm" }) @:|
+                                            @Html.ActionLink("Delete", "Delete", "JobOffers", new { id = jobOffer.Id }, new { @class = "btn btn-sm btn-danger" }) @:|
                                             @Html.ActionLink("Set As Inactive", "SetInactive", "JobOffers", new { id = jobOffer.Id }, new { @class = "btn btn-sm btn-warning" })
                                         }
                                     </div>

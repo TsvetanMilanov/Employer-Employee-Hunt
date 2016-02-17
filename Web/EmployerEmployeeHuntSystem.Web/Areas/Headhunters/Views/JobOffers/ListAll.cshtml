@@ -7,67 +7,11 @@
 
 <h3 class="text-center">All Job Offers</h3>
 <hr />
-<table class="table table-striped table-hover">
-    <tr>
-        <th>Registration Date</th>
-        <th>Minimum Candidates Count</th>
-        <th>Current Candidates Count</th>
-        <th>Headhunter</th>
-        <th>Is Active</th>
-        <th>Required Skills</th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model.JobOffers)
-    {
-        <tr @if (item.IsActive) { @Html.Raw("class=\"success\"")          } else { @Html.Raw("class=\"warning\"")          }>
-            <td>
-                <span>@item.RegistrationDate.ToShortDateString()</span>
-            </td>
-            <td>
-                <span>@item.MinimumCandidatesCount</span>
-            </td>
-            <td>
-                <span>@item.CandidatesCount</span>
-            </td>
-            <td>
-                <span>@item.Headhunter</span>
-            </td>
-            <td>
-                <span>@item.IsActive.ToString()</span>
-            </td>
-            <td>
-                <span>@string.Join(", ", item.RequiredSkills.Select(s => s.Name))</span>
-            </td>
-            <td>
-                <button data-id="@item.Id" data-action="expand" class="btn btn-primary">Actions</button>
-            </td>
-        </tr>
-        <tr class="hidden" data-id="@item.Id">
-            <td colspan="7" class="text-center">
-                @if (item.IsActive)
-                {
-                    @Html.ActionLink("Set As Inactive", "SetInactive", new { id = item.Id }) @:|
-
-                    if (string.IsNullOrWhiteSpace(item.HeadhunterId) || item.HeadhunterId == User.Identity.GetUserId())
-                    {
-                        @Html.ActionLink("Search For Candidates", "CandidatesForJobOffer", "Developers", new { id = item.Id }, null) @:|
-                    }
-                }
-                else
-                {
-                    @Html.ActionLink("Set As Active", "SetActive", new { id = item.Id }) @:|
-                }
-
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
-
-</table>
+@Html.DisplayFor(x => Model.JobOffers, new { IsHeadhunter = true })
 
 @section scripts {
     <script>
+        console.log('here')
         jqueryElementManipulation.toggleClassOfTableRow('expand', 'hidden');
     </script>
 }

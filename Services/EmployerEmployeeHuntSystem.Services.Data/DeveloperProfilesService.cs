@@ -11,7 +11,7 @@
     public class DeveloperProfilesService : IDeveloperProfilesService
     {
         private const int MinLinesOfCodeForSkill = 7000;
-        private const double AcceptableSkillsMatchPercentage = 80.0;
+        private const double AcceptableSkillsMatchPercentage = 50.0;
 
         private IDbRepository<DeveloperProfile, string> developerProfiles;
         private ISkillsService skills;
