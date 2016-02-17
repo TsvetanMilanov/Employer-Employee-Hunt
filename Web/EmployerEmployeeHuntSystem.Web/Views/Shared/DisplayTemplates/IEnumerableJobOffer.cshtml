@@ -14,7 +14,7 @@
 
     @foreach (var item in Model)
     {
-        <tr @if (item.IsActive) { @Html.Raw("class=\"success\"")            } else { @Html.Raw("class=\"warning\"")            }>
+        <tr @if (item.IsActive) { @Html.Raw("class=\"success\"")             } else { @Html.Raw("class=\"warning\"")             }>
             <td>
                 <span>@Html.ActionLink(item.Organization, "Details", "Organizations", new { id = item.OrganizationId, area = string.Empty }, null)</span>
             </td>
@@ -60,22 +60,24 @@
         if (ViewBag.IsHeadhunter == true)
         {
             <tr class="hidden" data-id="@item.Id">
-                <td colspan="7" class="text-center">
+                <td colspan="8" class="text-center">
                     @if (item.IsActive)
                     {
-                        @Html.ActionLink("Set As Inactive", "SetInactive", new { id = item.Id }) @:|
-
                         if (string.IsNullOrWhiteSpace(item.HeadhunterId) || item.HeadhunterId == User.Identity.GetUserId())
                         {
+                            @Html.ActionLink("Set As Inactive", "SetInactive", new { id = item.Id }) @:|
+
                             @Html.ActionLink("Search For Candidates", "CandidatesForJobOffer", "Developers", new { id = item.Id }, null) @:|
-                    }
+                            
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) @:|
+                        }
                     }
                     else
                     {
                         @Html.ActionLink("Set As Active", "SetActive", new { id = item.Id }) @:|
-                }
+                    }
 
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Details", "Details", new { id = item.Id, area = string.Empty })
                 </td>
             </tr>
         }

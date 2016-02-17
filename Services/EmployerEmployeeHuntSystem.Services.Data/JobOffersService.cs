@@ -31,13 +31,13 @@
 
         public void AddCandidate(string userId, int jobOfferId, string headhunterId)
         {
-            var user = this.users.GetById(userId);
+            var user = this.users.GetById(headhunterId);
 
             if (user.HeadhunterProfile == null)
             {
                 user.HeadhunterProfile = new HeadhunterProfile
                 {
-                    UserId = user.Id
+                    UserId = headhunterId
                 };
 
                 this.users.Update(user);
