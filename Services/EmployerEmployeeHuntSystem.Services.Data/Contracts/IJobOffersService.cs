@@ -11,6 +11,8 @@
 
         IQueryable<JobOffer> GetByOrganizationId(int organizationId);
 
+        IQueryable<JobOffer> GetActiveJoboffersForHeadhunter(string headhunterId);
+
         JobOffer GetById(int id);
 
         JobOffer AddJobOffer(

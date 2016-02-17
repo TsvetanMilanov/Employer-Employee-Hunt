@@ -127,5 +127,10 @@
 
             this.jobOffers.Save();
         }
+
+        public IQueryable<JobOffer> GetActiveJoboffersForHeadhunter(string headhunterId)
+        {
+            return this.jobOffers.All().Where(j => j.HeadhunterProfileId == headhunterId && j.IsActive == true);
+        }
     }
 }

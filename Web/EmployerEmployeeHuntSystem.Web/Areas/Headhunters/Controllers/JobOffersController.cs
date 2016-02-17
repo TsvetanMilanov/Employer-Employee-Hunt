@@ -29,9 +29,17 @@
             return this.View(model);
         }
 
+        [HttpGet]
         public ActionResult Current()
         {
-            return this.View();
+            var result = this.jobOffers.GetActiveJoboffersForHeadhunter(this.User.Identity.GetUserId())
+                .To<JobOfferHeadhunterListItemViewModel>()
+                .ToList();
+
+            var model = new JobOffersListAllViewModel();
+            model.JobOffers = result;
+
+            return this.View(model);
         }
 
         public ActionResult SetActive(int id)

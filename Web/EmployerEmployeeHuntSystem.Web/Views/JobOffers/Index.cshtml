@@ -13,7 +13,7 @@
 
     @foreach (var item in Model.JobOffers)
     {
-        <tr @if (item.IsActive) { @Html.Raw("class=\"success\"")         } else { @Html.Raw("class=\"warning\"")        }>
+        <tr @if (item.IsActive) { @Html.Raw("class=\"success\"")          } else { @Html.Raw("class=\"warning\"")  }>
             <td>
                 <span>@item.RegistrationDate.ToShortDateString()</span>
             </td>
