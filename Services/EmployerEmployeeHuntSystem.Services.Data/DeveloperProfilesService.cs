@@ -15,19 +15,19 @@
 
         private IDbRepository<DeveloperProfile, string> developerProfiles;
         private ISkillsService skills;
-        private IGithubService githubSerice;
+        private IGithubService githubService;
         private IJobOffersService jobOffers;
         private IUsersService users;
 
         public DeveloperProfilesService(
             IDbRepository<DeveloperProfile, string> developerProfiles,
-            IGithubService githubSerice,
+            IGithubService githubService,
             ISkillsService skills,
             IJobOffersService jobOffers,
             IUsersService users)
         {
             this.developerProfiles = developerProfiles;
-            this.githubSerice = githubSerice;
+            this.githubService = githubService;
             this.skills = skills;
             this.jobOffers = jobOffers;
             this.users = users;
@@ -37,7 +37,7 @@
         {
             string userName = this.GetUserNameFromGithubProfileLink(githubProfile);
 
-            Dictionary<string, long> skills = this.githubSerice.GetAllLanguagesFromGithubReposForUser(userName);
+            Dictionary<string, long> skills = this.githubService.GetAllLanguagesFromGithubReposForUser(userName);
 
             var skillsNames = new List<string>();
 

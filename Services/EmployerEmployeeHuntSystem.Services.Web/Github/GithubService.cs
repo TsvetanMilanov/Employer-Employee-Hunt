@@ -1,5 +1,6 @@
 ﻿namespace EmployerEmployeeHuntSystem.Services.Web.Github
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Net;
@@ -48,7 +49,15 @@
                    ".NET CLR 3.5.21022; .NET CLR 3.5.30729; .NET4.0C; .NET4.0E)";
 
                 string responseText;
-                var response = (HttpWebResponse)request.GetResponse();
+                HttpWebResponse response = null;
+                try
+                {
+                    response = (HttpWebResponse)request.GetResponse();
+                }
+                catch (Exception)
+                {
+                    continue;
+                }
 
                 using (var sr = new StreamReader(response.GetResponseStream()))
                 {

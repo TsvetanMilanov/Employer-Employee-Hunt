@@ -1,0 +1,38 @@
+﻿@model IEnumerable<EmployerEmployeeHuntSystem.Web.Areas.Administration.ViewModels.Organizations.OrganizationAdministrationViewModel>
+@using EmployerEmployeeHuntSystem.Constants
+@using GridMvc.Html
+@using GridMvc.Sorting
+@{
+    ViewBag.Title = "Organizations";
+}
+
+<h3 class="text-center">Organizations Administration</h3>
+
+@Html.Grid(Model).Named("ordersGrid").Columns(columns =>
+    {
+    @*/* Adding not mapped column, that renders body, using inline Razor html helper */
+        columns.Add()
+                .Encoded(false)
+                .Sanitized(false)
+                .SetWidth(30)
+                .Css("hidden-xs") //hide on phones
+                .RenderValueAs(o =>
+                @<b>
+                    @Html.ActionLink("Edit", "Edit", new { id = o.OrderID }, new { @class = "modal_link" })
+                </b>);*@
+
+    columns.Add(o => o.Id)
+           .Titled("Id");
+
+    columns.Add(o => o.Name);
+
+    columns.Add()
+        .Titled("Founder")
+        .RenderValueAs(o => o.Founder.UserName);
+
+    columns.Add(o => o.FoundedOn)
+        .Titled("Founded On")
+        .SortInitialDirection(GridSortDirection.Descending)
+        .Format("{0:dd/MM/yyyy}");
+
+}).WithPaging(GlobalConstants.DefaultPageSize).Sortable().Filterable().WithMultipleFilters()

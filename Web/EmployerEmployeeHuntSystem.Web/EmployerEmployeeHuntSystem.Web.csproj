@@ -82,6 +82,10 @@
       <HintPath>..\..\packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="GridMvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Grid.Mvc.3.0.0\lib\net40\GridMvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -200,8 +204,10 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdministrationBaseController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
+    <Compile Include="Areas\Administration\Controllers\OrganizationsController.cs" />
     <Compile Include="Areas\Administration\Controllers\RolesController.cs" />
     <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Organizations\OrganizationAdministrationViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Roles\AddRoleToUserViewModel.cs" />
     <Compile Include="Areas\Headhunters\Controllers\DevelopersController.cs" />
     <Compile Include="Areas\Headhunters\Controllers\HeadhuntersBaseController.cs" />
@@ -266,6 +272,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Gridmvc.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -288,7 +295,12 @@
     <Content Include="Areas\Headhunters\Views\JobOffers\ListAll.cshtml" />
     <Content Include="Areas\Headhunters\Views\Developers\CandidatesForJobOffer.cshtml" />
     <Content Include="Areas\Headhunters\Views\JobOffers\Current.cshtml" />
+    <Content Include="Grid.mvc.readme" />
+    <Content Include="Areas\Administration\Views\Organizations\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Scripts\gridmvc.js" />
+    <Content Include="Scripts\gridmvc.lang.ru.js" />
+    <Content Include="Scripts\gridmvc.min.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -363,6 +375,8 @@
     <Content Include="Views\Shared\DisplayTemplates\JobOfferViewModel.cshtml" />
     <Content Include="Views\Developers\Details.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\IEnumerableJobOffer.cshtml" />
+    <Content Include="Views\Shared\_GridPager.cshtml" />
+    <Content Include="Views\Shared\_Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

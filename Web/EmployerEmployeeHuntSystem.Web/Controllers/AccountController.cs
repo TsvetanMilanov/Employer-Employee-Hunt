@@ -168,6 +168,7 @@
         {
             if (this.ModelState.IsValid)
             {
+                // TODO: Add User role to the new user.
                 var user = new User { UserName = model.Email, Email = model.Email };
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

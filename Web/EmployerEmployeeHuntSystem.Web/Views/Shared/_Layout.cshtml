@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - EmployerEmployeeHuntSystem</title>
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
     @Styles.Render("~/jqueryui/css")
     @Styles.Render("~/Content/css")
     <meta name="description" content="The description of my page" />
@@ -72,6 +73,7 @@
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/uihelpers")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

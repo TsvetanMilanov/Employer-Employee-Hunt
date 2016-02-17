@@ -65,7 +65,7 @@
 
             this.SetTempDataSuccessMessage(string.Format("Organization {0} successfully created!", organization.Name));
 
-            return this.RedirectToAction("Details", new { organizationId = organization.Id });
+            return this.RedirectToAction("Details", new { id = organization.Id });
         }
 
         [HttpGet]

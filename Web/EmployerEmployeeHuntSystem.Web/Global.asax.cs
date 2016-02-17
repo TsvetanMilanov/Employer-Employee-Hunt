@@ -21,7 +21,7 @@
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
 
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EmployerEmployeeHuntDbContext, Configuration>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<EmployerEmployeeHuntDbContext>());
             AutofacConfig.RegisterAutofac();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

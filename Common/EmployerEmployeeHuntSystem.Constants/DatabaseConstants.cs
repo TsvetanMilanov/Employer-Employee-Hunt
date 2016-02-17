@@ -2,7 +2,7 @@
 {
     public class DatabaseConstants
     {
-        public const string GithubLinkRegex = @"^(http|https):\/\/github.com\/[A-z]+";
+        public const string GithubLinkRegex = @"^(http|https):\/\/github.com\/\w+";
 
         public const int MinCanditatesForJobOffer = 0;
 
