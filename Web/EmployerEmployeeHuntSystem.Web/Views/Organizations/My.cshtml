@@ -5,7 +5,7 @@
 @{
     ViewBag.Title = "Organizations";
 }
-<h3 class="text-center">Organizations offering jobs</h3>
+<h3 class="text-center">My Organizations</h3>
 
 @Html.Grid(Model.Organizations).Columns(columns =>
 {
@@ -13,8 +13,6 @@
         .Encoded(false)
         .Sanitized(false)
         .RenderValueAs(x => Html.ActionLink(x.Name, "Details", "Organizations", new { id = x.Id }, null));
-    columns.Add(o => o.Founder)
-        .RenderValueAs(x => x.Founder.UserName);
     columns.Add(o => o.FoundedOn)
         .Format("{0:dd/MM/yyyy}");
     columns.Add(o => o.JobOffersCount);

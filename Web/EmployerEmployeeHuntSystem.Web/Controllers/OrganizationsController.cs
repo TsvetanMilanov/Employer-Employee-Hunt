@@ -33,6 +33,19 @@
             return this.View(model);
         }
 
+        public ActionResult My()
+        {
+            OrganizationsIndexViewModel model = new OrganizationsIndexViewModel();
+
+            var allOrganizations = this.organizations.GetByFounderId(this.User.Identity.GetUserId());
+
+            model.Organizations = allOrganizations.To<OrganizationViewModel>()
+                .OrderByDescending(o => o.JobOffersCount)
+                .ToList();
+
+            return this.View(model);
+        }
+
         public ActionResult Details(int id)
         {
             Organization organization = this.organizations.GetById(id);

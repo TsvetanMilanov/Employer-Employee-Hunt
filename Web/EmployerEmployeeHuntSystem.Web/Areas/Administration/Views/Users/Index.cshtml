@@ -24,4 +24,4 @@
             @Html.ActionLink("Edit", "Edit", new { id = x.Id }, new { @class = "btn btn-default" })
             @Html.ActionLink("Delete", "Delete", new { id = x.Id }, new { @class = "btn btn-danger" })
         </div>);
-});
+}).WithMultipleFilters().WithPaging(GlobalConstants.DefaultPageSize).Sortable().Filterable();

@@ -28,6 +28,7 @@
                     <li>@Html.ActionLink("Developers", "All", "Developers", new { area = string.Empty }, null)</li>
                     @if (this.User.Identity.IsAuthenticated)
                     {
+                        <li>@Html.ActionLink("My Organizations", "My", "Organizations", new { area = string.Empty }, null)</li>
                         <li>@Html.ActionLink("Create Organization", "Create", "Organizations", new { area = string.Empty }, null)</li>
 
                         if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))

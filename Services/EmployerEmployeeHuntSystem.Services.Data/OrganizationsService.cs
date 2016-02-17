@@ -76,6 +76,12 @@
             return this.organizations.AllWithDeleted();
         }
 
+        public IQueryable<Organization> GetByFounderId(string id)
+        {
+            return this.organizations.All()
+                .Where(o => o.UserId == id);
+        }
+
         public Organization GetById(int id)
         {
             return this.organizations.GetById(id);
