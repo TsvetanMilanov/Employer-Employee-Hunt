@@ -212,6 +212,7 @@
     <Compile Include="Areas\Headhunters\ViewModels\JobOffers\JobOffersListAllViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CandidaciesController.cs" />
     <Compile Include="Controllers\DevelopersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobOffersController.cs" />
@@ -233,6 +234,7 @@
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\UserViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\Candidacies\CandidacyViewModel.cs" />
     <Compile Include="ViewModels\DeveloperProfiles\DeveloperProfileCreateViewModel.cs" />
     <Compile Include="ViewModels\DeveloperProfiles\DeveloperProfileEditViewModel.cs" />
     <Compile Include="ViewModels\DeveloperProfiles\DeveloperProfileListViewModel.cs" />
@@ -240,6 +242,7 @@
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
     <Compile Include="ViewModels\JobOffers\JobOfferAddViewModel.cs" />
     <Compile Include="ViewModels\JobOffers\JobOfferEditViewModel.cs" />
+    <Compile Include="ViewModels\JobOffers\JobOfferFullDetailsViewModel.cs" />
     <Compile Include="ViewModels\JobOffers\JobOfferIndexViewModel.cs" />
     <Compile Include="ViewModels\JobOffers\JobOfferViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />

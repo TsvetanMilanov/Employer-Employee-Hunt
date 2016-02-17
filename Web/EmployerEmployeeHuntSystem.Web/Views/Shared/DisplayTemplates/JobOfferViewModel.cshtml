@@ -15,7 +15,7 @@
     </div>
     <div>
         <strong>Registered on: </strong>
-        <span>@Html.ActionLink(@Model.RegistrationDate.ToShortDateString(), "Details", "JobOffers", new { id = Model.Id }, null)</span>
+        <span>@Html.ActionLink(@Model.RegistrationDate.ToShortDateString(), "Details", "JobOffers", new { id = Model.Id, area = string.Empty }, null)</span>
     </div>
     <div>
         <strong>Required skills: </strong>

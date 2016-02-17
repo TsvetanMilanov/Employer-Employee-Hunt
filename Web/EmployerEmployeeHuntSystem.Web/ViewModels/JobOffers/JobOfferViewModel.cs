@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using AutoMapper;
+    using Candidacies;
     using Constants;
     using Data.Models;
     using Infrastructure.Mapping;

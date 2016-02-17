@@ -59,6 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CandidaciesService.cs" />
+    <Compile Include="Contracts\ICandidaciesService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="DeveloperProfilesService.cs" />
     <Compile Include="Contracts\IDeveloperProfilesService.cs" />

@@ -9,7 +9,10 @@
     using Services.Data.Contracts;
     using ViewModels.JobOffers;
     using ViewModels.Organizations;
-
+    using Data.Models;
+    using ViewModels.Skills;
+    using System.Collections.Generic;
+    using ViewModels.Candidacies;
     [Authorize]
     public class JobOffersController : BaseController
     {
@@ -51,13 +54,22 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            JobOfferViewModel jobOffer = this.Mapper.Map<JobOfferViewModel>(this.jobOffers.GetById(id.Value));
+            JobOffer jobOffer = this.jobOffers.GetById(id.Value);
+
+            JobOfferViewModel jobOfferViewModel = this.Mapper.Map<JobOfferViewModel>(jobOffer);
+
+            JobOfferFullDetailsViewModel model = new JobOfferFullDetailsViewModel
+            {
+                JobOffer = jobOfferViewModel,
+                Candidacies = this.Mapper.Map<IEnumerable<CandidacyViewModel>>(jobOffer.Candidacies.Where(j => j.IsDeleted == false))
+            };
+
             if (jobOffer == null)
             {
                 return this.HttpNotFound();
             }
 
-            return this.View(jobOffer);
+            return this.View(model);
         }
 
         public ActionResult Add(int organizationId)
