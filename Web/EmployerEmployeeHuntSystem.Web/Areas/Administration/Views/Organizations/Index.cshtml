@@ -26,9 +26,8 @@
 
     columns.Add(o => o.Name);
 
-    columns.Add()
-        .Titled("Founder")
-        .RenderValueAs(o => o.Founder.UserName);
+    columns.Add(o => o.Founder.UserName)
+        .Titled("Founder");
 
     columns.Add(o => o.FoundedOn)
         .Titled("Founded On")
