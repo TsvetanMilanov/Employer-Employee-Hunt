@@ -14,7 +14,7 @@
 
         DeveloperProfile Create(string userId, string githubProfile, ICollection<string> topProjects);
 
-        DeveloperProfile Edit(string userId, string githubProfile, ICollection<string> topProjects);
+        DeveloperProfile Edit(string userId, string githubProfile, ICollection<string> topProjects, bool isAvailableForHire);
 
         void AddSkill(string userId, string name);
     }

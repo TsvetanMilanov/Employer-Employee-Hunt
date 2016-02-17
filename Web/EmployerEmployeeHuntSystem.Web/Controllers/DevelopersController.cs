@@ -76,11 +76,28 @@
 
             model.GithubProfile = currentUser.DeveloperProfile.GithubProfile;
             model.TopProjectsLinks = currentUser.DeveloperProfile.TopProjects.Select(p => p.Link).ToList();
+            model.IsAvailableForHire = currentUser.DeveloperProfile.IsAvailableForHire.Value;
+
+            return this.View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Details(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return this.Redirect("/");
+            }
+
+            var developer = this.developers.GetById(id);
+
+            DeveloperProfileViewModel model = this.Mapper.Map<DeveloperProfileViewModel>(developer);
 
             return this.View(model);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(DeveloperProfileEditViewModel model)
         {
             if (!this.ModelState.IsValid)
@@ -90,7 +107,7 @@
 
             var currentUser = this.GetCurrentUser();
 
-            this.developers.Edit(currentUser.Id, model.GithubProfile, model.TopProjectsLinks);
+            this.developers.Edit(currentUser.Id, model.GithubProfile, model.TopProjectsLinks, model.IsAvailableForHire);
 
             this.SetTempDataSuccessMessage("Your developer profile was edited successfully!");
 

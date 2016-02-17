@@ -108,7 +108,7 @@
             return this.developerProfiles.GetById(id);
         }
 
-        public DeveloperProfile Edit(string userId, string githubProfile, ICollection<string> topProjects)
+        public DeveloperProfile Edit(string userId, string githubProfile, ICollection<string> topProjects, bool isAvailableForHire)
         {
             DeveloperProfile developerProfile = this.developerProfiles.GetById(userId);
 
@@ -128,6 +128,8 @@
                     });
                 }
             }
+
+            developerProfile.IsAvailableForHire = isAvailableForHire;
 
             this.developerProfiles.Update(developerProfile);
 

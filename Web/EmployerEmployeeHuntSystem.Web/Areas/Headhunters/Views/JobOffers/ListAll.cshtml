@@ -1,4 +1,5 @@
 ﻿@model EmployerEmployeeHuntSystem.Web.Areas.Headhunters.ViewModels.JobOffers.JobOffersListAllViewModel
+@using Microsoft.AspNet.Identity;
 @{
     ViewBag.Title = "All Job Offers";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -48,7 +49,7 @@
                 {
                     @Html.ActionLink("Set As Inactive", "SetInactive", new { id = item.Id }) @:|
 
-                    if (string.IsNullOrWhiteSpace(item.HeadhunterId))
+                    if (string.IsNullOrWhiteSpace(item.HeadhunterId) || item.HeadhunterId == User.Identity.GetUserId())
                     {
                         @Html.ActionLink("Search For Candidates", "CandidatesForJobOffer", "Developers", new { id = item.Id }, null) @:|
                     }

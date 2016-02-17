@@ -1,20 +1,16 @@
 ﻿@model EmployerEmployeeHuntSystem.Web.ViewModels.DeveloperProfiles.DeveloperProfileViewModel
 @{
-    ViewBag.Title = "Developer Profile";
+    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="form-horizontal">
     <h3 class="text-center">Developer Profile</h3>
-    <div class="text-center">
-        @Html.ActionLink("Edit", "Edit", "Developers", null, new { @class = "btn btn-default" }) @Html.ActionLink("Add Skill", "AddSkill", "Developers", null, new { @class = "btn btn-primary" })
-    </div>
-    <hr />
     <div class="form-group">
         <div class="form-group">
             @Html.LabelFor(x => x.GithubProfile, new { @class = "col-lg-2 control-label" })
             <div class="col-lg-10">
-                @Html.DisplayFor(x => x.GithubProfile, new { @class = "form-control" })
+                <a href="@Model.GithubProfile" class="form-control">@Model.GithubProfile</a>
             </div>
         </div>
         <div class="form-group">
@@ -32,12 +28,6 @@
                         <a href="@project.Link" target="_blank">@project.Name</a>
                     </div>
                 }
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(x => x.IsAvailableForHire, new { @class = "col-lg-2 control-label" })
-            <div class="col-lg-10">
-                @Model.IsAvailableForHire
             </div>
         </div>
     </div>

@@ -1,7 +1,14 @@
 ﻿@model ICollection<EmployerEmployeeHuntSystem.Web.ViewModels.Skills.SkillViewModel>
 <div>
-    @foreach (var skill in Model)
+    @if (Model != null)
     {
-        <span class="label label-primary big-text-size span-top-bottom-margin">@skill.Name</span>
+        foreach (var skill in Model)
+        {
+            <span class="label label-primary big-text-size span-top-bottom-margin">@skill.Name</span>
+        }
+    }
+    else
+    {
+        <h5>This developer does not have skills yet.</h5>
     }
 </div>

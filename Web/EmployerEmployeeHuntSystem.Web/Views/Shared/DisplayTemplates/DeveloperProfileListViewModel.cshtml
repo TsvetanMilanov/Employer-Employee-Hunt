@@ -17,7 +17,7 @@
         @foreach (var developer in Model.DevelopersProfiles)
         {
             <tr>
-                <td>@Html.ActionLink(developer.User.UserName, "Details", "Developers", new { id = developer.User.Id, area = ViewBag.Area }, null)</td>
+                <td>@Html.ActionLink(developer.User.UserName, "Details", "Developers", new { id = developer.User.Id, area = string.Empty }, null)</td>
                 <td>@developer.IsAvailableForHire</td>
                 <td>@Html.DisplayFor(x => developer.Skills)</td>
                 <td><a href="@developer.GithubProfile">Go To Github Profile</a></td>

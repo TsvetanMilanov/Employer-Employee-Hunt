@@ -359,6 +359,7 @@
     <Content Include="Views\Shared\DisplayTemplates\ICollectionSkillViewModel.cshtml" />
     <Content Include="Views\Developers\All.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\JobOfferViewModel.cshtml" />
+    <Content Include="Views\Developers\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

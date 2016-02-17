@@ -13,5 +13,8 @@
 
         [Display(Name = "Top Projects Links")]
         public IList<string> TopProjectsLinks { get; set; }
+
+        [Display(Name = "Is Availale For Hire")]
+        public bool IsAvailableForHire { get; set; }
     }
 }

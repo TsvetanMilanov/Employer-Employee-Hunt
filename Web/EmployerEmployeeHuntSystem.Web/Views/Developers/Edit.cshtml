@@ -9,7 +9,7 @@
 {
     <fieldset>
         <legend>Edit Developer Profile</legend>
-
+        @Html.AntiForgeryToken()
         <div class="form-group">
             <div class="form-group">
                 @Html.LabelFor(x => x.GithubProfile, new { @class = "col-lg-2 control-label" })
@@ -35,6 +35,13 @@
 
                         @Html.EditorFor(x => x.TopProjectsLinks[Model.TopProjectsLinks.Count - 1], new { @class = "form-control wide-input", placeholder = "New Project Link" })
                     }
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.IsAvailableForHire, new { @class = "col-lg-2 control-label" })
+                <div class="col-lg-10">
+                    @Html.EditorFor(x => Model.IsAvailableForHire, new { @class = "form-control" })
+                    @Model.IsAvailableForHire
                 </div>
             </div>
             <div class="col-lg-10 col-lg-offset-2">
