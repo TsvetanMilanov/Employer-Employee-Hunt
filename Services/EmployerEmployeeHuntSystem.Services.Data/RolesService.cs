@@ -63,5 +63,24 @@
                 .Where(r => r.Name.ToLower().Contains(filter.ToLower()))
                 .Select(r => r.Name);
         }
+
+        public void RemoveRoleFromUser(string userName, string roleName)
+        {
+            var role = this.roles.All()
+                   .FirstOrDefault(r => r.Name == roleName);
+
+            if (role == null)
+            {
+                return;
+            }
+
+            var user = this.users.All().FirstOrDefault(u => u.UserName == userName);
+
+            var userRole = this.userRoles.All()
+                .FirstOrDefault(r => r.UserId == user.Id && r.RoleId == role.Id);
+
+            this.userRoles.Delete(userRole);
+            this.userRoles.SaveChanges();
+        }
     }
 }

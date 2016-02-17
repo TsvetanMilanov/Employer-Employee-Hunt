@@ -22,14 +22,22 @@
         [HttpGet]
         public ActionResult AddRoleToUser()
         {
-            AddRoleToUserViewModel model = new AddRoleToUserViewModel();
+            RoleManagementViewModel model = new RoleManagementViewModel();
+
+            return this.View(model);
+        }
+
+        [HttpGet]
+        public ActionResult RemoveRoleFromUser()
+        {
+            RoleManagementViewModel model = new RoleManagementViewModel();
 
             return this.View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddRoleToUser(AddRoleToUserViewModel model)
+        public ActionResult AddRoleToUser(RoleManagementViewModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -39,6 +47,22 @@
             this.roles.AddRoleToUser(model.UserName, model.Role);
 
             this.SetTempDataSuccessMessage("Role added to user!");
+
+            return this.RedirectToAction("Index", "Administration", new { area = "Administration" });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemoveRoleFromUser(RoleManagementViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            this.roles.RemoveRoleFromUser(model.UserName, model.Role);
+
+            this.SetTempDataSuccessMessage("Role removed from user!");
 
             return this.RedirectToAction("Index", "Administration", new { area = "Administration" });
         }

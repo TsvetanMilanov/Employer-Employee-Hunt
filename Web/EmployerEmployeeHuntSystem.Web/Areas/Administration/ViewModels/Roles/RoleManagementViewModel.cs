@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class AddRoleToUserViewModel
+    public class RoleManagementViewModel
     {
         [Required]
         public string Role { get; set; }

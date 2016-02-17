@@ -7,5 +7,7 @@
         IQueryable<string> GetRolesNamesByFilter(string filter);
 
         void AddRoleToUser(string userName, string roleName);
+
+        void RemoveRoleFromUser(string userName, string roleName);
     }
 }
