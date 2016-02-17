@@ -16,7 +16,7 @@
             this.users = users;
         }
 
-        public IEnumerable<User> GetAll()
+        public IQueryable<User> GetAll()
         {
             return this.users.All();
         }
@@ -36,6 +36,24 @@
             return this.users.All()
                 .Where(u => u.UserName.ToLower().Contains(filter.ToLower()))
                 .Select(u => u.UserName);
+        }
+
+        public void Edit(string id, string email, string userName, string phoneNumber)
+        {
+            var user = this.users.GetById(id);
+
+            user.Email = email;
+            user.UserName = userName;
+            user.PhoneNumber = phoneNumber;
+
+            this.users.Update(user);
+            this.users.SaveChanges();
+        }
+
+        public void Delete(string id)
+        {
+            this.users.Delete(id);
+            this.users.SaveChanges();
         }
     }
 }

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<EmployerEmployeeHuntSystem.Web.Areas.Administration.ViewModels.Users.UserAdministrationViewModel>
+@using EmployerEmployeeHuntSystem.Constants
+@using GridMvc.Html
+@using GridMvc.Sorting
+
+@{
+    ViewBag.Title = "All Users";
+}
+
+<h3>All Users</h3>
+
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(x => x.Id);
+    columns.Add(x => x.Email);
+    columns.Add(x => x.UserName);
+    columns.Add(x => x.PhoneNumber);
+    columns.Add()
+        .Titled("Actions")
+        .Sortable(false)
+        .Encoded(false)
+        .Sanitized(false)
+        .RenderValueAs(x => @<div>
+            @Html.ActionLink("Edit", "Edit", new { id = x.Id }, new { @class = "btn btn-default" })
+            @Html.ActionLink("Delete", "Delete", new { id = x.Id }, new { @class = "btn btn-danger" })
+        </div>);
+});
