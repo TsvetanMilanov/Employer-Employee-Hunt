@@ -3,8 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
     using AutoMapper;
-    using Candidacies;
     using Constants;
     using Data.Models;
     using Infrastructure.Mapping;
@@ -37,7 +37,7 @@
         {
             configuration.CreateMap<JobOffer, JobOfferViewModel>()
                 .ForMember(m => m.Organization, opts => opts.MapFrom(j => j.Organization.Name))
-                .ForMember(m => m.CandidatesCount, opts => opts.MapFrom(j => j.Candidacies.Count))
+                .ForMember(m => m.CandidatesCount, opts => opts.MapFrom(j => j.Candidacies.Where(c => c.IsDeleted == false).ToList().Count))
                 .ForMember(m => m.Headhunter, opts => opts.MapFrom(j => j.Headhunter.User.UserName))
                 .ForMember(m => m.OrganizationId, opts => opts.MapFrom(j => j.Organization.Id));
         }

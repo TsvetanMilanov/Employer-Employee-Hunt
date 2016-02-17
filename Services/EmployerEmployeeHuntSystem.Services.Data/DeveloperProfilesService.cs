@@ -178,7 +178,7 @@
 
                 if ((skillsMatchCount / jobOfferRequirements.Count) * 100 >= AcceptableSkillsMatchPercentage)
                 {
-                    if (candidacies.Any(c => c.DeveloperProfileId == developer.Id))
+                    if (candidacies.Any(c => c.DeveloperProfileId == developer.Id && c.IsDeleted == false))
                     {
                         continue;
                     }

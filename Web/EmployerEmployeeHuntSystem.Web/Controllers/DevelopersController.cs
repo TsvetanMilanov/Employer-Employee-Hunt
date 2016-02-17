@@ -33,6 +33,7 @@
             return this.View(model);
         }
 
+        [AllowAnonymous]
         public ActionResult All()
         {
             DeveloperProfileListViewModel model = new DeveloperProfileListViewModel();
