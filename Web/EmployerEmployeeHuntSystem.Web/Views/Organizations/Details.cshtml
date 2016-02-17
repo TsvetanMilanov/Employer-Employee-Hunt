@@ -52,6 +52,7 @@
                                         @if (Model.Founder.Id == User.Identity.GetUserId())
                                         {
                                             @Html.ActionLink("Delete", "Delete", "JobOffers", new { id = jobOffer.Id }, new { @class = "btn btn-sm btn-danger" })
+                                            @Html.ActionLink("Set As Inactive", "SetInactive", "JobOffers", new { id = jobOffer.Id }, new { @class = "btn btn-sm btn-warning" })
                                         }
                                     </div>
                                     <hr />

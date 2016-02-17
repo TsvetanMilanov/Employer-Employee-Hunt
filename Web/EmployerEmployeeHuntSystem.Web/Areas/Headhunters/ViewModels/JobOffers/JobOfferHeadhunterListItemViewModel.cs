@@ -28,11 +28,17 @@
 
         public string HeadhunterId { get; set; }
 
+        public string Headhunter { get; set; }
+
+        public int CandidatesCount { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<JobOffer, JobOfferHeadhunterListItemViewModel>()
                    .ForMember(m => m.Organization, opts => opts.MapFrom(j => j.Organization.Name))
                    .ForMember(m => m.HeadhunterId, opts => opts.MapFrom(j => j.HeadhunterProfileId))
+                   .ForMember(m => m.CandidatesCount, opts => opts.MapFrom(j => j.Candidacies.Count))
+                   .ForMember(m => m.Headhunter, opts => opts.MapFrom(j => j.Headhunter.User.UserName))
                    .ForMember(m => m.OrganizationId, opts => opts.MapFrom(j => j.Organization.Id));
         }
     }

@@ -10,6 +10,8 @@
     <tr>
         <th>Registration Date</th>
         <th>Minimum Candidates Count</th>
+        <th>Current Candidates Count</th>
+        <th>Headhunter</th>
         <th>Is Active</th>
         <th>Required Skills</th>
         <th></th>
@@ -17,12 +19,18 @@
 
     @foreach (var item in Model.JobOffers)
     {
-        <tr @if (item.IsActive) { @Html.Raw("class=\"success\"")         } else { @Html.Raw("class=\"warning\"")         }>
+        <tr @if (item.IsActive) { @Html.Raw("class=\"success\"")          } else { @Html.Raw("class=\"warning\"")          }>
             <td>
                 <span>@item.RegistrationDate.ToShortDateString()</span>
             </td>
             <td>
                 <span>@item.MinimumCandidatesCount</span>
+            </td>
+            <td>
+                <span>@item.CandidatesCount</span>
+            </td>
+            <td>
+                <span>@item.Headhunter</span>
             </td>
             <td>
                 <span>@item.IsActive.ToString()</span>
@@ -35,7 +43,7 @@
             </td>
         </tr>
         <tr class="hidden" data-id="@item.Id">
-            <td colspan="5" class="text-center">
+            <td colspan="7" class="text-center">
                 @if (item.IsActive)
                 {
                     @Html.ActionLink("Set As Inactive", "SetInactive", new { id = item.Id }) @:|

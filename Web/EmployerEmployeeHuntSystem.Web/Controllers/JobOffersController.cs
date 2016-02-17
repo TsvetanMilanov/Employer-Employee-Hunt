@@ -97,6 +97,24 @@
             return this.RedirectToAction("Index", new { organizationId = organizationId });
         }
 
+        public ActionResult SetInActive(int id)
+        {
+            this.jobOffers.SetInActive(id);
+
+            this.SetTempDataSuccessMessage("The job offer was set as inactive!");
+
+            return this.RedirectToAction("Details", "Organizations", new { id = this.jobOffers.GetById(id).OrganizationId });
+        }
+
+        public ActionResult SetActive(int id)
+        {
+            this.jobOffers.SetActive(id);
+
+            this.SetTempDataSuccessMessage("The job offer was set as active!");
+
+            return this.RedirectToAction("Details", "Organizations", new { id = this.jobOffers.GetById(id).OrganizationId });
+        }
+
         private JobOfferAddViewModel CreateJobOfferAddViewModel(int organizationId)
         {
             JobOfferAddViewModel model = new JobOfferAddViewModel();
@@ -106,5 +124,6 @@
 
             return model;
         }
+
     }
 }

@@ -44,7 +44,6 @@
                 this.users.SaveChanges();
             }
 
-
             var candidacy = new Candidacy
             {
                 DeveloperProfileId = userId,
@@ -55,6 +54,12 @@
 
             this.candidacies.Add(candidacy);
             this.candidacies.Save();
+
+            var jobOffer = this.jobOffers.GetById(jobOfferId);
+
+            jobOffer.HeadhunterProfileId = headhunterId;
+            this.jobOffers.Update(jobOffer);
+            this.jobOffers.Save();
         }
 
         public JobOffer AddJobOffer(
