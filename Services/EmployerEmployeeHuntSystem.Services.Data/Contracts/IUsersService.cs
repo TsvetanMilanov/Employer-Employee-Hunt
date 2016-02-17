@@ -10,6 +10,8 @@
 
         User GetById(string id);
 
+        User GetByEmail(string email);
+
         IQueryable<string> GetUsersUserNames(string filter);
     }
 }

@@ -15,5 +15,7 @@
         Organization Edit(int id, string name);
 
         void Delete(int id);
+
+        void Edit(int id, string name, DateTime foundedOn, string founderEmail);
     }
 }

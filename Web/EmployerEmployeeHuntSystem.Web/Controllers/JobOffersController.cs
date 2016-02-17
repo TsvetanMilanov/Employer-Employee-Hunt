@@ -1,18 +1,18 @@
 ﻿namespace EmployerEmployeeHuntSystem.Web.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
+    using Data.Models;
     using Infrastructure.ActionAttributes;
     using Infrastructure.Mapping;
     using Services.Data.Contracts;
+    using ViewModels.Candidacies;
     using ViewModels.JobOffers;
     using ViewModels.Organizations;
-    using Data.Models;
-    using ViewModels.Skills;
-    using System.Collections.Generic;
-    using ViewModels.Candidacies;
+
     [Authorize]
     public class JobOffersController : BaseController
     {

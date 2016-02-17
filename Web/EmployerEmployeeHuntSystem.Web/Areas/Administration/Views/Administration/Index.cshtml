@@ -13,5 +13,13 @@
             @Html.ActionLink("Add Role To User", "AddRoleToUser", "Roles", new { area = "Administration" }, new { @class = "list-group-item" })
         </div>
     </div>
+    <div class="col-md-6">
+        <div class="list-group">
+            <div href="#" class="list-group-item active">
+                Organizations
+            </div>
+            @Html.ActionLink("All Organizations", "Index", "Organizations", new { area = "Administration" }, new { @class = "list-group-item" })
+        </div>
+    </div>
 </div>
 <hr />

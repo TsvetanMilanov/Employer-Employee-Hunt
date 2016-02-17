@@ -22,5 +22,40 @@
 
             return this.View(model);
         }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var organization = this.organizations.GetById(id);
+
+            var model = this.Mapper.Map<OrganizationAdministrationEditViewModel>(organization);
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(OrganizationAdministrationEditViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            this.organizations.Edit(model.Id, model.Name, model.FoundedOn, model.Founder);
+
+            this.SetTempDataSuccessMessage("Organization edited successfully!");
+
+            return this.RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            this.organizations.Delete(id);
+
+            this.SetTempDataSuccessMessage("Organization deleted successfully!");
+
+            return this.RedirectToAction("Index");
+        }
     }
 }

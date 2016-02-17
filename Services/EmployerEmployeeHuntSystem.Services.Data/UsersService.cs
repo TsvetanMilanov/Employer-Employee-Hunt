@@ -26,6 +26,11 @@
             return this.users.GetById(id);
         }
 
+        public User GetByEmail(string email)
+        {
+            return this.users.All().FirstOrDefault(u => u.Email == email);
+        }
+
         public IQueryable<string> GetUsersUserNames(string filter)
         {
             return this.users.All()

@@ -2,20 +2,16 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
+    using AutoMapper;
     using Constants;
     using Data.Models;
     using Infrastructure.Mapping;
-    using Web.ViewModels.Account;
 
-    public class OrganizationAdministrationViewModel : IMapFrom<Organization>
+    public class OrganizationAdministrationEditViewModel : IMapFrom<Organization>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
-        public string UserId { get; set; }
-
-        [ForeignKey("UserId")]
-        public virtual UserViewModel Founder { get; set; }
+        public string Founder { get; set; }
 
         public DateTime FoundedOn { get; set; }
 
@@ -23,5 +19,11 @@
         [MaxLength(DatabaseConstants.MaxOrganizationNameLength)]
         [Required]
         public string Name { get; set; }
+
+        public void CreateMappings(IMapperConfiguration configuration)
+        {
+            configuration.CreateMap<Organization, OrganizationAdministrationEditViewModel>()
+                .ForMember(m => m.Founder, opts => opts.MapFrom(o => o.Founder.Email));
+        }
     }
 }

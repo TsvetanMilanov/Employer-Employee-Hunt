@@ -9,10 +9,12 @@
     public class OrganizationsService : IOrganizationsService
     {
         private IDbRepository<Organization, int> organizations;
+        private IGenericRepository<User> users;
 
-        public OrganizationsService(IDbRepository<Organization, int> organizations)
+        public OrganizationsService(IDbRepository<Organization, int> organizations, IGenericRepository<User> users)
         {
             this.organizations = organizations;
+            this.users = users;
         }
 
         public Organization Create(string name, string userId, DateTime foundedOn)
@@ -48,6 +50,20 @@
             this.organizations.Save();
 
             return organization;
+        }
+
+        public void Edit(int id, string name, DateTime foundedOn, string founderEmail)
+        {
+            Organization organization = this.organizations.GetById(id);
+            User newFounder = this.users.All().FirstOrDefault(u => u.Email == founderEmail);
+
+            organization.Name = name;
+            organization.FoundedOn = foundedOn;
+            organization.Founder = newFounder;
+
+            this.organizations.Update(organization);
+
+            this.organizations.Save();
         }
 
         public IQueryable<Organization> GetAll()
