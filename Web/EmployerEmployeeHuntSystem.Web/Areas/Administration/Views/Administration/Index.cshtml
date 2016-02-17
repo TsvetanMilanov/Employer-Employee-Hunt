@@ -10,10 +10,11 @@
             <div href="#" class="list-group-item active">
                 Roles
             </div>
-            @Html.ActionLink("Add Role To User", "AddRoleToUser", "Roles", new { area = "Administration" }, new { @class = "list-group-item" })
-            @Html.ActionLink("Remove Role From User", "RemoveRoleFromUser", "Roles", new { area = "Administration" }, new { @class = "list-group-item" })
+            @Html.ActionLink("All Roles", "Index", "Roles", new { area = "Administration" }, new { @class = "list-group-item" })
             @Html.ActionLink("Add New Role", "Add", "Roles", new { area = "Administration" }, new { @class = "list-group-item" })
             @Html.ActionLink("Remove Role", "Remove", "Roles", new { area = "Administration" }, new { @class = "list-group-item" })
+            @Html.ActionLink("Add Role To User", "AddRoleToUser", "Roles", new { area = "Administration" }, new { @class = "list-group-item" })
+            @Html.ActionLink("Remove Role From User", "RemoveRoleFromUser", "Roles", new { area = "Administration" }, new { @class = "list-group-item" })
         </div>
     </div>
     <div class="col-md-6">
@@ -22,7 +23,7 @@
                 Organizations
             </div>
             @Html.ActionLink("All Organizations", "Index", "Organizations", new { area = "Administration" }, new { @class = "list-group-item" })
+            @Html.ActionLink("Deleted Organizations", "Deleted", "Organizations", new { area = "Administration" }, new { @class = "list-group-item" })
         </div>
     </div>
 </div>
-<hr />

@@ -8,11 +8,15 @@
     {
         IQueryable<Organization> GetAll();
 
+        IQueryable<Organization> GetAllWithDeleted();
+
         Organization GetById(int id);
 
         Organization Create(string name, string userId, DateTime foundedOn);
 
         Organization Edit(int id, string name);
+
+        Organization Restore(int id);
 
         void Delete(int id);
 

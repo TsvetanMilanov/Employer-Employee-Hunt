@@ -303,6 +303,7 @@
     <Content Include="Areas\Administration\Views\Roles\RemoveRoleFromUser.cshtml" />
     <Content Include="Areas\Administration\Views\Roles\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Roles\Add.cshtml" />
+    <Content Include="Areas\Administration\Views\Organizations\Deleted.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />

@@ -71,9 +71,27 @@
             return this.organizations.All();
         }
 
+        public IQueryable<Organization> GetAllWithDeleted()
+        {
+            return this.organizations.AllWithDeleted();
+        }
+
         public Organization GetById(int id)
         {
             return this.organizations.GetById(id);
+        }
+
+        public Organization Restore(int id)
+        {
+            var organization = this.organizations.AllWithDeleted().FirstOrDefault(o => o.Id == id);
+
+            organization.IsDeleted = false;
+            organization.DeletedOn = null;
+
+            this.organizations.Update(organization);
+            this.organizations.Save();
+
+            return organization;
         }
     }
 }

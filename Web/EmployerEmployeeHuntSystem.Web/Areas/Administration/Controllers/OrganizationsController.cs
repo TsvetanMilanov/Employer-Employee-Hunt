@@ -23,6 +23,24 @@
             return this.View(model);
         }
 
+        public ActionResult Deleted()
+        {
+            var model = this.organizations.GetAllWithDeleted()
+                .Where(o => o.IsDeleted == true)
+                .To<OrganizationAdministrationViewModel>().ToList();
+
+            return this.View(model);
+        }
+
+        public ActionResult Restore(int id)
+        {
+            this.organizations.Restore(id);
+
+            this.SetTempDataSuccessMessage("The organization was restored");
+
+            return this.RedirectToAction("Index");
+        }
+
         [HttpGet]
         public ActionResult Edit(int id)
         {

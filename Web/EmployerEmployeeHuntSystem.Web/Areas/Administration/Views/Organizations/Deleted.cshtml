@@ -1,0 +1,35 @@
+﻿@model IEnumerable<EmployerEmployeeHuntSystem.Web.Areas.Administration.ViewModels.Organizations.OrganizationAdministrationViewModel>
+@using EmployerEmployeeHuntSystem.Constants
+@using GridMvc.Html
+@using GridMvc.Sorting
+@{
+    ViewBag.Title = "Organizations";
+}
+
+<h3 class="text-center">Organizations Administration</h3>
+
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(o => o.Id)
+           .Titled("Id");
+
+    columns.Add(o => o.Name);
+
+    columns.Add(o => o.Founder.UserName)
+        .Titled("Founder");
+
+    columns.Add(o => o.FoundedOn, "asdf")
+        .Titled("Founded On")
+        .SortInitialDirection(GridSortDirection.Descending)
+        .Format("{0:dd/MM/yyyy}");
+
+    columns.Add()
+        .Titled("Actions")
+        .Encoded(false)
+        .Sanitized(false)
+        .RenderValueAs(d =>
+        @<span>
+            @Html.ActionLink("Restore", "Restore", new { id = d.Id }, new { @class = "btn btn-sm btn-info" })
+        </span>);
+
+}).WithPaging(GlobalConstants.DefaultPageSize).Sortable().Filterable().WithMultipleFilters()
