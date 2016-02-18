@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Constants;
     using Contracts;
     using EmployerEmployeeHuntSystem.Data.Common;
     using EmployerEmployeeHuntSystem.Data.Models;
@@ -188,6 +189,13 @@
             }
 
             return result.AsQueryable();
+        }
+
+        public IQueryable<DeveloperProfile> GetTop(int count = GlobalConstants.DefaultTopEntriesCount)
+        {
+            return this.developerProfiles.All()
+                .OrderByDescending(d => d.Skills.Count)
+                .Take(count);
         }
 
         private string GetUserNameFromGithubProfileLink(string githubProfile)

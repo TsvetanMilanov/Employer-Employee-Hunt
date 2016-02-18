@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using Constants;
     using Contracts;
     using EmployerEmployeeHuntSystem.Data.Common;
     using EmployerEmployeeHuntSystem.Data.Models;
@@ -85,6 +86,13 @@
         public Organization GetById(int id)
         {
             return this.organizations.GetById(id);
+        }
+
+        public IQueryable<Organization> GetTop(int count = GlobalConstants.DefaultTopEntriesCount)
+        {
+            return this.organizations.All()
+                .OrderByDescending(o => o.JobOffers.Count)
+                .Take(count);
         }
 
         public Organization Restore(int id)

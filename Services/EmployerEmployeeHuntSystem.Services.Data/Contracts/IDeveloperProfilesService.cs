@@ -2,11 +2,14 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using Constants;
     using EmployerEmployeeHuntSystem.Data.Models;
 
     public interface IDeveloperProfilesService
     {
         IQueryable<DeveloperProfile> GetAll();
+
+        IQueryable<DeveloperProfile> GetTop(int count = GlobalConstants.DefaultTopEntriesCount);
 
         IQueryable<DeveloperProfile> GetCandidatesForJobOffer(int jobOfferId);
 

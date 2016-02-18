@@ -11,6 +11,8 @@
 
         public const int DefaultPageSize = 10;
 
+        public const int DefaultTopEntriesCount = 10;
+
 #if DEBUG
         public const string SkillsApiEndpoint = "http://localhost:2509/Skills/Names";
         public const string RolesApiEndpoint = "http://localhost:2509/Administration/Roles/Names";

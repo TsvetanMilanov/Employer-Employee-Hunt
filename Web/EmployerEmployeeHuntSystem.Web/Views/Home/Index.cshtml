@@ -29,4 +29,51 @@
             }
         </tr>
     </tbody>
-</table> 
+</table>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <ul class="list-group">
+            <li class="list-group-item active text-center">
+                Top Organizations
+            </li>
+            @foreach (var organization in Model.TopOrganizations)
+            {
+                <li class="list-group-item">
+                    <span class="badge">@organization.JobOffersCount</span>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @Html.ActionLink(organization.Name, "Details", "Organizations", new { id = organization.Id }, null)
+                    }
+                    else
+                    {
+                        @organization.Name
+                    }
+
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <ul class="list-group">
+            <li class="list-group-item active text-center">
+                Top Developers
+            </li>
+            @foreach (var developer in Model.TopDevelopers)
+            {
+                <li class="list-group-item">
+                    <span class="badge">@developer.Skills.Count</span>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @Html.ActionLink(developer.User.UserName, "Details", "Developers", new { id = developer.User.Id }, null)
+                    }
+                    else
+                    {
+                        @developer.User.UserName
+                    }
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-6"></div>
+</div>
