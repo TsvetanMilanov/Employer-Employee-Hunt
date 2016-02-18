@@ -21,14 +21,14 @@
 
         public ActionResult Index()
         {
-            User currentUser = this.GetCurrentUser();
+            DeveloperProfile developerProfile = this.developers.GetById(this.User.Identity.GetUserId());
 
-            if (currentUser.DeveloperProfile == null)
+            if (developerProfile == null)
             {
                 return this.RedirectToAction("CreateProfile");
             }
 
-            DeveloperProfileViewModel model = this.Mapper.Map<DeveloperProfileViewModel>(currentUser.DeveloperProfile);
+            DeveloperProfileViewModel model = this.Mapper.Map<DeveloperProfileViewModel>(developerProfile);
 
             return this.View(model);
         }

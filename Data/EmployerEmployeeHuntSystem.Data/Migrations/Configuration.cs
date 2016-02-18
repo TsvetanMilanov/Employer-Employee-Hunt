@@ -21,6 +21,10 @@
             {
                 dataImporters.Add(new RolesDataImporter());
             }
+            else
+            {
+                return;
+            }
 
             if (!context.Users.Any())
             {
