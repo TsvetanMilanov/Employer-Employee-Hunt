@@ -61,7 +61,8 @@
             JobOfferFullDetailsViewModel model = new JobOfferFullDetailsViewModel
             {
                 JobOffer = jobOfferViewModel,
-                Candidacies = this.Mapper.Map<IEnumerable<CandidacyViewModel>>(jobOffer.Candidacies.Where(j => j.IsDeleted == false))
+                Candidacies = this.Mapper.Map<IEnumerable<CandidacyViewModel>>(jobOffer.Candidacies.Where(j => j.IsDeleted == false)),
+                Organization = this.Mapper.Map<OrganizationViewModel>(jobOffer.Organization)
             };
 
             if (jobOffer == null)

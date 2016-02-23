@@ -1,4 +1,6 @@
 ﻿@model EmployerEmployeeHuntSystem.Web.ViewModels.JobOffers.JobOfferFullDetailsViewModel
+@using Microsoft.AspNet.Identity;
+@using EmployerEmployeeHuntSystem.Constants;
 
 @{
     ViewBag.Title = "Details For Job Offer";
@@ -6,14 +8,19 @@
 
 <div class="text-center">
     <h3>Job Offer Details</h3>
-    @Html.ActionLink("Delete", "Delete", "JobOffers", new { id = Model.JobOffer.Id }, null) |
-    @if (Model.JobOffer.IsActive == true)
+    @if (Model.Organization.Founder.Id == User.Identity.GetUserId() ||
+                            User.IsInRole(GlobalConstants.HeadhunterRoleName) ||
+                            User.IsInRole(GlobalConstants.AdministratorRoleName))
     {
-        @Html.ActionLink("Set As Inactive", "SetInActive", "JobOffers", new { id = Model.JobOffer.Id }, null)
-    }
-    else
-    {
-        @Html.ActionLink("Set As Active", "SetActive", "JobOffers", new { id = Model.JobOffer.Id }, null)
+        @Html.ActionLink("Delete", "Delete", "JobOffers", new { id = Model.JobOffer.Id }, null) @:|
+        if (Model.JobOffer.IsActive == true)
+        {
+            @Html.ActionLink("Set As Inactive", "SetInActive", "JobOffers", new { id = Model.JobOffer.Id }, null)
+        }
+        else
+        {
+            @Html.ActionLink("Set As Active", "SetActive", "JobOffers", new { id = Model.JobOffer.Id }, null)
+        }
     }
     <hr />
     @Html.DisplayFor(x => Model.JobOffer)
