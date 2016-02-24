@@ -2,6 +2,10 @@
 
 <div>
     <div>
+        <strong>Organization: </strong>
+        <span>@Html.ActionLink(@Model.Organization, "Details", "Organizations", new { id = Model.OrganizationId, area = string.Empty }, null)</span>
+    </div>
+    <div>
         <strong>Minimum candidates count: </strong>
         <span>@Model.MinimumCandidatesCount</span>
     </div>

@@ -2,8 +2,8 @@
 {
     using System.Web.Routing;
     using Controllers;
-    using NUnit.Framework;
     using MvcRouteTester;
+    using NUnit.Framework;
 
     [TestFixture]
     public class SkillsTests

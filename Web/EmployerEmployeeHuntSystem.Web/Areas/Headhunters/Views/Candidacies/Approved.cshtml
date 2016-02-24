@@ -14,11 +14,11 @@
         .Titled("Candidate")
         .Encoded(false)
         .Sanitized(false)
-        .RenderValueAs(x => Html.ActionLink(x.Candidate.User.UserName, "Details", "Developers", new { id = x.Candidate.User.Id, area = string.Empty }));
+        .RenderValueAs(x => Html.ActionLink(x.Candidate.User.UserName, "Details", "Developers", new { id = x.Candidate.User.Id, area = string.Empty }, null));
 
     columns.Add()
         .Titled("Job Offer")
         .Encoded(false)
         .Sanitized(false)
-        .RenderValueAs(x => Html.ActionLink("Job Offer Details", "Details", "JobOffers", new { id = x.JobOffer.Id, area = string.Empty }));
+        .RenderValueAs(x => Html.ActionLink("Job Offer Details", "Details", "JobOffers", new { id = x.JobOffer.Id, area = string.Empty }, null));
 }).WithPaging(GlobalConstants.DefaultPageSize).Sortable().Filterable().WithMultipleFilters()
