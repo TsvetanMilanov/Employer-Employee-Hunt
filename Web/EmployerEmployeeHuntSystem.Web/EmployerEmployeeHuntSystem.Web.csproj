@@ -213,6 +213,7 @@
     <Compile Include="Areas\Administration\ViewModels\Roles\RoleManagementViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Roles\RoleViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Users\UserAdministrationViewModel.cs" />
+    <Compile Include="Areas\Headhunters\Controllers\CandidaciesController.cs" />
     <Compile Include="Areas\Headhunters\Controllers\DevelopersController.cs" />
     <Compile Include="Areas\Headhunters\Controllers\HeadhuntersBaseController.cs" />
     <Compile Include="Areas\Headhunters\Controllers\HeadhuntersController.cs" />
@@ -312,6 +313,7 @@
     <Content Include="Areas\Administration\Views\Skills\Edit.cshtml" />
     <Content Include="Areas\Headhunters\Views\Shared\DisplayTemplates\JobOffersListViewModel.cshtml" />
     <Content Include="Areas\Headhunters\Views\JobOffers\Active.cshtml" />
+    <Content Include="Areas\Headhunters\Views\Candidacies\Approved.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />

@@ -9,6 +9,17 @@
         <form class="form-horizontal">
             <fieldset>
                 <legend class="text-center">@Model.Name</legend>
+                @if (Model.Founder.Id == User.Identity.GetUserId())
+                {
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            @Html.ActionLink("Delete", "Delete", "Organizations", new { id = Model.Id }, new { @class = "btn btn-danger" })
+                            @Html.ActionLink("Edit", "Edit", "Organizations", new { id = Model.Id }, new { @class = "btn btn-success" })
+                            @Html.ActionLink("Add Job Offer", "Add", "JobOffers", new { area = string.Empty, organizationId = Model.Id }, new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                }
+
                 <div class="form-group">
                     <label for="" class="col-lg-2 control-label">Founder</label>
                     <div class="col-lg-10">
@@ -64,16 +75,6 @@
                         }
                     </div>
                 </div>
-                @if (Model.Founder.Id == User.Identity.GetUserId())
-                {
-                    <div class="form-group">
-                        <div class="col-lg-10 col-lg-offset-2">
-                            @Html.ActionLink("Delete", "Delete", "Organizations", new { id = Model.Id }, new { @class = "btn btn-danger" })
-                            @Html.ActionLink("Edit", "Edit", "Organizations", new { id = Model.Id }, new { @class = "btn btn-success" })
-                            @Html.ActionLink("Add Job Offer", "Add", "JobOffers", new { area = string.Empty, organizationId = Model.Id }, new { @class = "btn btn-primary" })
-                        </div>
-                    </div>
-                }
             </fieldset>
         </form>
     </div>

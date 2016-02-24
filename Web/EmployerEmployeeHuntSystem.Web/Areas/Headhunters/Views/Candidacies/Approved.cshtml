@@ -1,0 +1,24 @@
+﻿@model IEnumerable<EmployerEmployeeHuntSystem.Web.ViewModels.Candidacies.CandidacyViewModel>
+@using EmployerEmployeeHuntSystem.Constants
+@using GridMvc.Html
+
+@{
+    ViewBag.Title = "Approved Candidacies";
+}
+
+<h3 class="text-center">My Approved Candidacies</h3>
+
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add()
+        .Titled("Candidate")
+        .Encoded(false)
+        .Sanitized(false)
+        .RenderValueAs(x => Html.ActionLink(x.Candidate.User.UserName, "Details", "Developers", new { id = x.Candidate.User.Id, area = string.Empty }));
+
+    columns.Add()
+        .Titled("Job Offer")
+        .Encoded(false)
+        .Sanitized(false)
+        .RenderValueAs(x => Html.ActionLink("Job Offer Details", "Details", "JobOffers", new { id = x.JobOffer.Id, area = string.Empty }));
+}).WithPaging(GlobalConstants.DefaultPageSize).Sortable().Filterable().WithMultipleFilters()

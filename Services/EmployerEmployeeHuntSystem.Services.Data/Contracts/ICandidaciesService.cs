@@ -7,6 +7,8 @@
     {
         IQueryable<Candidacy> GetAll();
 
+        IQueryable<Candidacy> GetApprovedForUser(string id);
+
         Candidacy GetById(int id);
 
         void Approve(int id);

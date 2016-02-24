@@ -39,6 +39,12 @@
             return this.candidacies.All();
         }
 
+        public IQueryable<Candidacy> GetApprovedForUser(string id)
+        {
+            return this.candidacies.All()
+                    .Where(c => c.HeadhunterProfileId == id && c.IsApproved == true);
+        }
+
         public Candidacy GetById(int id)
         {
             return this.candidacies.GetById(id);

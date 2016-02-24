@@ -7,39 +7,47 @@
 
 @Html.Grid(Model.JobOffers).Columns(columns =>
 {
-    columns.Add(o => o.Id)
-           .Titled("Id");
+columns.Add(o => o.Id)
+       .Titled("Id");
 
-    columns.Add(o => o.RegistrationDate)
-        .SortInitialDirection(GridSortDirection.Descending)
-        .Format("{0:dd/MM/yyyy}");
+columns.Add(o => o.RegistrationDate)
+    .SortInitialDirection(GridSortDirection.Descending)
+    .Format("{0:dd/MM/yyyy}");
 
-    columns.Add(o => o.MinimumCandidatesCount);
+//columns.Add()
+//.Titled("Organization")
+//.Encoded(false)
+//.Sanitized(false)
+//.RenderValueAs(d => Html.ActionLink(d.Organization, "Details", "Organizations", new { id = d.OrganizationId, area = string.Empty }));
 
-    columns.Add(o => o.CandidatesCount);
+columns.Add(o => o.Organization);
 
-    columns.Add(o => o.Headhunter);
+columns.Add(o => o.MinimumCandidatesCount);
 
-    columns.Add(o => o.IsActive);
+columns.Add(o => o.CandidatesCount);
 
-    columns.Add(o => o.RequiredSkills)
-        .Encoded(false)
-        .Sanitized(false)
-        .RenderValueAs(d =>
-        @<span>
-            @string.Join(", ", d.RequiredSkills.Select(s => s.Name))
-        </span>)
-        .Sortable(false)
-        .Filterable(false);
+columns.Add(o => o.Headhunter);
 
-columns.Add()
-    .Titled("Actions")
+columns.Add(o => o.IsActive);
+
+columns.Add(o => o.RequiredSkills)
     .Encoded(false)
     .Sanitized(false)
     .RenderValueAs(d =>
-    @<div>
-        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-@d.Id">Actions</button>
-    </div>);
+    @<span>
+        @string.Join(", ", d.RequiredSkills.Select(s => s.Name))
+    </span>)
+        .Sortable(false)
+        .Filterable(false);
+
+    columns.Add()
+        .Titled("Actions")
+        .Encoded(false)
+        .Sanitized(false)
+        .RenderValueAs(d =>
+        @<div>
+            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-@d.Id">Actions</button>
+        </div>);
 
 }).WithPaging(GlobalConstants.DefaultPageSize).Sortable().Filterable().WithMultipleFilters()
 
