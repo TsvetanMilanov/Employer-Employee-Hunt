@@ -1,9 +1,10 @@
 ﻿namespace EmployerEmployeeHuntSystem.Web.Routes.Tests
 {
     using System.Web.Routing;
+    using Controllers;
     using NUnit.Framework;
     using MvcRouteTester;
-    using Controllers;
+
     [TestFixture]
     public class SkillsTests
     {

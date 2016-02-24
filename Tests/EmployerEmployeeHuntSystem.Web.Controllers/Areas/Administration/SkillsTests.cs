@@ -8,7 +8,6 @@
     using NUnit.Framework;
     using Services.Data.Contracts;
     using TestStack.FluentMVCTesting;
-    using ViewModels.DeveloperProfiles;
     using ViewModels.Skills;
     using Web.Areas.Administration.Controllers;
 
