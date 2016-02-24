@@ -14,7 +14,7 @@
         <div class="form-group">
             @Html.LabelFor(x => x.GithubProfile, new { @class = "col-lg-2 control-label" })
             <div class="col-lg-10">
-                @Html.DisplayFor(x => x.GithubProfile, new { @class = "form-control" })
+                <a href="@Model.GithubProfile" target="_blank">@Model.GithubProfile</a>
             </div>
         </div>
         <div class="form-group">
@@ -37,7 +37,7 @@
         <div class="form-group">
             @Html.LabelFor(x => x.IsAvailableForHire, new { @class = "col-lg-2 control-label" })
             <div class="col-lg-10">
-                @Model.IsAvailableForHire
+                @Html.DisplayFor(x => Model.IsAvailableForHire)
             </div>
         </div>
     </div>
