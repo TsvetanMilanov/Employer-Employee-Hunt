@@ -10,7 +10,7 @@
     {
         private RouteCollection routeCollection;
 
-        [TestFixtureSetUp]
+        [SetUp]
         public void Init()
         {
             this.routeCollection = new RouteCollection();
@@ -21,18 +21,18 @@
         public void ApproveRouteShouldMapCorrectly()
         {
             int id = 5;
-            string route = string.Format("/Candidacies/Approve/{0}", id);
+            string url = string.Format("/Candidacies/Approve/{0}", id);
 
-            this.routeCollection.ShouldMap(route).To<CandidaciesController>(c => c.Approve(id));
+            this.routeCollection.ShouldMap(url).To<CandidaciesController>(c => c.Approve(id));
         }
 
         [Test]
         public void DeleteRouteShouldMapCorrectly()
         {
             int id = 5;
-            string route = string.Format("/Candidacies/Delete/{0}", id);
+            string url = string.Format("/Candidacies/Delete/{0}", id);
 
-            this.routeCollection.ShouldMap(route).To<CandidaciesController>(c => c.Delete(id));
+            this.routeCollection.ShouldMap(url).To<CandidaciesController>(c => c.Delete(id));
         }
     }
 }

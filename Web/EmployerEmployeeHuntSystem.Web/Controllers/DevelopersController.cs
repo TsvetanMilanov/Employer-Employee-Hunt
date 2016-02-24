@@ -54,6 +54,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateProfile(DeveloperProfileCreateViewModel model)
         {
             if (!this.ModelState.IsValid)
