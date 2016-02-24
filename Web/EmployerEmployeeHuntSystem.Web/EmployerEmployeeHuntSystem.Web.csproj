@@ -206,6 +206,7 @@
     <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
     <Compile Include="Areas\Administration\Controllers\OrganizationsController.cs" />
     <Compile Include="Areas\Administration\Controllers\RolesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\SkillsController.cs" />
     <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
     <Compile Include="Areas\Administration\ViewModels\Organizations\OrganizationAdministrationEditViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Organizations\OrganizationAdministrationViewModel.cs" />
@@ -307,6 +308,8 @@
     <Content Include="Areas\Administration\Views\Organizations\Deleted.cshtml" />
     <Content Include="Areas\Administration\Views\Users\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Skills\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Skills\Edit.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />

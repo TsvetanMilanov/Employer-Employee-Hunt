@@ -1,5 +1,6 @@
 ﻿namespace EmployerEmployeeHuntSystem.Services.Data
 {
+    using System;
     using System.Linq;
     using Contracts;
     using EmployerEmployeeHuntSystem.Data.Common;
@@ -14,6 +15,38 @@
             this.skills = skills;
         }
 
+        public Skill Add(string name)
+        {
+            Skill newSkill = new Skill
+            {
+                Name = name
+            };
+
+            this.skills.Add(newSkill);
+            this.skills.Save();
+
+            return newSkill;
+        }
+
+        public void Delete(int id)
+        {
+            Skill skill = this.skills.GetById(id);
+
+            this.skills.Delete(skill);
+            this.skills.Save();
+        }
+
+        public Skill Edit(int id, string name)
+        {
+            Skill skill = this.skills.GetById(id);
+
+            skill.Name = name;
+
+            this.skills.Update(skill);
+            this.skills.Save();
+            return skill;
+        }
+
         public IQueryable<Skill> GetAll()
         {
             return this.skills.All();
@@ -24,6 +57,11 @@
             return this.skills.All()
                 .Where(s => s.Name.ToLower().Contains(filter.ToLower()))
                 .Select(s => s.Name);
+        }
+
+        public Skill GetById(int id)
+        {
+            return this.skills.GetById(id);
         }
 
         public Skill GetByName(string name)

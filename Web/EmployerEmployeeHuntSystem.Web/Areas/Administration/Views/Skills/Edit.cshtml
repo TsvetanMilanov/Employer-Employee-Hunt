@@ -1,0 +1,17 @@
+﻿@model EmployerEmployeeHuntSystem.Web.ViewModels.Skills.SkillViewModel
+
+@{
+    ViewBag.Title = "Edit Skill";
+}
+
+<h3 class="text-center">Edit Skill</h3>
+
+@using (Html.BeginForm("Edit"))
+{
+    @Html.AntiForgeryToken();
+    @Html.HiddenFor(m => m.Id);
+    @Html.EditorFor(m => m.Name);
+
+    <button class="btn btn-default">Edit</button>
+}
+

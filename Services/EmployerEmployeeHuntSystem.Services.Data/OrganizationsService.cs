@@ -91,7 +91,7 @@
         public IQueryable<Organization> GetTop(int count = GlobalConstants.DefaultTopEntriesCount)
         {
             return this.organizations.All()
-                .OrderByDescending(o => o.JobOffers.Count)
+                .OrderByDescending(o => o.JobOffers.Count())
                 .Take(count);
         }
 

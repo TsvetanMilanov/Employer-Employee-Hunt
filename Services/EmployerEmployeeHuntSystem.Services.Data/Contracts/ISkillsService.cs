@@ -9,6 +9,14 @@
 
         IQueryable<string> GetAllSkillsNames(string filter);
 
+        Skill GetById(int id);
+
         Skill GetByName(string name);
+
+        Skill Add(string name);
+
+        Skill Edit(int id, string name);
+
+        void Delete(int id);
     }
 }
