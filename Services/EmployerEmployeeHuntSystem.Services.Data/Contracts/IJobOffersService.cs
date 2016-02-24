@@ -9,6 +9,8 @@
     {
         IQueryable<JobOffer> GetAll();
 
+        IQueryable<JobOffer> GetActive();
+
         IQueryable<JobOffer> GetByOrganizationId(int organizationId);
 
         IQueryable<JobOffer> GetActiveJoboffersForHeadhunter(string headhunterId);

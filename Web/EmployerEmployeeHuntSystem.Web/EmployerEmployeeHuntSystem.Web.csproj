@@ -219,7 +219,7 @@
     <Compile Include="Areas\Headhunters\Controllers\JobOffersController.cs" />
     <Compile Include="Areas\Headhunters\HeadhuntersAreaRegistration.cs" />
     <Compile Include="Areas\Headhunters\ViewModels\Developers\CandidatesForJobOfferViewModel.cs" />
-    <Compile Include="Areas\Headhunters\ViewModels\JobOffers\JobOffersListAllViewModel.cs" />
+    <Compile Include="Areas\Headhunters\ViewModels\JobOffers\JobOffersListViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CandidaciesController.cs" />
@@ -310,6 +310,8 @@
     <Content Include="Areas\Administration\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Skills\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Skills\Edit.cshtml" />
+    <Content Include="Areas\Headhunters\Views\Shared\DisplayTemplates\JobOffersListViewModel.cshtml" />
+    <Content Include="Areas\Headhunters\Views\JobOffers\Active.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
@@ -398,7 +400,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
-    <Folder Include="Areas\Headhunters\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -132,5 +132,10 @@
         {
             return this.jobOffers.All().Where(j => j.HeadhunterProfileId == headhunterId && j.IsActive == true);
         }
+
+        public IQueryable<JobOffer> GetActive()
+        {
+            return this.jobOffers.All().Where(j => j.IsActive == true);
+        }
     }
 }

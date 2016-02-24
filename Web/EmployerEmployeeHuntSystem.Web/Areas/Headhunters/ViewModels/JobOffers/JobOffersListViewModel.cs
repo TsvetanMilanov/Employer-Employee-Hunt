@@ -4,7 +4,7 @@
     using System.ComponentModel.DataAnnotations;
     using Web.ViewModels.JobOffers;
 
-    public class JobOffersListAllViewModel
+    public class JobOffersListViewModel
     {
         [UIHint("IEnumerableJobOffer")]
         public ICollection<JobOfferViewModel> JobOffers { get; set; }

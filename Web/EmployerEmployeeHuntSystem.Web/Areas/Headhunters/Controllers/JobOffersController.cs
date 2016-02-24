@@ -24,7 +24,20 @@
                 .To<JobOfferViewModel>()
                 .ToList();
 
-            var model = new JobOffersListAllViewModel();
+            var model = new JobOffersListViewModel();
+            model.JobOffers = allJobOffers;
+
+            return this.View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Active()
+        {
+            var allJobOffers = this.jobOffers.GetActive()
+                .To<JobOfferViewModel>()
+                .ToList();
+
+            var model = new JobOffersListViewModel();
             model.JobOffers = allJobOffers;
 
             return this.View(model);
@@ -37,7 +50,7 @@
                 .To<JobOfferViewModel>()
                 .ToList();
 
-            var model = new JobOffersListAllViewModel();
+            var model = new JobOffersListViewModel();
             model.JobOffers = result;
 
             return this.View(model);
