@@ -317,6 +317,8 @@
     <Content Include="Areas\Headhunters\Views\Candidacies\Approved.cshtml" />
     <Content Include="Areas\Administration\Views\JobOffers\Index.cshtml" />
     <Content Include="Areas\Administration\Views\JobOffers\Assigned.cshtml" />
+    <Content Include="Areas\Administration\Views\Skills\Deleted.cshtml" />
+    <Content Include="Areas\Headhunters\Views\JobOffers\Unassigned.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />

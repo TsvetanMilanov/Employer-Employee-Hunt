@@ -68,5 +68,24 @@
         {
             return this.skills.All().Where(s => s.Name == name).FirstOrDefault();
         }
+
+        public IQueryable<Skill> GetDeleted()
+        {
+            return this.skills.AllWithDeleted()
+                    .Where(s => s.IsDeleted == true);
+        }
+
+        public Skill Restore(int id)
+        {
+            Skill skill = this.skills.AllWithDeleted()
+                    .FirstOrDefault(s => s.Id == id);
+
+            skill.IsDeleted = false;
+
+            this.skills.Update(skill);
+            this.skills.Save();
+
+            return skill;
+        }
     }
 }

@@ -46,7 +46,7 @@
 
             this.SetTempDataSuccessMessage("The headhunter was removed from the job offer.");
 
-            return this.Redirect("Index");
+            return this.RedirectToAction("Index");
         }
     }
 }

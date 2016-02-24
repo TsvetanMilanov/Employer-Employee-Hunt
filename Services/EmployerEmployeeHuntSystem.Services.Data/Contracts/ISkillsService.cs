@@ -7,6 +7,8 @@
     {
         IQueryable<Skill> GetAll();
 
+        IQueryable<Skill> GetDeleted();
+
         IQueryable<string> GetAllSkillsNames(string filter);
 
         Skill GetById(int id);
@@ -16,6 +18,8 @@
         Skill Add(string name);
 
         Skill Edit(int id, string name);
+
+        Skill Restore(int id);
 
         void Delete(int id);
     }

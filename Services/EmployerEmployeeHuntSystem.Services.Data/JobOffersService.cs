@@ -154,5 +154,11 @@
             this.jobOffers.Update(jobOffer);
             this.jobOffers.Save();
         }
+
+        public IQueryable<JobOffer> GetUnassigned()
+        {
+            return this.jobOffers.All()
+                    .Where(j => j.IsActive == true && j.Headhunter == null);
+        }
     }
 }

@@ -13,6 +13,8 @@
 
         IQueryable<JobOffer> GetAssigned();
 
+        IQueryable<JobOffer> GetUnassigned();
+
         IQueryable<JobOffer> GetByOrganizationId(int organizationId);
 
         IQueryable<JobOffer> GetActiveJoboffersForHeadhunter(string headhunterId);

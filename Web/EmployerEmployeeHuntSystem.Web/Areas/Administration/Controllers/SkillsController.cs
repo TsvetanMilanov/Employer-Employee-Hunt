@@ -22,6 +22,13 @@
             return this.View(model);
         }
 
+        public ActionResult Deleted()
+        {
+            var model = this.Mapper.Map<IEnumerable<SkillViewModel>>(this.skills.GetDeleted().ToList());
+
+            return this.View(model);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Add(SkillViewModel model)
@@ -69,6 +76,15 @@
             this.skills.Edit(model.Id, model.Name);
 
             this.SetTempDataSuccessMessage("The skill was edited!");
+
+            return this.RedirectToAction("Index");
+        }
+
+        public ActionResult Restore(int id)
+        {
+            this.skills.Restore(id);
+
+            this.SetTempDataSuccessMessage("The skill was restored");
 
             return this.RedirectToAction("Index");
         }

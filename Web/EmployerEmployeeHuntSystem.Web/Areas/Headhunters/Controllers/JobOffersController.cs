@@ -33,12 +33,25 @@
         [HttpGet]
         public ActionResult Active()
         {
-            var allJobOffers = this.jobOffers.GetActive()
+            var activeJobOffers = this.jobOffers.GetActive()
                 .To<JobOfferViewModel>()
                 .ToList();
 
             var model = new JobOffersListViewModel();
-            model.JobOffers = allJobOffers;
+            model.JobOffers = activeJobOffers;
+
+            return this.View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Unassigned()
+        {
+            var unassignedJobOffers = this.jobOffers.GetUnassigned()
+                .To<JobOfferViewModel>()
+                .ToList();
+
+            var model = new JobOffersListViewModel();
+            model.JobOffers = unassignedJobOffers;
 
             return this.View(model);
         }
