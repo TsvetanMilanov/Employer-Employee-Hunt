@@ -11,6 +11,8 @@
 
         IQueryable<JobOffer> GetActive();
 
+        IQueryable<JobOffer> GetAssigned();
+
         IQueryable<JobOffer> GetByOrganizationId(int organizationId);
 
         IQueryable<JobOffer> GetActiveJoboffersForHeadhunter(string headhunterId);
@@ -30,5 +32,7 @@
         void SetInActive(int id);
 
         void AddCandidate(string userId, int jobOfferId, string headhunterId);
+
+        void ClearAssignment(int id);
     }
 }

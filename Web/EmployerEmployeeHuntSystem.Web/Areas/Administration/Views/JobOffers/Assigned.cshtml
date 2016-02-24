@@ -1,0 +1,35 @@
+﻿@model EmployerEmployeeHuntSystem.Web.Areas.Headhunters.ViewModels.JobOffers.JobOffersListViewModel
+@using EmployerEmployeeHuntSystem.Constants
+@using GridMvc.Html
+@using GridMvc.Sorting
+@{
+    ViewBag.Title = "Assigned Job Offers";
+}
+
+<h3 class="text-center">Assigned Job Offers</h3>
+
+
+@Html.Grid(Model.JobOffers).Columns(columns =>
+{
+    columns.Add(o => o.Id)
+           .Titled("Id");
+
+    columns.Add(o => o.RegistrationDate)
+        .SortInitialDirection(GridSortDirection.Descending)
+        .Format("{0:dd/MM/yyyy}");
+
+    columns.Add(o => o.Organization);
+
+    columns.Add(o => o.Headhunter);
+
+    columns.Add()
+        .Titled("Actions")
+        .Encoded(false)
+        .Sanitized(false)
+        .RenderValueAs(d =>
+        @<div>
+             @Html.ActionLink("Details", "Details", new { id = d.Id, area = string.Empty }) |
+             @Html.ActionLink("Clear Assignment", "ClearAssignment", "JobOffers", new { id = d.Id }, null)
+        </div>);
+
+}).WithPaging(GlobalConstants.DefaultPageSize).Sortable().Filterable().WithMultipleFilters()

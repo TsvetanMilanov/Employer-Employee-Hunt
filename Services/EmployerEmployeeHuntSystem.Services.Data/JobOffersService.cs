@@ -137,5 +137,22 @@
         {
             return this.jobOffers.All().Where(j => j.IsActive == true);
         }
+
+        public IQueryable<JobOffer> GetAssigned()
+        {
+            return this.jobOffers.All()
+                .Where(j => j.Headhunter != null);
+        }
+
+        public void ClearAssignment(int id)
+        {
+            JobOffer jobOffer = this.jobOffers.GetById(id);
+
+            jobOffer.Headhunter = null;
+            jobOffer.HeadhunterProfileId = null;
+
+            this.jobOffers.Update(jobOffer);
+            this.jobOffers.Save();
+        }
     }
 }

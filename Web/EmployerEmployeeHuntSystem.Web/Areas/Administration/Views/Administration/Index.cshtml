@@ -46,3 +46,15 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="list-group">
+            <div href="#" class="list-group-item active">
+                Job Offers
+            </div>
+            @Html.ActionLink("All Job Offers", "Index", "JobOffers", new { area = "Administration" }, new { @class = "list-group-item" })
+            @Html.ActionLink("Assigned Job Offers", "Assigned", "JobOffers", new { area = "Administration" }, new { @class = "list-group-item" })
+        </div>
+    </div>
+</div>

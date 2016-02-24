@@ -204,6 +204,7 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdministrationBaseController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
+    <Compile Include="Areas\Administration\Controllers\JobOffersController.cs" />
     <Compile Include="Areas\Administration\Controllers\OrganizationsController.cs" />
     <Compile Include="Areas\Administration\Controllers\RolesController.cs" />
     <Compile Include="Areas\Administration\Controllers\SkillsController.cs" />
@@ -311,9 +312,11 @@
     <Content Include="Areas\Administration\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Skills\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Skills\Edit.cshtml" />
-    <Content Include="Areas\Headhunters\Views\Shared\DisplayTemplates\JobOffersListViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\JobOffersListViewModel.cshtml" />
     <Content Include="Areas\Headhunters\Views\JobOffers\Active.cshtml" />
     <Content Include="Areas\Headhunters\Views\Candidacies\Approved.cshtml" />
+    <Content Include="Areas\Administration\Views\JobOffers\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\JobOffers\Assigned.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
@@ -402,6 +405,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
+    <Folder Include="Areas\Headhunters\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

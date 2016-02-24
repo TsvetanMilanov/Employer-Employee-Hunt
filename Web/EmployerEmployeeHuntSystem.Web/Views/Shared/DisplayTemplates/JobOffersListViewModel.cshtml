@@ -65,19 +65,19 @@ columns.Add(o => o.RequiredSkills)
                     {
                         if (string.IsNullOrWhiteSpace(item.HeadhunterId) || item.HeadhunterId == User.Identity.GetUserId())
                         {
-                            @Html.ActionLink("Set As Inactive", "SetInactive", new { id = item.Id }) @:|
+                            @Html.ActionLink("Set As Inactive", "SetInactive", new { id = item.Id, area = ViewBag.Area == null ? string.Empty : ViewBag.Area }) @:|
 
-                            @Html.ActionLink("Search For Candidates", "CandidatesForJobOffer", "Developers", new { id = item.Id }, null) @:|
+                            @Html.ActionLink("Search For Candidates", "CandidatesForJobOffer", "Developers", new { id = item.Id, area = ViewBag.Area == null ? string.Empty : ViewBag.Area }, null) @:|
 
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) @:|
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id, area = ViewBag.Area == null ? string.Empty : ViewBag.Area }) @:|
                         }
                     }
                     else
                     {
-                        @Html.ActionLink("Set As Active", "SetActive", new { id = item.Id }) @:|
+                        @Html.ActionLink("Set As Active", "SetActive", new { id = item.Id, area = ViewBag.Area == null ? string.Empty : ViewBag.Area }) @:|
                     }
 
-                    @Html.ActionLink("Details", "Details", new { id = item.Id, area = string.Empty })
+                    @Html.ActionLink("Details", "Details", new { id = item.Id, area = ViewBag.Area == null ? string.Empty : ViewBag.Area })
                     <br />
                     <br />
                 </div>
