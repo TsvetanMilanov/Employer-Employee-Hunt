@@ -12,7 +12,7 @@
     {
         private RouteCollection routeCollection;
 
-        [SetUp]
+        [TestFixtureSetUp]
         public void Init()
         {
             this.routeCollection = new RouteCollection();
